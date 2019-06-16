@@ -53,10 +53,10 @@ function singleSub_getJson(){  //echart_5()
         
         for(var j=1;j<=singleSub_scoreList.length;j++) { //获取所有考试的三科总成绩
             //http://www.overlove.xin/ssm/getproblemscore?lesson=英语&classid=100000009&index=26&test=test1
-            var URL="http://www.overlove.xin/ssm/getproblemscore?lesson=" +singleSub_subject+ "&classid="+classId+"&index="+j+"&test="+singleSub_test;
+            var URL="getproblemscore?lesson=" +singleSub_subject+ "&classid="+classId+"&index="+j+"&test="+singleSub_test;
             
             $.ajax({
-                url: "http://www.overlove.xin/ssm/getproblemscore?lesson=" +singleSub_subject+ "&classid="+classId+"&index="+j+"&test="+singleSub_test,	//请求url
+                url: "getproblemscore?lesson=" +singleSub_subject+ "&classid="+classId+"&index="+j+"&test="+singleSub_test,	//请求url
                 type: "GET",	//请求类型  post|get
                 // data : "key=value&key1=value2",	//后台用 request.getParameter("key");
                 dataType: 'json',//返回数据的 类型 text|json|html--

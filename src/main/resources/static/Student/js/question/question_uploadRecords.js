@@ -20,13 +20,13 @@ var studentId="";
 //以往上传题目的信息，，，先用固定的一些数据，占据可视区域
 function upload_wrongpic_info() {
     var upload_ImgList=new Array();
-    var URL="http://www.overlove.xin/ssm/geterrorcollection?school=just&id="+studentId;
+    var URL="geterrorcollection?school=just&id="+studentId;
     upload_ImgList.splice(0,upload_ImgList.length); //清空数组
     var upload_testName; var upload_lesson;var upload_knowleagPoint;var upload_problemId;var upload_uploadTime;var upload_imageurl;//存储从服务器返回的考试名称、课程、知识点、题号、上传时间、图片url
     $("#allgrade_table  tr:not(:first)").empty("");  //清除除首行外的所有行
 
     $.ajax({
-        url: "http://www.overlove.xin/ssm/geterrorcollection?school=just&id="+studentId,//请求url
+        url: "geterrorcollection?school=just&id="+studentId,//请求url
         type: "GET",	//请求类型  post|get
         // data : "key=value&key1=value2",	//后台用 request.getParameter("key");
         dataType: 'json',//返回数据的 类型 text|json|html--
@@ -66,14 +66,14 @@ function upload_wrongpic_info() {
 
     /*为表格中的"行元素"中的"删除按钮"点击事件*/
     function question_show_Delete(target) {
-        var delete_img_head="http://www.overlove.xin/ssm/delete?imgurl=";   //再后面拼接要删除的图片的url,,然后向服务器发送请求即可删除
+        var delete_img_head="delete?imgurl=";   //再后面拼接要删除的图片的url,,然后向服务器发送请求即可删除
         var delete_imgUrl=$(target).parent().parent().find("td").eq(5).html();   //获取到要删除的图片的url
         var temp=delete_img_head+delete_imgUrl;
         layer.confirm('确认删除本条记录及错题图片吗?', { btn: ['是','否'],
             btn1: function(){
                 //通过btn1的函数就可与服务器交互完成删除
             $.ajax({
-                    url: "http://www.overlove.xin/ssm/delete?imgurl="+delete_imgUrl,
+                    url: "delete?imgurl="+delete_imgUrl,
                     type: "GET",
                     // data:{"id":temp},
                      data:" ",

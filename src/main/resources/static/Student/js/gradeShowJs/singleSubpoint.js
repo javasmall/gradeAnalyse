@@ -40,7 +40,7 @@ function  singleSubpoint_getJson(){
         // console.log("for start work");
         $.ajax({
             //http://www.overlove.xin/ssm/classlessonscore?id=100000001&lesson=语文&test=test3
-            url: "http://www.overlove.xin/ssm/classlessonscore?id=" + classId + "&lesson=" + singleSubpoint_subject + "&test=" + testName[j],	//请求url
+            url: "classlessonscore?id=" + classId + "&lesson=" + singleSubpoint_subject + "&test=" + testName[j],	//请求url
             //url:"http://www.overlove.xin/ssm/classlessonscore?id=100000001&lesson=语文&test=test3",
             type: "GET",	//请求类型  post|get
             // data : "key=value&key1=value2",	//后台用 request.getParameter("key");

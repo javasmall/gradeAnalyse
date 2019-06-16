@@ -10,10 +10,10 @@ $(function () {
     sumscoreList.splice(0,sumscoreList.length); //清空数组
     function getJson() {
         for(var i=0;i<7;i++) { //获取所有考试的三科总成绩
-            var URL="http://www.overlove.xin/ssm/studentrank?test=" +testName[i]+ "&classid="+classId;
+            var URL="studentrank?test=" +testName[i]+ "&classid="+classId;
            
             $.ajax({
-                url: "http://www.overlove.xin/ssm/studentrank?test=" +testName[i]+ "&classid="+classId,	//请求url
+                url: "studentrank?test=" +testName[i]+ "&classid="+classId,	//请求url
                 type: "GET",	//请求类型  post|get
                 // data : "key=value&key1=value2",	//后台用 request.getParameter("key");
                 dataType: 'json',//返回数据的 类型 text|json|html--

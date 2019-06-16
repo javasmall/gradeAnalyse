@@ -112,8 +112,8 @@ layui.use(['layer', 'form'], function () {
 
     /*逻辑代码，实现某次考试某一科目中某道题的得分情况,主要是分析得分人数,,表格显示*/
     function oneQuestion_getsumofPerson_table() {
-        var URL="http://www.overlove.xin/ssm/getproblemscore?lesson=语文&classid=100000009&index=17&test=test1";
-        var testURL="http://www.overlove.xin/ssm/getproblemscore?lesson="+oneQuestion_subject+"&classid="+classId+"&index="+oneQuestion_questionNumber
+        var URL="getproblemscore?lesson=语文&classid=100000009&index=17&test=test1";
+        var testURL="getproblemscore?lesson="+oneQuestion_subject+"&classid="+classId+"&index="+oneQuestion_questionNumber
             +"&test="+oneQuestion_test;
         
         temp_oneQuestion_sumScore="";temp_oneQuestion_stus1="";temp_oneQuestion_stus2="";temp_oneQuestion_stus3="";

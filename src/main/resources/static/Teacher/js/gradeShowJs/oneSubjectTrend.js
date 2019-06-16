@@ -30,7 +30,7 @@ $(function (){ //页面初始化加载
         $("#oneSubjectTrend_table  tr:not(:first)").empty("");  //清除除首行外的所有行
 
         $.ajax({
-            url: "http://www.overlove.xin/ssm/pastlessonavg?id="+classId+"&lesson="+oneSubjectTrend_subject,//请求url
+            url: "pastlessonavg?id="+classId+"&lesson="+oneSubjectTrend_subject,//请求url
             type: "GET",	//请求类型  post|get
             // data : "key=value&key1=value2",	//后台用 request.getParameter("key");
             dataType: 'json',//返回数据的 类型 text|json|html--
@@ -62,7 +62,7 @@ $(function (){ //页面初始化加载
 
         function getJson() {  //填充rankList
                 $.ajax({
-                    url: "http://www.overlove.xin/ssm/pastlessonavg?id="+classId+ "&lesson="+oneSubjectTrend_subject,	//请求url
+                    url: "pastlessonavg?id="+classId+ "&lesson="+oneSubjectTrend_subject,	//请求url
                     type: "GET",
                     dataType: 'json',
                     crossDomain: true,

@@ -99,7 +99,7 @@ $(function () { //页面初始化加载函数,加载表格和echarts南丁格尔
 
         $('#chinese_analysis_status').text("");
          $.ajax({
-            url:"http://www.overlove.xin/ssm/status",
+            url:"status",
             type:"GET",
              //async:true,
             data:{
@@ -154,7 +154,7 @@ $(function () { //页面初始化加载函数,加载表格和echarts南丁格尔
         // var URL="http://www.overlove.xin/ssm/getmosterrorbypoint?testname=" +report_testName + "&lesson=语文&stuid="+studentId;
         var weakPoinr_flag=false;  //置标志状态量,只要存在薄弱知识点,该标志量就为true
         $.ajax({
-            url: "http://www.overlove.xin/ssm/getmosterrorbytype?testname=" +report_testName + "&lesson=语文&stuid="+studentId,	//获取成绩及排名
+            url: "getmosterrorbytype?testname=" +report_testName + "&lesson=语文&stuid="+studentId,	//获取成绩及排名
             //url:"http://www.overlove.xin/ssm/classlessonscore?id=100000001&lesson=语文&test=test3",
             // http://www.overlove.xin/ssm/getmosterrorbytype?testname=test1&lesson=语文&stuid=10000000141
             type: "GET",	//请求类型  post|get
@@ -196,7 +196,7 @@ $(function () { //页面初始化加载函数,加载表格和echarts南丁格尔
 
         $('#math_analysis_status').text("");   //清空之前的分析状态
         $.ajax({
-            url:"http://www.overlove.xin/ssm/status",
+            url:"status",
             type:"GET",
             async:true,
             data:{
@@ -220,7 +220,7 @@ $(function () { //页面初始化加载函数,加载表格和echarts南丁格尔
         // var URL="http://www.overlove.xin/ssm/getmosterrorbypoint?testname=" +report_testName + "&lesson=数学&stuid="+studentId;
         var weakPoinr_flag=false;  //置"薄弱知识点"标志状态量
         $.ajax({
-            url: "http://www.overlove.xin/ssm/getmosterrorbypoint?testname=" +report_testName + "&lesson=数学&stuid="+studentId,	//获取成绩及排名
+            url: "getmosterrorbypoint?testname=" +report_testName + "&lesson=数学&stuid="+studentId,	//获取成绩及排名
             //url:"http://www.overlove.xin/ssm/classlessonscore?id=100000001&lesson=语文&test=test3",
             type: "GET",
             dataType: 'json',
@@ -263,7 +263,7 @@ $(function () { //页面初始化加载函数,加载表格和echarts南丁格尔
         //对本次考试状态的评价
         $('#English_analysis_status').text("");
         $.ajax({
-            url:"http://www.overlove.xin/ssm/status",
+            url:"status",
             type:"GET",
             async:true,
             data:{
@@ -283,10 +283,10 @@ $(function () { //页面初始化加载函数,加载表格和echarts南丁格尔
 
         //薄弱题型,,,英语没有知识点，仅划分"薄弱题型"
         $('#English_analysis_weakQuesStyle').text("");
-        var URL="http://www.overlove.xin/ssm/getmosterrorbypoint?testname=" +report_testName + "&lesson=英语&stuid="+studentId;
+        var URL="getmosterrorbypoint?testname=" +report_testName + "&lesson=英语&stuid="+studentId;
         var weakPoinr_flag=false;
         $.ajax({
-            url: "http://www.overlove.xin/ssm/getmosterrorbytype?testname=" +report_testName + "&lesson=英语&stuid="+studentId,	//获取成绩及排名
+            url: "getmosterrorbytype?testname=" +report_testName + "&lesson=英语&stuid="+studentId,	//获取成绩及排名
             type: "GET",
             dataType: 'json',
             crossDomain: true,
@@ -317,7 +317,7 @@ $(function () { //页面初始化加载函数,加载表格和echarts南丁格尔
     function report_button_ChineseForecast() { //点击按钮，语文成绩预测，提交服务器获取预测数据,,仅查询语文成绩
         chinese_archive_beforeGrades(studentId);  //调用函数，获取之前的7次考试的成绩数据
         $.ajax({
-            url:"http://www.overlove.xin/ssm/preview",
+            url:"preview",
             type:"GET",
             data:{
                 "list":chinese_gradeForecast_Jsons    //之前所有考试的分数数组
@@ -330,7 +330,7 @@ $(function () { //页面初始化加载函数,加载表格和echarts南丁格尔
         })
 
         $.ajax({
-            url:"http://www.overlove.xin/ssm/preview",
+            url:"preview",
             type:"GET",
             data:{
                 "list":chinese_rankFrocast_Jsons    //之前所有考试的分数数组
@@ -349,7 +349,7 @@ $(function () { //页面初始化加载函数,加载表格和echarts南丁格尔
     function report_button_MathForecast() { //点击按钮，语文成绩预测，提交服务器获取预测数据,,仅查询语文成绩
     math_archive_beforeGrades();  //调用函数，获取之前的7次考试的成绩数据
     $.ajax({
-        url:"http://www.overlove.xin/ssm/preview",
+        url:"preview",
         type:"GET",
         data:{
             "list":math_gradeForecast_Jsons    //之前所有考试的分数数组
@@ -364,7 +364,7 @@ $(function () { //页面初始化加载函数,加载表格和echarts南丁格尔
     })
 
     $.ajax({
-        url:"http://www.overlove.xin/ssm/preview",
+        url:"preview",
         type:"GET",
         data:{
             "list":math_rankFrocast_Jsons    //之前所有考试的分数数组
@@ -382,7 +382,7 @@ $(function () { //页面初始化加载函数,加载表格和echarts南丁格尔
     function report_button_EnglishForecast() { //点击按钮，语文成绩预测，提交服务器获取预测数据,,仅查询语文成绩
     English_archive_beforeGrades();  //调用函数，获取之前的7次考试的成绩数据
     $.ajax({
-        url:"http://www.overlove.xin/ssm/preview",
+        url:"preview",
         type:"GET",
         data:{
             "list":English_gradeForecast_Jsons    //之前所有考试的分数数组
@@ -395,7 +395,7 @@ $(function () { //页面初始化加载函数,加载表格和echarts南丁格尔
     })
 
     $.ajax({
-        url:"http://www.overlove.xin/ssm/preview",
+        url:"preview",
         type:"GET",
         data:{
             "list":English_rankFrocast_Jsons    //之前所有考试的分数数组
@@ -413,7 +413,7 @@ $(function () { //页面初始化加载函数,加载表格和echarts南丁格尔
 
 /*获取7次考试的成绩及排名,,然后对下一次的语文成绩以及排名进行预测*/
     function chinese_archive_beforeGrades() {
-        var URL="http://www.overlove.xin/ssm/pastlessonrank?id=" + studentId + "&lesson=语文&type=classrank";
+        var URL="pastlessonrank?id=" + studentId + "&lesson=语文&type=classrank";
         
         chinese_gradeForecast_Jsons.splice(0,chinese_gradeForecast_Jsons.length);  //注意每次要将数组清空
         chinese_rankFrocast_Jsons.splice(0,chinese_rankFrocast_Jsons.length);
@@ -421,7 +421,7 @@ $(function () { //页面初始化加载函数,加载表格和echarts南丁格尔
         var chinese_archive_grade;var chinese_archive_rank;
             $.ajax({
                 //http://www.overlove.xin/ssm/pastlessonrank?id=10000000442&lesson=语文&type=classrank
-                url: "http://www.overlove.xin/ssm/pastlessonrank?id=" + studentId + "&lesson=语文&type=classrank",	//获取成绩及排名
+                url: "pastlessonrank?id=" + studentId + "&lesson=语文&type=classrank",	//获取成绩及排名
                 //url:"http://www.overlove.xin/ssm/classlessonscore?id=100000001&lesson=语文&test=test3",
                 type: "GET",	//请求类型  post|get
                 // data : "key=value&key1=value2",	//后台用 request.getParameter("key");
@@ -447,7 +447,7 @@ $(function () { //页面初始化加载函数,加载表格和echarts南丁格尔
     /*获取数学学科的7次考试排名及成绩*/
     function math_archive_beforeGrades() {
         
-        var URL="http://www.overlove.xin/ssm/pastlessonrank?id=" + studentId + "&lesson=数学&type=classrank";
+        var URL="pastlessonrank?id=" + studentId + "&lesson=数学&type=classrank";
         
         math_gradeForecast_Jsons.splice(0,math_gradeForecast_Jsons.length);  //注意每次要将数组清空
         math_rankFrocast_Jsons.splice(0,math_rankFrocast_Jsons.length);
@@ -457,7 +457,7 @@ $(function () { //页面初始化加载函数,加载表格和echarts南丁格尔
        
         $.ajax({
             //http://www.overlove.xin/ssm/pastlessonrank?id=10000000442&lesson=语文&type=classrank
-            url: "http://www.overlove.xin/ssm/pastlessonrank?id=" + studentId + "&lesson=数学&type=classrank",	//获取成绩及排名
+            url: "pastlessonrank?id=" + studentId + "&lesson=数学&type=classrank",	//获取成绩及排名
             type: "GET",	//请求类型  post|get
             dataType: 'json',//返回数据的 类型 text|json|html--
             crossDomain: true,
@@ -481,7 +481,7 @@ $(function () { //页面初始化加载函数,加载表格和echarts南丁格尔
 
     /*获取英语学科的7次考试排名及成绩*/
     function English_archive_beforeGrades() {
-        var URL="http://www.overlove.xin/ssm/pastlessonrank?id=" + studentId + "&lesson=英语&type=classrank";
+        var URL="pastlessonrank?id=" + studentId + "&lesson=英语&type=classrank";
         English_gradeForecast_Jsons.splice(0,English_gradeForecast_Jsons.length);  //注意每次要将数组清空
         English_rankFrocast_Jsons.splice(0,English_rankFrocast_Jsons.length);
 
@@ -489,7 +489,7 @@ $(function () { //页面初始化加载函数,加载表格和echarts南丁格尔
 
         $.ajax({
             //http://www.overlove.xin/ssm/pastlessonrank?id=10000000442&lesson=语文&type=classrank
-            url: "http://www.overlove.xin/ssm/pastlessonrank?id=" + studentId + "&lesson=英语&type=classrank",	//获取成绩及排名
+            url: "pastlessonrank?id=" + studentId + "&lesson=英语&type=classrank",	//获取成绩及排名
             //url:"http://www.overlove.xin/ssm/classlessonscore?id=100000001&lesson=语文&test=test3",
             type: "GET",	//请求类型  post|get
             // data : "key=value&key1=value2",	//后台用 request.getParameter("key");
@@ -520,14 +520,14 @@ $(function () { //页面初始化加载函数,加载表格和echarts南丁格尔
 function Chinese_knowleagePoint_table() {
 
     // http://www.overlove.xin/ssm/getscorebypoint?testname=test1&stuid=10000001041&lessonname=语文
-    var URL="http://www.overlove.xin/ssm/getscorebypoint?testname="+report_testName+"&stuid="+studentId+"&lessonname=语文";
+    var URL="getscorebypoint?testname="+report_testName+"&stuid="+studentId+"&lessonname=语文";
     var temp_testName;var temp_knowleagePoint;var temp_stuscore;var temp_sumscore; //存储从服务器返回的考试名称、知识点、学生得分、总分
     $("#chinese_knowleagePoint_table  tr:not(:first)").empty("");  //清除除首行外的所有行,,语文学科按照"知识点"的成绩统计表格的生成
 
     chinese_grade_Jsons.splice(0,chinese_grade_Jsons.length);
     chinese_style_Jsons.splice(0,chinese_style_Jsons.length);
     $.ajax({
-        url: "http://www.overlove.xin/ssm/getscorebypoint?testname="+report_testName+"&stuid="+studentId+"&lessonname=语文",//请求url
+        url: "getscorebypoint?testname="+report_testName+"&stuid="+studentId+"&lessonname=语文",//请求url
         type: "GET",
         dataType: 'json',
         crossDomain: true,
@@ -609,7 +609,7 @@ function Chinese_questionType_table() {
     $("#chinese_questionType_table  tr:not(:first)").empty("");  //清除除首行外的所有行
 
     $.ajax({
-        url: "http://www.overlove.xin/ssm/getscorebytype?testname="+report_testName+"&stuid=10000001045&lessonname=语文",//请求url
+        url: "getscorebytype?testname="+report_testName+"&stuid=10000001045&lessonname=语文",//请求url
         type: "GET",
         dataType: 'json',
         crossDomain: true,
@@ -642,7 +642,7 @@ function Math_knowleagePoint_table() {
     math_grade_Jsons.splice(0,math_grade_Jsons.length);
     math_style_Jsons.splice(0,math_style_Jsons.length);
     $.ajax({
-        url: "http://www.overlove.xin/ssm/getscorebypoint?testname="+report_testName+"&stuid=10000001045&lessonname=数学",//请求url
+        url: "getscorebypoint?testname="+report_testName+"&stuid=10000001045&lessonname=数学",//请求url
         type: "GET",	//请求类型  post|get
         dataType: 'json',//返回数据的 类型 text|json|html--
         crossDomain: true,
@@ -725,7 +725,7 @@ function Math_questionType_table() {
     $("#math_questionType_table  tr:not(:first)").empty("");  //清除除首行外的所有行
 
     $.ajax({
-        url: "http://www.overlove.xin/ssm/getscorebytype?testname="+report_testName+"&stuid=10000001045&lessonname=数学",//请求url
+        url: "getscorebytype?testname="+report_testName+"&stuid=10000001045&lessonname=数学",//请求url
         type: "GET",	//请求类型  post|get
         // data : "key=value&key1=value2",	//后台用 request.getParameter("key");
         dataType: 'json',//返回数据的 类型 text|json|html--
@@ -756,7 +756,7 @@ function English_knowleagePoint_table() {
     var temp_testName;var temp_knowleagePoint;var temp_stuscore;var temp_sumscore; //存储从服务器返回的考试名称、知识点、学生得分、总分
     $("#English_knowleagePoint_table  tr:not(:first)").empty("");  //清除除首行外的所有行
     $.ajax({
-        url: "http://www.overlove.xin/ssm/getscorebypoint?testname="+report_testName+"&stuid=10000001045&lessonname=英语",//请求url
+        url: "getscorebypoint?testname="+report_testName+"&stuid=10000001045&lessonname=英语",//请求url
         type: "GET",
         dataType: 'json',
         crossDomain: true,
@@ -790,7 +790,7 @@ function English_questionType_table() {
     English_style_Jsons.splice(0,English_style_Jsons.length);
 
     $.ajax({
-        url: "http://www.overlove.xin/ssm/getscorebytype?testname="+report_testName+"&stuid=10000001045&lessonname=英语",//请求url
+        url: "getscorebytype?testname="+report_testName+"&stuid=10000001045&lessonname=英语",//请求url
         type: "GET",
         dataType: 'json',
         crossDomain: true,

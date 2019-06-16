@@ -20,10 +20,10 @@ $(function () {
     var temp;
     function getJson() {
         for(var j=0;j<7;j++) { //选定考试后循环获取5科的成绩
-            var URL="http://www.overlove.xin/ssm/studentrank?test=test1&classid=100000001";
+            var URL="studentrank?test=test1&classid=100000001";
 
             $.ajax({
-                url: "http://www.overlove.xin/ssm/studentrank?test=" +testName[j]+ "&classid="+classId,	//请求url
+                url: "studentrank?test=" +testName[j]+ "&classid="+classId,	//请求url
                 type: "GET",	//请求类型  post|get
                 // data : "key=value&key1=value2",	//后台用 request.getParameter("key");
                 dataType: 'json',//返回数据的 类型 text|json|html--

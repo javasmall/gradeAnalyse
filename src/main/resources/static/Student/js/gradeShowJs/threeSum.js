@@ -24,7 +24,7 @@ $(function () {
         for(var i=0;i<7;i++) { //获取所有考试的三科总成绩
             // var URL="http://www.overlove.xin/ssm/studentrank?test=" +testName[i]+ "&classid="+classId;
             $.ajax({
-                url: "http://www.overlove.xin/ssm/studentrank?test=" +testName[i]+ "&classid="+classId,	//请求url
+                url: "studentrank?test=" +testName[i]+ "&classid="+classId,	//请求url
                 type: "GET",	//请求类型  post|get
                 dataType: 'json',
                 crossDomain: true,
