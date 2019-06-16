@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>教师端界面</title>
+	<meta name="renderer" content="webkit">	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">	
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">	
+	<meta name="apple-mobile-web-app-capable" content="yes">	
+	<meta name="format-detection" content="telephone=no">	
+	<!-- load css -->
+	<link rel="stylesheet" type="text/css" href="../../common/layui/css/layui.css" media="all">
+	<link rel="stylesheet" type="text/css" href="../../common/global.css" media="all">
+	<link rel="stylesheet" type="text/css" href="../../css/cssFile/adminstyle.css" media="all">
+    <style>
+        ul.layui-tab-title li:first-child i{
+            display: none;
+        }
+    </style>
+
+</head>
+
+<body>
+<div class="layui-layout layui-layout-admin" id="layui_layout">
+	<!-- 顶部区域 -->
+	<div class="layui-header header header-demo">
+		<div class="layui-main">
+		    <!-- logo区域 -->
+			<div class="admin-logo-box">
+				<a class="logo" href="××××" title="logo">成绩分析系统</a>
+				<div class="larry-side-menu">
+					<i class="fa fa-bars" aria-hidden="true"></i>
+				</div>
+			</div>
+
+            <!-- 右侧导航 -->
+            <ul class="layui-nav larry-header-item">
+            		<li class="layui-nav-item">
+            			账户名：100000001教师
+            		</li>
+            		<li class="layui-nav-item first">
+						<a href="javascript:;">
+							<cite>××××</cite>
+							<span class="layui-nav-more"></span>
+						</a>
+						<dl class="layui-nav-child">
+							<dd>
+								<a href="">×××</a>
+							</dd>
+							<dd>
+								<a href="">×××</a>
+							</dd>
+							
+						</dl>
+					</li>
+					<li class="layui-nav-item">
+						<a href="javascript:;" id="lock">
+                        <i class="iconfont icon-diannao1"></i>
+						锁屏</a>
+					</li>
+					<li class="layui-nav-item">
+						<a href="../../login_teacher.html">
+                        <i class="iconfont icon-exit"></i>
+						退出</a>
+					</li>
+            </ul>
+
+		</div>
+	</div>
+
+	<!-- 左侧侧边导航开始 -->
+	<div class="layui-side layui-side-bg layui-larry-side" id="larry-side">
+        <div class="layui-side-scroll" id="larry-nav-side" lay-filter="side">
+		
+		<!-- 左侧菜单 -->
+			<!--左侧菜单中所有子项的点击事件，使用data-url加载页面-->
+		<ul class="layui-nav layui-nav-tree">
+			<li class="layui-nav-item layui-this">
+				<a href="javascript:;" data-url="main.html">
+				    <i class="iconfont icon-home1" data-icon='icon-home1'></i>
+					<span>后台首页</span>
+				</a>
+			</li>
+
+			<!-- 个人信息 -->
+			<li class="layui-nav-item">
+				<a href="javascript:;">
+					<i class="iconfont icon-jiaoseguanli" ></i>
+					<span>我的面板</span>
+					<em class="layui-nav-more"></em>
+				</a>
+				<dl class="layui-nav-child">
+                    <dd>
+						<!--通过data-url将目标界面展示在主界面的位置-->
+                        <a href="javascript:;" data-url="../../PublicPages/personInfo.html"
+                           data-title="个人信息" data-id="ownInfo" class="site-demo-active">
+                            <i class="iconfont icon-geren1" data-icon='icon-geren1'></i>
+                            <span>个人信息</span>
+                        </a>
+                    </dd>
+                    <dd>
+                        <a href="javascript:;" data-url="../../PublicPages/changepwd.html"
+                           data-title="修改密码" data-id="changePassword" class="site-demo-active">
+                            <i class="iconfont icon-iconfuzhi01" data-icon='icon-iconfuzhi01'></i>
+                            <span>修改密码</span>
+                        </a>
+                    </dd>
+                    <dd>
+                        <a href="javascript:;" data-url="../../PublicPages/404.html"
+                           data-title="日志信息" data-id="logInfo" class="site-demo-active">
+                            <i class="iconfont icon-piliangicon" data-icon='icon-piliangicon'></i>
+                            <span>日志信息</span>
+                        </a>
+                    </dd>
+                </dl>
+			</li>
+
+
+			<!-- 成绩分析，，，，目前写到错题分析-->
+			<li class="layui-nav-item">
+					<a href="javascript:;">
+					   <i class="iconfont icon-wenzhang1" ></i>
+					   <span>班级成绩分析</span>
+					   <em class="layui-nav-more"></em>
+					</a>
+					   <dl class="layui-nav-child">
+						   <!--尤其注意daa-url，因为index.html与其他几个目标页面不在同一目录下-->
+					   	   <dd>
+					    		<a href="javascript:;" data-url="gradeShow/allSubject.html"
+                                   data-title="各科成绩及排名" data-id="allSubject" class="site-demo-active">
+					    		   <i class="iconfont icon-lanmuguanli" data-icon='icon-lanmuguanli'></i>
+					    		   <span>班级各科成绩及排名</span>
+					    		</a>
+					    	</dd>
+						   <dd>
+							   <a href="javascript:;" data-url="gradeShow/allSubpt.html"
+                                  data-title="历次五科成绩" data-id="allSubpt" class="site-demo-active">
+								   <i class="iconfont icon-lanmuguanli" data-icon='icon-lanmuguanli'></i>
+								   <span>班级历次五科成绩</span>
+							   </a>
+						   </dd>
+
+						   <dd>
+							   <a href="javascript:;" data-url="gradeShow/oneQuestion.html"
+                                  data-title="特定问题得分" data-id="oneQuestion" class="site-demo-active">
+								   <i class="iconfont icon-icon1" data-icon='icon-icon1'></i>
+								   <span>特定问题得分情况</span>
+							   </a>
+						   </dd>
+
+						   <dd>
+							   <a href="javascript:;" data-url="gradeShow/oneSubjectTrend.html"
+                                  data-title="单科平均分走势" data-id="oneSubjectTrend" class="site-demo-active">
+								   <i class="iconfont icon-word" data-icon='icon-word'></i>
+								   <span>单科平均分走势</span>
+							   </a>
+						   </dd>
+
+					    	<dd>
+					    		<a href="javascript:;" data-url="gradeShow/threeSubject.html"
+                                   data-title="三总成绩及排名" data-id="threeSubject" class="site-demo-active">
+					    		   <i class="iconfont icon-icon1" data-icon='icon-icon1'></i>
+					    		   <span>三总成绩及排名</span>
+					    		</a>
+					    	</dd>
+					   </dl>
+			   </li>
+
+			<!-- 题库上传 -->
+			<li class="layui-nav-item">
+				<a href="javascript:;">
+					<i class="iconfont icon-m-members" ></i>
+					<span>更新题库题目</span>
+					<em class="layui-nav-more"></em>
+				</a>
+				<dl class="layui-nav-child">
+					<dd>
+						<a href="javascript:;" data-url="question/day_upload.html"
+						   data-title="题库更新" data-id="day_upload" class="site-demo-active">
+							<i class="iconfont icon-zhuti"  data-icon='icon-zhuti'></i>
+							<span>题库更新</span>
+						</a>
+					</dd>
+
+				</dl>
+			</li>
+
+                 <!-- 分析报告 -->
+			<li class="layui-nav-item">
+				<a href="javascript:;">
+					<i class="iconfont icon-m-members" ></i>
+					<span>试卷批改</span>
+					<em class="layui-nav-more"></em>
+				</a>
+				<dl class="layui-nav-child">
+					<dd>
+						<a href="javascript:;" data-url="markingPapers/uploadStyle.html"
+                           data-title="试卷类型上传" data-id="uploadStyle" class="site-demo-active">
+							<i class="iconfont icon-zhuti"  data-icon='icon-zhuti'></i>
+							<span>试卷类型上传</span>
+						</a>
+					</dd>
+
+					<dd>
+						<a href="javascript:;" data-url="markingPapers/structureUpload.html"
+                           data-title="试卷结构上传" data-id="structureUpload" class="site-demo-active">
+							<i class="iconfont icon-zhuti"  data-icon='icon-zhuti'></i>
+							<span>试卷结构上传</span>
+						</a>
+					</dd>
+
+					<dd>
+						<a href="javascript:;" data-url="markingPapers/gradeUpload.html"
+                           data-title="录入学生成绩" data-id="gradeUpload" class="site-demo-active">
+							<i class="iconfont icon-zhuti"  data-icon='icon-zhuti'></i>
+							<span>录入学生成绩</span>
+						</a>
+					</dd>
+
+				</dl>
+			</li>
+
+
+
+			<!--网站维护板块，，，该板块目前不使用-->
+				<li class="layui-nav-item">
+					<a href="javascript:;">
+					   <i class="iconfont icon-shengchengbaogao" ></i>
+					   <span>系统设置</span>
+					   <em class="layui-nav-more"></em>
+					</a>
+					   <dl class="layui-nav-child">
+                           <dd>
+                           	   <a href="javascript:;">
+					              <i class="iconfont icon-zhuti"  data-icon='icon-zhuti'></i>
+					              <span>背景色修改</span>
+					           </a>
+                           </dd>
+                           <dd>
+					    		<a href="">
+					    		   <i class="iconfont icon-database" data-icon='icon-database'></i>
+					    		   <span>消息设置</span>
+					    		</a>
+					    	</dd>
+
+
+					   </dl>
+				</li>
+
+
+			<!-- 系统设置，，，，后期用户可在此页面中加入用户的个性化设置，，比如系统背景色等-->
+		</ul>
+	    </div>
+	</div>
+	<!-- 左侧侧边导航结束 -->
+
+    <!-- 右侧主体内容 -->
+    <div class="layui-body" id="larry-body" style="bottom: 0;border-left: solid 2px #2299ee;">
+        <div class="layui-tab layui-tab-card larry-tab-box" lay-allowclose="true" id="larry-tab" lay-filter="tabdemo" >
+            <ul class="layui-tab-title">
+                <!--<li class="layui-this" lay-id="admin-home"><i class="iconfont icon-diannao1"></i><em>后台首页</em></li>-->
+                <li >
+                    <a href="javascript:;" data-url="main.html">
+                        <i class="iconfont icon-home1" data-icon='icon-home1'></i>
+                        <span>后台首页</span>
+                    </a>
+                </li>
+            </ul>
+
+
+            <div class="layui-tab-content" style="min-height: 420px; ">
+                <div class="layui-tab-item layui-show" style="height: 420px">
+                    <!--通过iframe加载内联框架-->
+                    <iframe class="larry-iframe"  data-id='0' src="../../PublicPages/main.html"></iframe>
+                </div>
+            </div>
+
+            <!--<iframe class="larry-iframe" style="height: auto" data-id='0' src="../../PublicPages/main.html"></iframe>-->
+
+        </div>
+    </div>
+	<!-- 底部区域 -->
+
+</div>
+
+<!-- 加载js文件-->                                                                                                                                                                                           
+	<script type="text/javascript" src="../../common/layui/layui.js"></script>
+	<script src="../../jsTools/jquery-2.2.1.min.js"></script>
+	<script src="../../jsTools/jquery.cookie.js"></script>
+
+    <script type="text/javascript" src="../js/Tab.js"></script>
+    <script type="text/javascript" src="../../js/index.js"></script>
+
+
+<!--禁止页面回退-->
+<script language="javascript">
+    //防止页面后退
+    history.pushState(null, null, document.URL);
+    window.addEventListener('popstate', function () {
+        history.pushState(null, null, document.URL);
+    });
+</script>
+
+</body>
+</html>
+
+<!--禁止页面回退-->
+<script language="javascript">
+    //防止页面后退
+    history.pushState(null, null, document.URL);
+    window.addEventListener('popstate', function () {
+        history.pushState(null, null, document.URL);
+    });
+</script>

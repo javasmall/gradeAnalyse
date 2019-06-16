@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>上传考试类型</title>
+    <link rel="stylesheet" href="../../../common/layui/css/layui.css"  media="all">
+    <link rel="stylesheet" type="text/css" href="../../../common/bootstrap/css/bootstrap.css" media="all">
+    <link rel="stylesheet" type="text/css" href="../../../common/global.css" media="all">
+    <script src="../../../jsTools/jquery-2.2.1.min.js"></script>
+
+</head>
+
+<body>
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+        <legend>填写试卷信息</legend>
+    </fieldset>
+
+    <!--action暂时没有填写，填写完毕后进行判空验证，如果都不为空则填写有效-->
+    <!--跳转到"试题结构"填写页面，否则弹出对话框提示错误-->
+    <form class="layui-form col-lg-4" method="post" action=""  style="height: 100%;">
+        <div class="layui-form-item">
+            <lable class="layui-form-label">考试名称</lable>
+                <div class="layui-input-block">
+                <input type="text" name="testName" id="testName" lay-verify="required"
+                autocomplete="off" placeholder="例如test8" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <lable class="layui-form-label">考试日期选择</lable>
+            <div class="layui-input-block" >
+                <input type="text" name="date"  id="date" lay-verify="date" placeholder="yyyy-MM-dd"
+                autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <lable class="layui-form-label">试卷科目选择</lable>
+            <div class="layui-input-block">
+                <label>
+                    <select name="SubjectSelect" id="SubjectSelect" layui-filter="subject">
+                        <option value="0">语文</option>
+                        <option value="1">数学</option>
+                        <option value="2">英语</option>
+                    </select>
+                </label>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <a class="layui-btn" lay-submit="" lay-filter="demo1" href="structureUpload.html">立即提交</a>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+    </form>
+
+    <!--实现form表单的渲染-->
+
+    <!--<script type="text/javascript" src="../../common/layui/laydate.js"></script>-->
+    <script type="text/javascript" src="../../../common/layui/layui.js"></script>
+    <script>
+        layui.use(['form', 'layedit', 'laydate'], function() {
+            var form = layui.form
+                , layer = layui.layer
+                , layedit = layui.layedit
+                , laydate = layui.laydate;
+            /*//日期
+            laydate.render({
+                elem: '#date'
+            });*/
+
+            //监听提交
+            form.on('submit(demo1)', function(data){
+                //layer.alert(JSON.stringify(data.field));
+                    //console.log(JSON.stringify(data.field));
+                    var result=JSON.stringify(data.field);
+
+                    var testJson = eval("(" + result + ")");
+                    //console.log("result: "+result);
+                    var name = testJson.testName;
+                    var date = testJson.date;
+                    var subject=SubjectSelect[testJson.SubjectSelect].text;
+                    var url = "structureUpload.html?name="+name+"&date="+date+"&subject="+subject;//此处拼接内容
+                    window.location.href = url;  //通过地址栏传值
+                    return false;
+            });
+        });
+
+    </script>
+
+    <!--禁止页面回退代码-->
+    <script language="javascript">
+        //防止页面后退
+        history.pushState(null, null, document.URL);
+        window.addEventListener('popstate', function () {
+            history.pushState(null, null, document.URL);
+        });
+    </script>
+
+</body>
+</html>

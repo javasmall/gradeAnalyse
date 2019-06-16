@@ -1,0 +1,45 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace：必须与对应的接口全类名一致 id:必须与对应接口的某个对应的方法名一致 -->
+
+<mapper namespace="com.ssm.dao.classMapper">
+    <select id="getclasslessongrade" resultMap="resultgetclasslessongrade">
+        select a.test_name,a.student_id,a.lesson_score,a.class_id, a.lesson_name, b.student_name
+        from student_chengji a,student b where
+        <if test="id!=null">
+            a.class_id=#{id} and
+        </if>
+        <if test="lesson!=null">
+            a.lesson_name=#{lesson} and
+        </if>
+         b.student_id=a.student_id and a.test_name=#{test}
+        <if test="stuid!=null">
+            and b.student_id=#{stuid}
+        </if>
+        ORDER BY a.lesson_score desc
+    </select>
+    <resultMap type="Map" id="resultgetclasslessongrade">
+        <id property="id" column="id"/>
+        <result column="lesson_score" property="score"/>
+        <result column="lesson_name" property="lesson"/>
+        <result column="student_name" property="name"/>
+    </resultMap>
+
+    <select id="getclassavg" resultType="Map">
+        SELECT AVG(lesson_score ) avgscore,class_id ,lesson_name ,test_name FROM student_chengji
+        WHERE lesson_name=#{lesson}
+        AND test_name=#{test}
+        GROUP BY class_id ORDER BY avgscore desc
+    </select>
+    <select id="getstudentrank" resultType="Map">
+        SELECT SUM(a.lesson_score ) sumscore,a.class_id ,a.student_id ,a.test_name ,b.student_name
+        FROM student_chengji a,student b
+        WHERE a.lesson_name in ('语文','数学','英语','附加题')
+        AND a.test_name=#{test}
+        AND a.student_id=b.student_id
+        <if test="classid!=null">
+            AND a.class_id=#{classid}
+        </if>
+        GROUP BY a.student_id,b.student_name ORDER BY sumscore desc
+    </select>
+</mapper>

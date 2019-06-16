@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>"学生成绩上传"板块</title>
+    <meta charset="UTF-8">
+    <script src="../../../jsTools/jquery-2.2.1.min.js"></script>
+    <script type="text/javascript" src="../../../common/layui/layui.all.js"></script>
+
+    <link rel="stylesheet" href="../../../common/layui/css/layui.css" />
+    <style type="text/css">
+       
+        .childBody{padding: 15px;}
+
+        /*layui 元素样式改写*/
+        .layui-btn-sm{line-height: normal; font-size: 12.5px;}
+        .layui-table-view .layui-table-body{min-height: 600px;}
+        .layui-table-cell .layui-input.layui-unselect{height: 30px; line-height: 30px;}
+
+        /*设置 layui 表格中单元格内容溢出可见样式*/
+        .table-overlay .layui-table-view,
+        .table-overlay .layui-table-box,
+        .table-overlay .layui-table-body{overflow: visible;}
+        .table-overlay .layui-table-cell{height: auto; overflow: visible;}
+
+        /*文本对齐方式*/
+        .text-center{text-align: center;}
+    </style>
+
+    <script type="text/javascript">
+        $(function(){
+            var name=getQueryString("name");
+            var date=getQueryString("date");
+            var subject=decodeURI(getQueryString("subject"));
+            $("#testInfo").html("关键词： "+"于"+date+"进行的"+name+"考试中的"+subject+"学科")
+            //console.log(name+" "+date+" "+subject);
+        });
+        function getQueryString(name) {
+            var result = window.location.search.match(new RegExp("[\?\&]" + name + "=([^\&]+)", "i"));
+            if (result == null || result.length < 1) {
+                return "";
+            }
+            return result[1];
+        }
+    </script>
+
+    <!--$("#testInfo").innerText("关键词： "+"于"+date+"进行的"+name+"下的"+subject+"学科");-->
+</head>
+
+
+<body>
+<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+<!--[if lt IE 9]>
+<script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+<script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<!--栅格系统，将试卷与结构上传分别在左右两侧-->
+<div class="layui-container" style="width: 100%;" >
+    <div class="layui-row" >
+
+        <div class="layui-col-xs5" >
+            <div class="grid-demo1">
+                <!--<img class="layui-col-md6" src="../../images/1.jpg" style="height: 100%;width: 100%">-->
+                <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+                    <legend>用于录入学生成绩的试卷图片上传</legend>
+                </fieldset>
+
+                <blockquote class="layui-elem-quote layui-quote-nm">test9考试中的数学科目</blockquote>
+
+                <!--<blockquote class="layui-elem-quote layui-text" >-->
+                    <!--<p id="testInfo">hhhh</p>-->
+                <!--</blockquote>-->
+
+                <button type="button" class="layui-btn" id="test1">
+                    <i class="layui-icon"></i>上传图片
+                </button>
+
+                <p>以下位置为图片预览位置</p>
+                <div class="layui-upload-list">
+                    <img class="layui-upload-img" id="demo1"  style="width:100%;height: 100%">
+                </div>
+
+
+                <script src="../../../jsTools/jquery-2.2.1.min.js"></script>
+                <script type="text/javascript" src="../../../common/layui/layui.all.js"></script>
+                <script>
+                    layui.use('upload', function(){
+                        var upload = layui.upload;
+                        //执行实例
+                        var uploadInst = upload.render({
+                            elem: '#test1' //绑定元素
+                            //上传接口
+                             ,url:'/ssm/ocrimg'
+							 ,method:'get'
+                            ,before: function(obj){   //实现图片的预览
+                                //预读本地文件示例，不支持ie8
+                                obj.preview(function(index, file, result){
+                                    $('#demo1').attr('src', result); //图片链接（base64）  //引用js文件
+
+                                    //某图片放大预览
+                                    $("#demo1").bind('click',function () {
+                                        var width = $("#demo1").width()*2;
+                                        var height = $("#demo1").height()*2;
+                                        var scaleWH = width/height;
+                                        var bigH = 750;
+                                        var bigW = scaleWH*bigH;
+                                        if(bigW>1200){
+                                            bigW = 900;
+                                            bigH = bigW/scaleWH;
+                                        }
+
+                                        // 放大预览图片
+                                        layer.open({
+                                            type: 1,
+                                            title: false,
+                                            closeBtn: 1,
+                                            shadeClose: true,
+                                            area: [bigW + 'px', bigH + 'px'], //宽高
+                                            content: "<img width='"+bigW+"' height='"+bigH+"' src=" + result + " />"
+                                        });
+                                    });
+                                });
+                            }
+
+                        });
+                    });
+
+                </script>
+            </div>
+        </div>
+
+        <!--两部分平分屏幕-->
+        <div class="layui-col-xs7">
+            <div class="grid-demo2">
+                <!--<img class="layui-col-md6" src="../../images/1.jpg" style="height: 100%;width: 100%">-->
+                <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                    <legend>学生成绩录入</legend>
+                </fieldset>
+
+                <!--action暂时没有填写，填写完毕后进行判空验证，如果都不为空则填写有效-->
+                <!--跳转到"试题结构"填写页面，否则弹出对话框提示错误-->
+                <form class="layui-form " action="" style="width: 50%;text-align: center;padding-left: 20%" >
+                    <div class="layui-form-item ">
+                        <div class="layui-inline">
+                            <label class="layui-form-label" style="text-align: left">学生学号:</label>
+                            <div class="layui-input-block ">
+                                <input type="text"  name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+
+                <section  style="margin: 0 auto; float: none;">
+                    <div id="tableRes" class="table-overlay">
+                        <table id="demo" lay-filter="test"></table>
+                    </div>
+
+                    <script type="text/html" id="toolbarDemo">
+                        <div class="layui-btn-container">
+                            <button class="layui-btn layui-btn-sm" lay-event="saveData">保存</button>
+                        </div>
+                    </script>
+                </section>
+
+
+                <!--recommended script position-->
+                <script src="../../../common/layui/layui.js" charset="utf-8"></script>
+                <script type="text/javascript">
+
+                    //layui 模块化引用
+                    //layui 模块化引用
+                    layui.use(['jquery', 'table', 'layer'], function(){
+                        var $ = layui.$, table = layui.table, form = layui.form, layer = layui.layer;
+
+                        //数据表格实例化
+                        var tbWidth = $("#tableRes").width();
+                        var layTableId = "layTable";
+                        var tableIns = table.render(
+                            {
+                                elem:'#demo'   //通过id绑定元素
+                                ,height:312
+                                ,toolbar: '#toolbarDemo'
+                                ,url:'grade.json'
+                                ,page:false
+                                ,cols:[[ //表头
+                                    {field:'bigKind', title:'所属大题', fixed:'center',width:130}
+                                    ,{field:'pmId',title:'题号',width:120, edit: 'text'}
+                                    ,{field:'pmStyle',title:'题目类型', width:160, edit: 'text'}
+                                    ,{field:'kgPoint',title:'知识点', edit: 'text',width:160}
+                                    ,{field:'point',title:'得分', width:130, edit: 'text'}
+                                ]]
+
+                            });
+                        //console.log("render ends");
+                        //注册按钮事件
+                        // $('#register').on('click', function () {
+
+                        //工具栏事件
+                        table.on('toolbar(test)', function(obj){
+                            var checkStatus = table.checkStatus(obj.config.id);
+                            switch(obj.event){
+                                case 'saveData':
+                                    layer.open({
+                                        title: '提示信息'
+                                        ,content: '您已经成功录入成绩信息！'
+                                    });
+                            };
+                        });
+                    });
+                </script>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+</body>
+</html>

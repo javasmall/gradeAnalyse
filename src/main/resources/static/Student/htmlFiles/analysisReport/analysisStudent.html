@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人分析报告</title>
+    <link rel="stylesheet" type="text/css" href="../../../common/layui/css/layui.css" media="all">
+    <link rel="stylesheet" type="text/css" href="../../../common/bootstrap/css/bootstrap.css" media="all">
+    <link rel="stylesheet" type="text/css" href="../../../common/global.css">
+    <link rel="stylesheet" type="text/css" href="../../../css/cssFile/main.css" media="all">
+
+    <script src="../../../jsTools/jquery-2.2.1.min.js"></script>
+    <script type="text/javascript" src="../../../common/layui/layui.js"></script>
+</head>
+
+<!--这是主界面，还没有整合到Layer框架中-->
+<body>
+<section class="larry-wrapper">
+    <!-- overview -->
+    <div class="row state-overview">
+        <div class="col-lg-3 col-sm-6 layui-anim layui-anim-up">
+            <!--通过section对该网页的内容及进行分块-->
+            <section class="panel">
+                <div class="symbol userblue layui-anim layui-anim-rotate"> <i class="iconpx-user"></i>
+                </div>
+                <div class="value">
+                    <a href="#">
+                        <h3 id="count1"></h3>
+                    </a>
+                    <p>学生学号</p>
+                </div>
+            </section>
+        </div>
+
+        <!--采用网络栅格系统,,,layui中的该栅格系统更好地对各终端进行显示-->
+        <!--<div class="layui-col-xs6 layui-col-sm6 layui-col-md4">-->
+        <!--移动：6/12 | 平板：6/12 | 桌面：4/12-->
+        <div class="col-lg-3 col-sm-6 layui-anim layui-anim-up">
+            <section class="panel">
+                <div class="symbol rsswet layui-anim layui-anim-rotate">
+                    <i class="iconpx-check-circle"></i>
+                </div>
+                <div class="value">
+                    <a href="#">
+                        <h1 id="count4">7</h1>
+                    </a>
+                    <p>考试分析总数</p>
+                </div>
+            </section>
+        </div>
+
+        <!--打印导出为pdf按钮-->
+        <div class="col-lg-3 col-sm-6 layui-anim layui-anim-up">
+            <section class="panel">
+                <div class="value">
+                    <button id="ExportReport" class="layui-btn layui-btn-normal" style="text-align: center">导出pdf</button>
+                </div>
+            </section>
+        </div>
+    </div>
+
+
+    <!-- overview end 总览结束-->
+
+
+    <div class="row">
+        <!--面板类panel-->
+        <section class="panel">
+            <header class="panel-heading bm0">
+                <span class='span-title'>选择不同的考试：</span>
+                <span class="tools pull-right"><a href="javascript:;" class="iconpx-chevron-down"></a></span>
+            </header>
+            <div class="panel-body" >
+                <div class="layui-inline">
+                    <div class="layui-input-inline">
+                        <input value="" id="report_input_testName" placeholder="请输入考试名称" class="layui-input search_input" type="text">
+                    </div>
+                    <button class="layui-btn search_btn" onclick="report_button_selectTest()">查询</button>
+                </div>
+            </div>
+        </section>
+
+
+        <div class="gradeAnalysis">
+        <section class="panel">
+            <header class="panel-heading bm0">
+                <span class='span-title'>语文学科分析：</span>
+                <span class="tools pull-right"><a href="javascript:;" class="iconpx-chevron-down"></a></span>
+            </header>
+
+            <div class="panel-body" >
+                <div class="layui-card-header"><p align="center" style="">以知识点为分类标准</p></div>
+                <table class="layui-table" id="chinese_knowleagePoint_table">
+                    <colgroup>
+                        <col width="20%">
+                        <col width="20%">
+                        <col width="20%">
+                        <col width="20%">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th style="text-align: center">考试名称</th>
+                        <th style="text-align: center">知识点</th>
+                        <th style="text-align: center">得分</th>
+                        <th style="text-align: center">题目总分</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!--后台添加子项-->
+                    </tbody>
+                </table>
+
+                <div class="layui-card-body allsubpt_chart" id="chinese_knowleagePoint_chart" style="width: 400px;height: 300px;margin-left: auto;margin-right: auto;" >
+                    <!--用于渲染echarts数据-->
+                </div>
+
+                <div class="layui-card-header"><p align="center">以题型为分类标准</p></div>
+                <table class="layui-table" id="chinese_questionType_table">
+                    <colgroup>
+                        <col width="20%">
+                        <col width="20%">
+                        <col width="20%">
+                        <col width="20%">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th style="text-align: center">考试名称</th>
+                        <th style="text-align: center">题目类型</th>
+                        <th style="text-align: center">得分</th>
+                        <th style="text-align: center">题目总分</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+
+                    <!--后台添加子项-->
+                    </tbody>
+                </table>
+
+                <!--语文学科的成绩预测分析,,,各科单独设置成绩预测，提供个性化预测-->
+                <div class="layui-card-header layui-inline"><p align="left">考试成绩及排名预测</p></div>
+                <button class="layui-btn forecast_btn "  onclick="report_button_ChineseForecast()">预测</button><br/>
+                <label  style="text-align: center;padding-left: 50px">下次考试预测成绩：<span id="chinese_grade_forecast"> </span></label><br/>
+                <label  style="text-align: center;;padding-left: 50px">下次考试预测排名：<span id="chinese_rank_forecast"></span></label>
+                <!--<label id="chinese_rank_forecast" style="text-align: center">下次排名：</label>-->
+            </div>
+        </section>
+
+        <!--每个学科下设置面板类panel,用来显示系统对该考生的点评-->
+        <section class="panel">
+            <header class="panel-heading bm0">
+                <span class='span-title'>分析评价：</span>
+                <span class="tools pull-right"><a href="javascript:;" class="iconpx-chevron-down"></a></span>
+                <!--该行添加则可以折叠，手风琴式效果-->
+            </header>
+            <div class="panel-body" >
+                <label style="text-align:center;padding-left: 50px">状态:<span id='chinese_analysis_status'></span></label><br/>
+                <label style="text-align:center;padding-left: 50px">薄弱知识点：<span id='chinese_analysis_weakKownPoint'></span></label><br/>
+                <label style="text-align:center;padding-left: 50px">薄弱题型：<span id='chinese_analysis_weakQuesStyle'></span></label>
+            </div>
+        </section>
+
+        <section class="panel">
+            <header class="panel-heading bm0">
+                <span class='span-title'>数学学科分析：</span>
+                <span class="tools pull-right"><a href="javascript:;" class="iconpx-chevron-down"></a></span>
+            </header>
+
+            <div class="panel-body" >
+                <div class="layui-card-header"><p align="center" style="">以知识点为分类标准</p></div>
+                <table class="layui-table" id="math_knowleagePoint_table">
+                    <colgroup>
+                        <col width="20%">
+                        <col width="20%">
+                        <col width="20%">
+                        <col width="20%">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th style="text-align: center">考试名称</th>
+                        <th style="text-align: center">知识点</th>
+                        <th style="text-align: center">得分</th>
+                        <th style="text-align: center">题目总分</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!--后台添加子项-->
+                    </tbody>
+                </table>
+
+                <div class="layui-card-body allsubpt_chart" id="math_knowleagePoint_chart" style="width: 400px;height: 300px;margin-left: auto;margin-right: auto;" >
+                    <!--用于渲染echarts数据-->
+                </div>
+
+                <div class="layui-card-header"><p align="center">以题型为分类标准</p></div>
+                <table class="layui-table" id="math_questionType_table">
+                    <colgroup>
+                        <col width="20%">
+                        <col width="20%">
+                        <col width="20%">
+                        <col width="20%">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th style="text-align: center">考试名称</th>
+                        <th style="text-align: center">题目类型</th>
+                        <th style="text-align: center">得分</th>
+                        <th style="text-align: center">题目总分</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+
+                    <!--后台添加子项-->
+                    </tbody>
+                </table>
+
+                <!--<div class="layui-card-body allsubpt_chart" id="math_questionType_chart" style="width: 300px;height: 200px;margin-left: auto;margin-right: auto;" >-->
+                    <!--用于渲染echarts数据-->
+                <!--</div>-->
+
+                <!--数学成绩分数及排名预测-->
+                <div class="layui-card-header layui-inline"><p align="left">考试成绩及排名预测</p></div>
+                <button class="layui-btn forecast_btn "  onclick="report_button_MathForecast()">预测</button><br/>
+                <label style="text-align: center;padding-left: 50px">下次考试预测成绩：<span id="math_grade_forecast" ></span></label><br/>
+                <label  style="text-align: center;;padding-left: 50px">下次考试预测排名：<span id="math_rank_forecast"></span></label>
+                <!--<label id="chinese_rank_forecast" style="text-align: center">下次排名：</label>-->
+            </div>
+        </section>
+
+            <br/><br/>
+        <!--每个学科下设置面板类panel,用来显示系统对该考生的点评-->
+        <section class="panel">
+            <header class="panel-heading bm0">
+                <span class='span-title'>分析评价：</span>
+                <span class="tools pull-right"><a href="javascript:;" class="iconpx-chevron-down"></a></span>
+                <!--该行添加则可以折叠，手风琴式效果-->
+            </header>
+            <div class="panel-body" >
+                <label style="text-align:center;padding-left: 50px">状态:<span id='math_analysis_status'></span></label><br/>
+                <label style="text-align:center;padding-left: 50px">薄弱知识点：<span id='math_analysis_weakKownPoint'></span></label><br/>
+                <!--<label style="text-align:center;padding-left: 50px">薄弱题型：<span id='math_analysis_weakQuesStyle'></span></label>-->
+                <!--数学"薄弱题型"不进行划分，只有两类-->
+            </div>
+
+        </section>
+
+        <section class="panel">
+            <header class="panel-heading bm0">
+                <span class='span-title'>英语学科分析：</span>
+                <span class="tools pull-right"><a href="javascript:;" class="iconpx-chevron-down"></a></span>
+            </header>
+
+            <div class="panel-body" >
+                <div class="layui-card-header"><p align="center" style="">以知识点为分类标准</p></div>
+                <table class="layui-table" id="English_knowleagePoint_table">
+                    <colgroup>
+                        <col width="20%">
+                        <col width="20%">
+                        <col width="20%">
+                        <col width="20%">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th style="text-align: center">考试名称</th>
+                        <th style="text-align: center">知识点</th>
+                        <th style="text-align: center">得分</th>
+                        <th style="text-align: center">题目总分</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!--后台添加子项-->
+                    </tbody>
+                </table>
+
+
+                <div class="layui-card-header"><p align="center">以题型为分类标准</p></div>
+                <table class="layui-table" id="English_questionType_table">
+                    <colgroup>
+                        <col width="20%">
+                        <col width="20%">
+                        <col width="20%">
+                        <col width="20%">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th style="text-align: center">考试名称</th>
+                        <th style="text-align: center">题目类型</th>
+                        <th style="text-align: center">得分</th>
+                        <th style="text-align: center">题目总分</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <!--后台添加子项-->
+                    </tbody>
+                </table>
+
+                <div class="layui-card-body allsubpt_chart" id="English_questionType_chart" style="width: 400px;height: 300px;margin-left: auto;margin-right: auto;" >
+                    <!--用于渲染echarts数据-->
+                </div>
+
+                <!--英语成绩分数及排名预测-->
+                <div class="layui-card-header layui-inline"><p align="left">考试成绩及排名预测</p></div>
+                <button class="layui-btn forecast_btn "  onclick="report_button_EnglishForecast()">预测</button><br/>
+                <label style="text-align: center;padding-left: 50px">下次考试预测成绩：<span id="English_grade_forecast"></span></label><br/>
+                <label style="text-align: center;;padding-left: 50px">下次考试预测排名：<span id="English_rank_forecast"></span></label>
+            </div>
+
+        </section>
+        <!--每个学科下设置面板类panel,用来显示系统对该考生的点评-->
+        <section class="panel">
+            <header class="panel-heading bm0">
+                <span class='span-title'>分析评价：</span>
+                <span class="tools pull-right"><a href="javascript:;" class="iconpx-chevron-down"></a></span>
+                <!--该行添加则可以折叠，手风琴式效果-->
+            </header>
+            <div class="panel-body" >
+                <label style="text-align:center;padding-left: 50px">状态:<span id='English_analysis_status'></span></label><br/>
+                <!--<label style="text-align:center;padding-left: 50px">薄弱知识点：<span id='English_analysis_weakKownPoint'></span></label><br/>-->
+                <!--英语知识点没法划分，只有"基础"-->
+                <label style="text-align:center;padding-left: 50px">薄弱题型：<span id='English_analysis_weakQuesStyle'></span></label>
+            </div>
+        </section>
+        </div>
+    </div>
+
+</section>
+
+<script type="text/javascript" src="../../../common/layui/layui.js"></script>
+<script type="text/javascript">
+    layui.use(['jquery','layer','element'],function(){
+        window.jQuery = window.$ = layui.jquery;
+        window.layer = layui.layer;
+        window.element = layui.element;
+        //layui1.0.9与layui2.0的版本差异
+
+        $('.panel .tools .iconpx-chevron-down').click(function(){
+            var el = $(this).parents(".panel").children(".panel-body");
+            if($(this).hasClass("iconpx-chevron-down")){
+                $(this).removeClass("iconpx-chevron-down").addClass("iconpx-chevron-up");
+                el.slideUp(400);
+            }else{
+                $(this).removeClass("iconpx-chevron-up").addClass("iconpx-chevron-down");
+                el.slideDown(400);
+            }
+        })
+
+    });
+</script>
+<script type="text/javascript" src="../../../jsTools/echarts.min.js"></script>
+<script type="text/javascript" src="../../../common/larry/larry.js"></script>
+<script type="text/javascript" src="../../../jsTools/jquery.cookie.js"></script>
+<script src="../../js/analysisReportJS/analysisReport.js"></script>
+
+<script type="text/javascript" src="../../js/testModelsJS/html2canvas.js"></script>
+<script type="text/javascript" src="../../js/testModelsJS/jspdf.debug.js"></script>
+<script type="text/javascript">
+
+    var downPdf = document.getElementById("ExportReport");
+
+    downPdf.onclick = function() {
+        html2canvas($('.gradeAnalysis'), {  //将body元素转化为canvas对象，然后生成pdf
+            onrendered:function(canvas) {
+
+                var contentWidth = canvas.width;
+                var contentHeight = canvas.height;
+
+                //一页pdf显示html页面生成的canvas高度;
+                var pageHeight = contentWidth / 592.28 * 841.89;
+                //未生成pdf的html页面高度
+                var leftHeight = contentHeight;
+                //pdf页面偏移
+                var position = 0;
+                //a4纸的尺寸[595.28,841.89]，html页面生成的canvas在pdf中图片的宽高
+                // var imgWidth = 595.28;
+                // var imgHeight = 592.28/contentWidth * contentHeight;
+                var imgWidth = 555.28;
+                var imgHeight = 555.28/contentWidth * contentHeight;
+
+                //var pageData = canvas.toDataURL('image/jpeg', 1.0);
+                var pageData = canvas.toDataURL('image/png', 1.0);
+
+                var pdf = new jsPDF('', 'pt', 'a4');
+
+                //有两个高度需要区分，一个是html页面的实际高度，和生成pdf的页面高度(841.89)
+                //当内容未超过pdf一页显示的范围，无需分页
+                if (leftHeight < pageHeight) {
+                    // pdf.addImage(pageData, 'PNG', 0, 0, imgWidth, imgHeight );
+                    pdf.addImage(pageData, 'PNG', 20, 0, imgWidth, imgHeight );
+                } else {
+                    while(leftHeight > 0) {
+                        // pdf.addImage(pageData, 'PNG', 0, position, imgWidth, imgHeight)
+                        pdf.addImage(pageData, 'PNG', 20, position, imgWidth, imgHeight)
+                        leftHeight -= pageHeight;  //未生成pdf的html页面的长度
+                        position -= 841.89; //页面偏移
+                        //避免添加空白页
+                        if(leftHeight > 0) {
+                            pdf.addPage();
+                        }
+                    }
+                }
+
+                pdf.save('AnalysisReport2019/3.pdf');
+            }
+        })
+    }
+</script>
+
+</body>
+</html>

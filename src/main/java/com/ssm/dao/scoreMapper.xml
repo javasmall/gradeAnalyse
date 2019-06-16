@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace：必须与对应的接口全类名一致 id:必须与对应接口的某个对应的方法名一致 -->
+
+<mapper namespace="com.ssm.dao.scoreMapper">
+    <!-- mybsits_config中配置的alias类别名,也可直接配置resultType为类路劲 -->
+    <select id="findAll" resultType="score">
+        select * from student_chengji
+    </select>
+    <select id="findbyid" resultType="score">
+        select * from student_chengji where student_id=#{id} and lesson_name=#{lesson}
+    </select>
+
+
+    <resultMap type="map" id="resultstudentrank">
+        <!-- 用id属性来映射主键字段 -->
+        <id property="id" column="id"/>
+        <!-- 用result属性来映射非主键字段 -->
+        <result property="testname" column="test_name"/>
+        <result property="schoolname" column="school_name"/>
+    </resultMap>
+
+    <select id="getproblemscorebystuid" resultType="Map">
+        SELECT a.question_number question_index,a.paper_lesson lesson,
+        a.question_score score,a.question_fullscore fullscore,a.student_id,a.test_name ,
+        b.question_kownledge kownledgepoint,b.title_numbertype numbertype
+        FROM test_paper_score a,test_paper_information b
+        WHERE a.paper_lesson=b.paper_lesson
+        and a.question_number=b.question_index
+        and a.paper_lesson=#{lesson}
+        AND a.test_name=b.test_name
+        and a.test_name=#{testname}
+        AND a.student_id =#{studentid}
+        ORDER BY question_index
+    </select>
+
+    <select id="getproblemscore" resultType="Map">
+
+          SELECT a.question_number question_index,a.paper_lesson lesson,
+        a.question_score score,a.question_fullscore fullscore,a.student_id,a.test_name ,
+        b.question_kownledge kownledgepoint,b.title_numbertype numbertype
+        FROM test_paper_score a,test_paper_information b
+        WHERE a.paper_lesson=b.paper_lesson
+        and a.question_number=b.question_index
+        and a.paper_lesson=#{lesson}
+        and  a.test_name=b.test_name
+        and a.test_name=#{test}
+        and a.question_number=#{index}
+        AND a.student_id in (SELECT student_id FROM student WHERE class_id=#{classid})
+        ORDER BY a.student_id,a.question_number
+    </select>
+    <select id="getwacount" resultType="Map">
+        SELECT a.test_name,count(*) count, a.paper_lesson,a.question_number,b.class_id FROM test_paper_score a,student b
+        WHERE a.test_name=#{test}
+        AND a.question_score &lt; #{percent}*a.question_fullscore
+        AND a.student_id=b.student_id
+        AND b.class_id=#{id}
+        AND a.paper_lesson=#{lesson}
+        GROUP BY b.class_id,a.paper_lesson,a.question_number
+        ORDER BY a.paper_lesson,a.question_number,b.class_id
+    </select>
+    <select id="getscorebypoint" resultType="Map">
+        SELECT a.paper_lesson,a.question_kownledge,a.test_name,SUM(b.question_score) sumget,
+        SUM(b.question_fullscore) fullscore,b.student_id
+        FROM test_paper_information a,test_paper_score b
+        WHERE a.paper_lesson=b.paper_lesson
+        AND a.question_index=b.question_number
+        AND a.school_name=b.school_name
+        AND b.test_name=#{testname}
+
+        AND b.paper_lesson=#{lessonname}
+        AND b.student_id=#{stuid}
+
+        GROUP BY a.paper_lesson,a.question_kownledge,a.test_name,
+        b.student_id
+    </select>
+
+    <select id="getscorebytype" resultType="Map">
+        SELECT a.paper_lesson,a.title_numbertype,a.test_name,SUM(b.question_score) sumget,
+        SUM(b.question_fullscore) fullscore,b.student_id
+        FROM test_paper_information a,test_paper_score b
+        WHERE a.paper_lesson=b.paper_lesson
+        AND a.question_index=b.question_number
+        AND a.school_name=b.school_name
+        AND b.test_name=#{testname}
+
+        AND b.paper_lesson=#{lessonname}
+        AND b.student_id=#{stuid}
+
+        GROUP BY a.paper_lesson,a.title_numbertype,a.test_name,b.student_id
+    </select>
+    <select id="getmosterrorbypoint" resultType="Map">
+        SELECT a.paper_lesson,a.question_kownledge,a.test_name,COUNT(*) count1,
+        (SELECT COUNT(c.question_index)*#{num} FROM test_paper_information c
+        WHERE c.paper_lesson=a.paper_lesson
+        AND c.question_kownledge=a.question_kownledge
+        and c.test_name=a.test_name
+        AND c.school_name=a.school_name
+        GROUP BY c.question_kownledge,c.school_name
+
+        )allcount,b.student_id
+        FROM test_paper_information a,test_paper_score b
+        WHERE a.paper_lesson=b.paper_lesson
+        AND a.question_index=b.question_number
+        AND a.school_name=b.school_name
+        AND b.test_name in
+        <foreach collection="list" item="item" index="index" open="(" close=")" separator=",">#{item}</foreach>
+        AND b.question_score &lt; b.question_fullscore*0.48
+        AND b.paper_lesson=#{lesson}
+        AND b.student_id=#{stuid}
+        GROUP BY a.paper_lesson,a.question_kownledge,a.test_name,
+        b.student_id,allcount
+    </select>
+    <select id="getmosterrorbytype" resultType="Map">
+        SELECT a.paper_lesson,a.title_numbertype,a.test_name,COUNT(*) count1,
+        (SELECT COUNT(c.question_index)*4 FROM test_paper_information c
+        WHERE c.paper_lesson=a.paper_lesson
+        AND c.title_numbertype=a.title_numbertype
+        and c.test_name=a.test_name
+        AND c.school_name=a.school_name
+        GROUP BY c.title_numbertype,c.school_name
+        )allcount,b.student_id
+        FROM test_paper_information a,test_paper_score b
+        WHERE a.paper_lesson=b.paper_lesson
+        AND a.question_index=b.question_number
+        AND a.school_name=b.school_name
+        AND b.test_name in
+        <foreach collection="list" item="item" index="index" open="(" close=")" separator=",">#{item}</foreach>
+        AND b.question_score &lt; b.question_fullscore*0.48
+        AND b.paper_lesson=#{lesson}
+        AND b.student_id=#{stuid}
+        GROUP BY a.paper_lesson,a.title_numbertype,a.test_name,
+        b.student_id,allcount
+    </select>
+
+    <!-- 	<select id="findById" parameterType="int" resultType="User"> -->
+    <!-- 		select * from ih_user where id=#{id} -->
+    <!-- 	</select> -->
+    <!-- 	<insert id="save" parameterType="User"> -->
+    <!-- 		insert into ih_user(username,age)values(#{username},#{age}) -->
+    <!-- 	</insert> -->
+
+    <!-- 	<insert id="update" parameterType="User"> -->
+    <!-- 		update ih_user set username=#{username},age=#{age} where id=#{id} -->
+    <!-- 	</insert> -->
+
+    <!-- 	<delete id="delete" parameterType="int"> -->
+    <!-- 		delete from ih_user where id=#{id} -->
+    <!-- 	</delete> -->
+
+</mapper>

@@ -1,0 +1,50 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace：必须与对应的接口全类名一致 id:必须与对应接口的某个对应的方法名一致 -->
+
+<mapper namespace="com.ssm.dao.testMapper">
+    <select id="getpastlessonavg" resultType="Map">
+        SELECT v1.avgscore ,v1.class_id,v1.test_name,v1.lesson_name,
+        (SELECT count(*)+1 FROM v v2 WHERE v2.lesson_name=v1.lesson_name
+        AND v2.test_name=v1.test_name
+        and v2.avgscore>v1.avgscore
+        ) avgrank
+        FROM v v1
+        WHERE v1.lesson_name=#{lesson}
+        AND v1.class_id=#{id}
+        ORDER BY v1.test_name
+    </select>
+    <select id="getpastrank" resultType="Map">
+        SELECT a.*,(SELECT count(*)+1 from graderank b
+        WHERE b.sumscore>a.sumscore
+        <if test="type=='classrank'">
+            and a.class_id=b.class_id
+        </if>
+        AND b.school_name=a.school_name
+        AND a.test_name=b.test_name
+        ) rank1
+        FROM graderank a
+        WHERE a.student_id=#{id}
+        AND a.school_name='just'
+        GROUP BY a.class_id ,a.student_id ,a.test_name ,a.student_name,a.school_name,a.sumscore,rank1
+        ORDER BY a.class_id DESC
+    </select>
+
+    <select id="getpastlessonrank" resultType="Map">
+        SELECT a.*,(SELECT count(*)+1 from student_chengji b
+        WHERE b.lesson_score>a.lesson_score
+        <if test="type=='classrank'">
+            and a.class_id=b.class_id
+        </if>
+        AND b.school_name=a.school_name
+        AND a.test_name=b.test_name
+        AND a.lesson_name=b.lesson_name
+        ) rank1
+        FROM student_chengji a
+        WHERE a.student_id=#{id}
+        AND a.lesson_name=#{lesson}
+        GROUP BY a.id,a.student_id,a.test_name,a.school_name,a.lesson_name,a.class_id,rank1
+        ORDER BY a.test_name,a.lesson_score DESC
+    </select>
+
+</mapper>

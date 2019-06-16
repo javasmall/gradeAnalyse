@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>三总成绩</title>
+    <link rel="stylesheet" type="text/css" href="../../../common/layui/css/layui.css" media="all">
+
+    <!--本地layui.css和layui.js文件有问题，，故在线引用-->
+</head>
+<body>
+<div style="padding: 20px; background-color: #F2F2F2;">
+    <div class="layui-row  threeSum" style="margin-left: auto;margin-right: auto;">
+        <div class="layui-card">
+            <div class="layui-card-header"><p align="center">历次考试三总成绩</p></div>
+            <div class="layui-card-body threeSum_chart" id="threeSum_chart" style="width: 700px;height: 400px;margin-left: auto;margin-right: auto;" >
+                <!--用于渲染echarts数据-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--加载js文件-->
+<script type="text/javascript" src="../../../jsTools/jquery-2.2.1.min.js"></script>
+<script type="text/javascript" src="../../../jsTools/jquery.cookie.js"></script>
+<script type="text/javascript" src="../../../jsTools/echarts.js"></script>
+<script type="text/javascript" src="../../js/gradeShowJs/threeSum.js"></script>
+</body>
+</html>

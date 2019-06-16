@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>单科成绩分析</title>
+    <link rel="stylesheet" type="text/css" href="../../../common/layui/css/layui.css" media="all">
+    <link rel="stylesheet" type="text/css" href="../../../common/layui/css/layui.mobile.css" media="all">
+    <link rel="stylesheet" type="text/css" href="../../../common/bootstrap/css/bootstrap.css" media="all">
+    <link rel="stylesheet" type="text/css" href="../../../common/global.css" media="all">
+    <link rel="stylesheet" type="text/css" href="../../../css/cssFile/personal.css" media="all">
+<!--本地layui.css和layui.js文件有问题，，故在线引用-->
+
+</head>
+<body>
+<blockquote class="layui-elem-quote layui-text">
+该项数据加载较慢，我们的攻城狮正在优化！！
+</blockquote>
+<div style="padding: 20px; background-color: #F2F2F2;">
+    <div class="layui-row  singleSub" style="margin-left: auto;margin-right: auto;">
+            <div class="layui-card">
+                <div class="layui-card-header"><p align="center">历次考试单科成绩分析</p></div>
+
+                <form class="layui-form" action="" style="margin-left: auto;margin-right: auto;text-align: center">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">选择考试</label>
+                            <div class="layui-input-block">
+                                <select class="test" id="testSelect" lay-filter="testSelect" NAME="testSelection" >
+                                    <option value="test1" selected="">test1</option>
+                                    <option value="test2">test2</option>
+                                    <option value="test3">test3</option>
+                                    <option value="test4">test4</option>
+                                    <option value="test5">test5</option>
+                                    <option value="test6">test6</option>
+                                    <option value="test7">test7</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="layui-inline">
+                            <label class="layui-form-label">选择科目</label>
+                            <div class="layui-input-block">
+                                <select class="test" id="subjectSelect"  lay-filter="subjectSelect">
+                                    <option value="语文" selected="">语文</option>
+                                    <option value="数学" >数学</option>
+                                    <option value="英语">英语</option>
+                                    <option value="物理">物理</option>
+                                    <option value="化学">化学</option>
+                                    <option value="政治">政治</option>
+                                    <option value="历史">历史</option>
+                                    <OPTION VALUE="地理">地理</option>
+                                    <OPTION VALUE="生物">生物</option>
+                                    <OPTION VALUE="附加题">附加题</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="layui-card-body singleSub_chart" id="singleSub_chart" style="dwidth: 800px;height: 600px;" >
+                   <!--用于渲染echarts数据-->
+                </div>
+            </div>
+    </div>
+</div>
+
+
+
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<!--<script>-->
+    <!--//Demo-->
+    <!--layui.use(['layer', 'form'], function () {-->
+        <!--//var layer = layui.layer();-->
+        <!--var form = layui.form();-->
+        <!--form.on('select(search_type)', function (data) {-->
+            <!--alert(data.value);-->
+        <!--});-->
+    <!--});-->
+
+<script src="../../../common/layui/layui.js" charset="utf-8"></script>
+<script>
+    layui.use(['form', 'layedit', 'laydate'], function(){
+        var form = layui.form
+            ,layer = layui.layer
+            ,layedit = layui.layedit
+            ,laydate = layui.laydate;
+    });
+</script>
+
+<script>
+    layui.use(['element', 'layer'], function(){
+        var element = layui.element;
+        var layer = layui.layer;
+
+        //监听折叠
+        element.on('collapse(test)', function(data){
+            layer.msg('展开状态：'+ data.show);
+        });
+    });
+</script>
+<!--加载js文件-->
+<!--注意jquery,cookie.js要在jquery文件之后使用-->
+<script src="../../../jsTools/jquery-2.2.1.min.js"></script>
+<script type="text/javascript" src="../../../jsTools/jquery.cookie.js"></script>
+<script src="../../../jsTools/echarts.min.js"></script>
+<script src="../../js/gradeShowJs/singleSubanalysis.js"></script>
+
+</body>
+</html>

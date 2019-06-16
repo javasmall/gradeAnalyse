@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../css/onlineQnBank/tiku.css">
+    <link rel="stylesheet" href="../../css/onlineQnBank/reset.css">
+    <link rel="stylesheet" href="../../css/onlineQnBank/treeview.css">
+    <style>
+        p{font-size: 15px}
+        i{font-size: 15px}
+    </style>
+</head>
+<body>
+<button  id="renderPdf" style="float: left">导出</button>
+
+<div style="padding-left: 50px;">
+<div class="framequestions" style="width: 60%">
+    <div class="questions_col">
+        <ul>
+            <li><!--<br />-->
+                <p>1、（本小题满分13分）在四棱锥E-ABCD中，底面ABCD是正方形，AB与CD交于点O,<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACkAAAATCAYAAAANgSQ9AAAAAXNSR0ICQMB9xQAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUATWljcm9zb2Z0IE9mZmljZX/tNXEAAAE4SURBVEjH7ZaxEcIwDEU1QBbgDrMDaAfHBTUFPio4qlya1JxJlxnoKNmBCdiBDdgBcMCxYhwIHIEUKdToJOud9KUE0jSFtlvrATvIxiEjzhIAOFcZyvXYzZkibG0MO4lYDdcSx75Y117FPU00xYwvy5aBYGxHfbe4KxhOt6W4Puzd/K9D5t3si/0yywLqjzmfzJTqUUBfAaVmPRyEGzf/q5B6fIxHSdEZIecliFgMGcCJdvABEqWqo7mPIPMCAEeTqB8xwGXd1htnI5CFziqWpdCcRw4/g8w39T5GDRQOcGN0SDtdNerGId1Ra5NCzGnH/g7pOz12s3Fh/Le7iEfaYSoHjnxVVwpvQ+bFPVpzT1Kx3Q6o7vII2OGdhaoNaYtWf2ncDbdHm8b5u+v/Mj0z+073g9FBts0u5jBurxGU7T0AAAAASUVORK5CYII=" style="vertical-align:middle;" />底面ABCD，F为BE的中点. <br />
+                    <img src="data:image/png;base64,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" style="vertical-align:middle;" /><br />
+                    （Ⅰ）求证：DE//平面ACF；<br />
+                    （Ⅱ）求证：BD⊥AE；<br />
+                    （Ⅲ）若AB=√2CE,在线段EO上是否存在点G，使CG⊥平面BDE？<br />若存在，求出<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAAAqCAYAAABP7FAaAAAAAXNSR0ICQMB9xQAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUATWljcm9zb2Z0IE9mZmljZX/tNXEAAAGNSURBVFjD7Vc7csMgEN0D+AKeMbmDhzsQCtcprHFljyuPGtcZrE5nSOcyd/BVfAPfwQnCq0GIRQwkKRyKbRDsY99+eIKmaeCvDQro/wE9CHYEgDtlvDqt3DNrDufBPr4+t+1+Jrh437ftLCrSU8VXAOwma7XENe1EMvZpr5l93yALebGd4zoTh2M0vV20jiNttRBvG6XmtmNf5OjD/RYE1XThLbsIZbW1v6taLhnATdNI+agF39msBEGV2sw5wBVvqSNyaTI55FeMOruQ+jwRxdNFvoCLS3+/Pjg7vFiQWqRNO3p94R/2QWSCopYqIhLUpVZbJeXWjmgK1LScn/roVvEVhsnpeF9PMXEhmlpPq7gt1EfrRIRVTbUReFsgMIl8ORpNIs+gKAO/gD4haKhVcq3QW9RgshqMGvi5atB+DEKC7VfVIPVE5qnBCfVACbcsNWjy7lcYSaCpajCGhXQ1+FAZPiWRVEhRajAAOsVCshoM0TeV6yw1iAPEZoSSpT+qBkeTK/AzVQb+84J+AYgy12CKqN8UAAAAAElFTkSuQmCC" style="vertical-align:middle;" />&nbsp;的值，若不存在，请说明理由．</p>
+
+                <p><span class="option">答案</span><i><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD4AAAAqCAYAAADrhujJAAAAAXNSR0ICQMB9xQAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUATWljcm9zb2Z0IE9mZmljZX/tNXEAAAJCSURBVGje7Vk7csIwEN0DcAFmUO7AqKd0VFBnBjxUZKgYN9QZ485NLpCOkjtwFW7AHZLIRkaWJVmWLEOCim380ep5n/bzDFmWwTPaU4IOwAPwADyDbYR2APCtMhzv5+I7SwyH2nN4ecjzzSjC0ccmz0c+AND1yQROMCGnLj60N/cxngOgC0nSac0RQkf+WvncL1DBObuOou3OB+g0XY0xwFnm2wl4EXXJgkkUva3SdMyDkzGAraG615ep9mkNnFKXRauINInXtS+ekCkCuFBKq9ZIIvzOs+PhgTMasWjRyIqULc80PrPo38t6BV6dW0VCUyWV6nrtXb8fp1fgRTSvFKZgXl/wF7/5KrEoaO47sXkBLtKcWkzIml+4DXhZDoc5Br0Bl5UxWbIqz3jzuYrumqT3kMALQJKFRAe3OlqPLMv2vstY236NgVflSdOxyc5so2OzaCicG5jC5CwNvXoAHoAPb9K8IEx2IeIBuCfgWuo5Wt9Ut/EZIh6A/3OTjdAh4vKx0k1lHWJIEft1U5/am11VVn6AaRMh+6IwL5CwYJn4tJpzTVVWm3GxU7QXZNYIiqEO0NpWalXWFhXmHmIkL5lZATdRWUtqqWfgoYGziDtR3VZlNWWDF+pTIQWRo8nRMqKMVGW9qjUqFXWI5NbcM/p0UmCMVFYNcNsfeS7W9VeVcRm7ZfRSZdVRue3s921i/qFBIYt01hm4qcoqq5sqydkn6GaD1Z5Qm8mho8ra6PAGTGbK7tK1jofpLAAPwP+8/QBeVuKB3MpNKQAAAABJRU5ErkJggg==" style="vertical-align:middle;" /></i></p>
+                <p><span class="parsing">解析</span><i>试题解析：
+                    （Ⅰ）连接OF.由ABCD是正方形可知,点O为BD中点.<br />又F为BE的中点，所以OF∥DE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .2分<br />又<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACsAAAATCAMAAAA+qgQyAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAS1BMVEWOjo5nQA0NDQ1AaI15UyoNKVVzlZWNaEAqU3kNDSpVe4yMjGpADQ0NQGcNDUBqjIx7U1M/DSqMe1UqKlWVlXNVKQ0qDQ2MZlX////qZN+LAAAAGHRSTlMNrv9ZgMkZWYD5PibqruomY9c+thnJ+UtkH0j6AAAAAWJLR0QYm2mFHgAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAAd0SU1FB98DDBEkMOgf2X8AAACbSURBVCjP1ZFbEsIgDEUhoKHQWK2t7n+n5lFHSmUBzUcYJoebm+DcOcMDQOAzgsXl2iMRkiSBccjyJPXRoNoiFlURQwctI5mP28SJFe/TzpsEbfeobY0tj+zm59fssjZeltUGUXmsRRy2tudX+rn2VA8Ww39W5cvI1Xfustto6hqHXJeQGpb3L82V8vviYTb7LFI3hw9rd3am+AAqAQSOm3eyPAAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAxNS0wMy0yNFQwMTozNzoxMyswODowMAz1ZPcAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMTUtMDMtMTJUMTc6MzY6NDgrMDg6MDDlbOEgAAAAGXRFWHRTb2Z0d2FyZQBNaWNyb3NvZnQgT2ZmaWNlf+01cQAAAABJRU5ErkJggg==" style="vertical-align:middle;" />平面<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFMAAAAVCAYAAAA6s9JxAAAAAXNSR0ICQMB9xQAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUATWljcm9zb2Z0IE9mZmljZX/tNXEAAAJCSURBVFjD7Vg7bgIxEPUBuAAS5g7BfUrjgjpSdkUFokLbUKOFjoYL0FFyB07ADVJwA+6QaL148c7OrG1ESJS4mAZ/5s2bmTde2Hq9ZtEeY5GESOYfIDPP1IuQ2ZRaTwTbM8Y+S+MXleUvq1SMRLoaFetzyRe3dcR66jjbbDptGOo+LBPJHu51+TO4nk7mZjPrqB47YgAKwmBAZr8htb63/psJnMv5wgdLSZI4j/O8q5Ocj7uCsTOWDMyfxsb5AWJ4GpmmIiCZhkiMZB1kf7izA9REEEH7VorGAiqRwkH5y6R8M8kI6UzOBifqnNclOlApl5zxDzub5eXsgrVYRaZIc0iEXYGhQZkqhKRV1Qmw2P50Rap04tuFrZKExOyXDZFsy8zfWuvWbs2WbSNiwPjJ7Nd3c3Vw6WSzAus4agRYQULii7MuKaHkTPslisaLzOJiKeSyCBYGUYH3GBoNbXVk2NniiE+sMjF/LimhCE8E37qKxksnsWlLtVWI1oUMHTuB2BkjOfaa7a84O+yLnUtSMimmkDTTnXcPIDgQYEWEkolpXf6uXkMmaklYXbfriW9OeNtfqtTE1UUYmcXdPsOxVSddExQGQElE25MoxNpeArCF2/xhhFFtHqLruK4BwFR7VdMcEAoHDZWMoGfJtdIgBurJRmkrlRBqABX7fZ9sTQG/6qMB3RBxgui60FvtVhHu95WDJaj1Swbc1/CHmO9Ef/jT6KcsVE+/w0IH5O8j8Y5XQvzXKP4FFy2SGcmMZP5r+wK0QuQPMQP2SgAAAABJRU5ErkJggg==" style="vertical-align:middle;" />平面ACF,所以DE∥平面ACF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4分<br />
+                    （Ⅱ）证明：由EC⊥底面<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFwAAAAVCAYAAADLuIn8AAAAAXNSR0ICQMB9xQAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUATWljcm9zb2Z0IE9mZmljZX/tNXEAAAIaSURBVFjD7VgxcsIwELwH8AFmUP5A1KdUXPCB4KHLUDE01Iygc5MPpOMfvCA/SMEP+EMyspF9Uk6SZStMMqPiCoy0t1rdrQ/geDxCjvtFFiELngVvQ26LORfbV/xsyeEEAF9G8OXJhWGuZ9diK+eHki94eVg48QKY4Tw0RqpcvyJ4Va0nxQzOWhgcG8F2APyyknIq5WrKAS42aSWqfRiNqYWn8OqL1piz4ryuqklfzn14pcqVXHBdDZTg9Xe3g7QiIsJabGpvfcCH53d8OIxnXxiF4eXs4ZUyV1LB65YXYs+AfeJKxBWhybUHux1C2RADuLratN7PS+nCs5/3bfcQr1S5nLbksKdevs348q259a71zGronjcEus9Ny5qWEbpcKg8lWAyOzWtsLr2Gic0uWYUrUMHFXrWgi1wjaHejuFpcbRysGGJ9bIX7eKXIpfSIFTso+I92scjZt6zto/0cKZKvamzsGBxq79hc6kKHeLzftxEgVQ0NMdPXcetG+y6BR+EOwbH3j82VVHDt2643vtG26BIoC/GRx5ZF4Q2dGvrwGpurXjdgXqeBAtaB7QI/0xZkrNNTiiW62v8I7ENXGIUXGkd904mPV4pco1+abfvf/FoDtT9YkI+XBZP0GERPI90PHLzWnmQcY5XjhUtdpBun4zUk113Hwr8e8qV46jty5j+vxggd+ULOgud/C3NkwbPgObLg/yy+AR0a63APP0ZBAAAAAElFTkSuQmCC" style="vertical-align:middle;" />底面ABCD<br />所以EC⊥BD<br />由ABCD是正方形可知, AC⊥BD&nbsp;<br />所以BD⊥平面ACE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8分 &nbsp;&nbsp;<br />又<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACsAAAARCAYAAABEvFULAAAAAXNSR0ICQMB9xQAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUATWljcm9zb2Z0IE9mZmljZX/tNXEAAAE+SURBVEjH7ZY9bgJBDIV9AC6AhLkDcp0ucqagTrErKhAVmoYaDdttwwXSUXIHLkLBDbhDEg+ZZDPMDLCClfgp3Fiz5vPzswUURQG3EjcDet+wRqsesR5VcxPGKQB8xoLyeb9x2LIct1QH1qEfn+fUB8Cd0qb37z3iqpprDDYjWMaUsup21Hpclq1qXjO/D4xpNworyhHzDAE3IaWkEeTJ9FdRlQ9PbT4alC3PhhWfImWL/ahp6ytlzKBNAFunuLxz4Ck7pd7UUlYKM/FMxhuD3edPX6pjzdSGPRhVwJf2zc/IpLm3Ln2kfCr+rnsh0j6tFLVQHqxvAYlcqaHf0FVhnU9jCqZO1t8loFEob78JLE8tWFvMUzC2FCG1U6fsYgvmRur86YodLNA3hNavLwiwS52eYzBXOV3PPzKPAPsFhlkkGW9ZbNcAAAAASUVORK5CYII=" style="vertical-align:middle;" />平面ACE，<br />所以BD⊥AE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;9分<br />
+                    （Ⅲ）在线段EO上存在点G，使CG⊥平面BDE.&nbsp;理由如下：<br />如图，取EO中点G，连接CG.<br />在四棱锥E-ABCD中，<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANcAAAAuCAYAAAC74IxkAAAAAXNSR0ICQMB9xQAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUATWljcm9zb2Z0IE9mZmljZX/tNXEAAAQnSURBVHja7Vw7UuswFNUC2AAziD2AekrjgvrNEA8VDBWThpoxdGnYAF1K9sAK3g5ewQ7YAw/bUSIr+tybWHJCTnEKPGZk3XuOdHSlSLy8vAgAAIYHggAAEBcAQFwAAEBcAIssQnxTgFhBXMCG4kIsIC4ggbgQB4gLgLggLgCWEOICIK6FuOr65lgJ8amfqer5CjGCuIAtLeFsdn90earebur6uPn7oZCPEBjEBQwgrvq6vCin9Zl+3oitPBEfQk3miBPEBQy83pooMYe4IC5gi1nLBT1zwRYegLhwgmB4EYViVk/LMynL9/vZ7AgxPABxIbHbDUqcmE6UfDXXYADEBRDXV6HZvqkUwg4eiLggrOHj6Ivpc6WuZPHwaNrD8rq+QPwgLoA4e7li2ghrfS2rPvXeF7CBuJrRSRXTu5XfFvO1II9YkjWJwDlF0O+H/GrWEA2B9P/ojVIfONYo1pb/3bwbtb41mDcWW+Td5tXY3ArliMMFcoO+kmvXWDdqLQk9ksC4pwiWI7DxvctN0UVQ++/2n7XvSvlOWdDz2xLfpu3Sz3IJLFd1NVTKz80tao6oXGCr2Q6CuYG4/JCT8iN3abY3axFOEYTI2iby9PLN7EObaEe/pkXxJ2aHOG2F3m1jnTG2OWy2j1e5ucXJEZUL5IZVUTxJIf+ZpNWjif6gMY/CxIhgJqrdmxHiy/edbb9UVdv/r2eStp9ldUu1PNS2YqNzR8Tfs7bx8So3t7h8oHKB1rCavHbK7ifWfhZKvtNDD+inOacIOrvRn9aDMbASbVfKQuC0FXvXF9/UsU2BEK9yc4uTIw4Xon64UMVTM/25gmAv7sbc86CeItjEXriqY5S+ctqKvTv2enbodVaIVzm5xeUDhwuMqskPjA/QH6VVq6dW6og+5AI7bglXpwg2Iant/c1iCWWUo7QVi1/ugka+alyfV7m5xeUDhwthP2wk0l5Mdx3ue+WUU3doYzMkLvsUATeYtg1oUJXlLWWUG0pcsdF1m9hSb3TiYlNe5eYWK0dMLgT9sE+xropJzkqh64iOL5GuUwShRJmWxVd2XVWH1F3Mp1PbCiWZu0bcVVB4NQa3qDnicsFtP2LT9IIIJnH16JHKFoYExj1FsKwOWQFt+nUu5N+1EdORVF851luJIrTl2o/r4rr/wqLwaixuUXPE5cL69Lggou6Im6Qu5CVAyIJQThGsNgfdR3hWAff32Z4VXQmitBX89j0vYJB59UPOqpT1WNwK5YjLBXIpfpexi7/PsjewgcPF/ndgR8T1m0rloZkHPzE5IHEBaa0SbnqCuIAMFhc3PUFcQELgpieIC0hkE3HTE8QFpLCJuOkJ4gJSWULc9ARxAYMDNz1BXEAC4KYniAtIJCzc9ARxAQms4L78shniAgCICwAAiAsAIC4AOCz8B9eNRDBIGSkZAAAAAElFTkSuQmCC" style="vertical-align:middle;" />，<br />所以<img src="https://tiku.21cnjy.com/tikupic/47/2f/47e2fce352a1b4883b52ffb93d792d33.png" style="vertical-align:middle;" />.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11分<br />由（Ⅱ）可知，BD⊥平面ACE，而<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACsAAAARCAMAAABzYqU5AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAQlBMVEWOjo5nQA0NDQ0NQGd5UyoNDUBqjIyMjGpADQ0NKVVzlZWVlXNVKQ2NaEBAaI0qU3mMe1UqDQ0qDSpVe4wNDSr///8Hd4grAAAAFXRSTlMNrv+ugOomJurJGRnJWVmAPvnmPvkgY8H5AAAAAWJLR0QV5dj5owAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAAd0SU1FB98CEQodBEhPShMAAACWSURBVCjPzZHbEsIgDETDxYJaSm///60mm4p1MvhqMwNzHjbJshBdpZznCm8A9SvehpSDAqV8f/waHOg5isJJQ/FTX5ryxNqgIHdzoabOtgpvdnwApG0EqNYud2Ktg9M2t1iptM9LbXPAmGF9z+tG8ABQ7Gkjb0YMERY+MRSTdMpVHlwVmNo087aIUPbtAP/1ETaz/9YLjD4E0OntAtgAAAAldEVYdGRhdGU6Y3JlYXRlADIwMTUtMDMtMjNUMjM6Mzc6MTgrMDg6MDByObmeAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE1LTAyLTE3VDEwOjI5OjA0KzA4OjAwRsta9QAAABl0RVh0U29mdHdhcmUATWljcm9zb2Z0IE9mZmljZX/tNXEAAAAASUVORK5CYII=" style="vertical-align:middle;" />平面BDE<br />所以，平面ACE⊥平面BDE，交线是EO<br />因为CG⊥EO，所CG⊥平面BDE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;12分<br />由G为EO中点，得<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD4AAAAqCAYAAADrhujJAAAAAXNSR0ICQMB9xQAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUATWljcm9zb2Z0IE9mZmljZX/tNXEAAAJCSURBVGje7Vk7csIwEN0DcAFmUO7AqKd0VFBnBjxUZKgYN9QZ485NLpCOkjtwFW7AHZLIRkaWJVmWLEOCim380ep5n/bzDFmWwTPaU4IOwAPwADyDbYR2APCtMhzv5+I7SwyH2nN4ecjzzSjC0ccmz0c+AND1yQROMCGnLj60N/cxngOgC0nSac0RQkf+WvncL1DBObuOou3OB+g0XY0xwFnm2wl4EXXJgkkUva3SdMyDkzGAraG615ep9mkNnFKXRauINInXtS+ekCkCuFBKq9ZIIvzOs+PhgTMasWjRyIqULc80PrPo38t6BV6dW0VCUyWV6nrtXb8fp1fgRTSvFKZgXl/wF7/5KrEoaO47sXkBLtKcWkzIml+4DXhZDoc5Br0Bl5UxWbIqz3jzuYrumqT3kMALQJKFRAe3OlqPLMv2vstY236NgVflSdOxyc5so2OzaCicG5jC5CwNvXoAHoAPb9K8IEx2IeIBuCfgWuo5Wt9Ut/EZIh6A/3OTjdAh4vKx0k1lHWJIEft1U5/am11VVn6AaRMh+6IwL5CwYJn4tJpzTVVWm3GxU7QXZNYIiqEO0NpWalXWFhXmHmIkL5lZATdRWUtqqWfgoYGziDtR3VZlNWWDF+pTIQWRo8nRMqKMVGW9qjUqFXWI5NbcM/p0UmCMVFYNcNsfeS7W9VeVcRm7ZfRSZdVRue3s921i/qFBIYt01hm4qcoqq5sqydkn6GaD1Z5Qm8mho8ra6PAGTGbK7tK1jofpLAAPwP+8/QBeVuKB3MpNKQAAAABJRU5ErkJggg==" style="vertical-align:middle;" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 13分<br />
+                    考点：本题考查线面平行，线线垂直，线面垂直<br /></i></p>
+            </li><br/>
+        </ul>
+    </div>
+</div>
+
+<div style="float: left;">
+    <div class="fenye" >
+        <div class="pg">
+            <strong style="background: #0d957a">1</strong>
+            <a href="../day-wrongqn/page=2.html">2</a>
+            <a href="">3</a>
+            <a href="">4</a>
+            <!--https://tiku.21cnjy.com/tiku.php?mod=list&channel=3&xd=3-->
+            <!--https://tiku.21cnjy.com/tiku.php?mod=list&channel=3&xd=3&page=2-->
+            <a href="" class="last">... 10</a>
+            <label>
+                <input type="text" name="custompage" class="px" size="2" title="输入页码，按回车快速跳转" value="1" onkeydown="if(event.keyCode==13) {window.location='/tiku.php?mod=list&channel=3&xd=3&amp;page='+this.value;; doane(event);}" />
+                <span title="共 10 页"> / 10 页</span>
+            </label><a href="/tiku.php?mod=list&channel=3&xd=3&amp;page=2" class="nxt">下一页</a></div></div>
+</div>
+</div>
+
+
+<script type="text/javascript" src="../../js/testModelsJS/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="../../js/testModelsJS/html2canvas.js"></script>
+<script type="text/javascript" src="../../js/testModelsJS/jspdf.debug.js"></script>
+<script type="text/javascript">
+
+    var downPdf = document.getElementById("renderPdf");
+
+    downPdf.onclick = function() {
+        html2canvas($('.framequestions'), {  //将body元素转化为canvas对象，然后生成pdf
+            onrendered:function(canvas) {
+
+                var contentWidth = canvas.width;
+                var contentHeight = canvas.height;
+
+                //一页pdf显示html页面生成的canvas高度;
+                var pageHeight = contentWidth / 592.28 * 841.89;
+                //未生成pdf的html页面高度
+                var leftHeight = contentHeight;
+                //pdf页面偏移
+                var position = 0;
+                //a4纸的尺寸[595.28,841.89]，html页面生成的canvas在pdf中图片的宽高
+                // var imgWidth = 595.28;
+                // var imgHeight = 592.28/contentWidth * contentHeight;
+                var imgWidth = 555.28;
+                var imgHeight = 555.28/contentWidth * contentHeight;
+
+                //var pageData = canvas.toDataURL('image/jpeg', 1.0);
+                var pageData = canvas.toDataURL('image/png', 1.0);
+
+                var pdf = new jsPDF('', 'pt', 'a4');
+
+                //有两个高度需要区分，一个是html页面的实际高度，和生成pdf的页面高度(841.89)
+                //当内容未超过pdf一页显示的范围，无需分页
+                if (leftHeight < pageHeight) {
+                    // pdf.addImage(pageData, 'PNG', 0, 0, imgWidth, imgHeight );
+                    pdf.addImage(pageData, 'PNG', 20, 0, imgWidth, imgHeight );
+                } else {
+                    while(leftHeight > 0) {
+                        // pdf.addImage(pageData, 'PNG', 0, position, imgWidth, imgHeight)
+                        pdf.addImage(pageData, 'PNG', 20, position, imgWidth, imgHeight)
+                        leftHeight -= pageHeight;  //未生成pdf的html页面的长度
+                        position -= 841.89; //页面偏移
+                        //避免添加空白页
+                        if(leftHeight > 0) {
+                            pdf.addPage();
+                        }
+                    }
+                }
+
+                pdf.save('01-1content.pdf');
+            }
+        })
+    }
+</script>
+
+</body>
+</html>

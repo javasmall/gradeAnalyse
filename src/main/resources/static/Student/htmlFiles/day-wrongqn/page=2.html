@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../css/onlineQnBank/tiku.css">
+    <link rel="stylesheet" href="../../css/onlineQnBank/reset.css">
+    <link rel="stylesheet" href="../../css/onlineQnBank/treeview.css">
+    <style>
+        p{font-size: 15px}
+        i{font-size: 15px}
+    </style>
+</head>
+<body>
+<button  id="renderPdf" style="float: left">导出</button>
+
+<div style="padding-left: 50px;">
+<div class="framequestions" style="width: 60%">
+    <div class="questions_col">
+        <ul>
+            <li><!--<br />-->
+                <p>如图,在四棱锥P-ABCD中,底面ABCD是正方形,侧面PAD⊥底面ABCD，若E、F分别为PC、BD的中点.<br />
+                    <img src="data:image/png;base64,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" style="vertical-align:middle;" /><br />
+                    (Ⅰ) 求证：EF//平面PAD；<br />
+                    (Ⅱ) 求证：平面PDC⊥平面PAD；</p>
+
+                <p><span class="option">答案</span><i>（1）根据题意，证明线面平行，关键是先证明线线平行，即EF//GH<br />
+                    （2）对于面面垂直的证明，一般先证明线面垂直，CD⊥平面PAD，结合面面垂直的判定定理来得到。</i></p>
+                <p><span class="parsing">解析</span><i>试题分析：证明：（1）取AD中点G，PD中点H，连接FG,GH,HE，由题意：<br />
+                    <img src="data:image/png;base64,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" style="vertical-align:middle;" /><br />
+                    ∴四边形EFGH是平行四边形,∴EF//GH; 3分<br />
+                    又<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANwAAAAXCAMAAABXq9HEAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAclBMVEWOjo4NDQ1nQA0NQGeVlXNTQFNzlZUqU3mNaEANDUBqjIyMe1VAU3t5UypAaI0NKVUNDSpVe4wqDQ1VKQ2MjGpADQ1VKip7U1MqDT97U0BAU1MqDSpVVWgqQGc/DSoqKlVnQCpUK0BoVVWMZlVoVSr///+ve5UGAAAAJXRSTlMN/66uGYoZgFnqJj5xgFnJ+T75ySbqtmPXcYrmcJrXtpqncEuMho9KeAAAAAFiS0dEJcMByQ8AAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAHdElNRQffAhEXLhnL3HPZAAACFElEQVRYw+2Wa3eCMAyGS2EY6YoDYZvb3M39/984mqQlVXRe8Jx5DvmAATGPeZukVWqyyW7dEmlbt+7B7cJ66sHb/wfTnRZpdpe7z5mi6zk8QFXnBd+ae47dRRdvWVa/DN4ivxoMMDi4hOxDpfx1HyuJIDHd1KXKlvxfs2WJuXT8ppX/H1z87LFiT9nZ1WCQlCRo96ExaZ2qfZZEvJ0mACekZTU1BcZoHkIkhD8V3gPxnXkuRoSZmlNZVV3O7ild+SdkYSmTgIzp/ARjaxIOXl6rEK1phWB6prI372GSpD3DwpuXw/S8lwq14CvihuolidyIh7Et6WbWMlq27JNzbwFGbt4rZT5kXUE6JoyKFlWbFzqWDuLcdqexH9GeB32Ld+OJSCStXDmgaeK9VMI+qzFh3nHzhFaqr8rV4Fw5IKbuO1nzEOTVN3UvVFdO2VfhC8tPE4SZ9agwn5xrTIN1C6HBTk2uaUMGbkYgnWLK4kfxvnPvbSoB0+W4MI25YJnS7LJBERgc0Vs8USkc268ANjzPQzEsWbwuGZBbjoP5/hsN1rQuT7dnkBZCkVMHSthCINQIRdNyI9BBwmjLcQPFlmPDaN4vcovNbaPjyc5WcIBnaj5qNK0L4fp98SNOIKYmFTnkLLwfstveCi6AnWuSd9pJdlMd/n7gpHI+7C8LKkdnzWTIPYIX7ePH2rmwySabbLIx7RdEOhve6Ysm1QAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAxNS0wMy0yM1QyMTo1OTozNiswODowMPYDigUAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMTUtMDItMTdUMjM6NDY6MjUrMDg6MDB6jI7nAAAAGXRFWHRTb2Z0d2FyZQBNaWNyb3NvZnQgT2ZmaWNlf+01cQAAAABJRU5ErkJggg==" style="vertical-align:middle;" />，EF//平面PAD&nbsp;&nbsp; 7分<br />
+                    （2）∵ 平面PAD⊥底面ABCD,平面PAD∩平面ABCD=AD,<br />
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALwAAAAXCAMAAACGTNW0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAYFBMVEWOjo4NDQ1nQA0NDSpVe4yNaEBAaI0NQGeMe1VAU3uVlXNVKQ15UyoNDUBqjIyMjGpADQ0NKVVzlZVAK1QqDQ1AQGhAU1MqDSoqQGcqU3lTQFN7U0A/DSpoVSqMZlX///+eDYMKAAAAH3RSTlMN/675PllZrj5xGcmA6iYm6skZp/mMiuaagIpx14xLsZ/4nAAAAAFiS0dEHwUNEL0AAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAHdElNRQffAhEXLhnL3HPZAAAByklEQVRYw+2Wi27DIAxFgSYNI9mSdtnW7vX/nzmMAxhMqCJN2kOxFDWxzfUBDKoQu+32+01Syz7B8QdMVj+3mpLy0LRH+LXWkYh1ZqbvRCEvihRj2+ChBNboUu0SIHyZ/tAIMdw/iHE6ndfhTQ8elkdEeCwn9c8KO5YAnXHqbgC20uWOj9ajuugowysX5HlRhMUYPYEvdTyWAB3TA2YFUM+4C+OTfSbwLvMtwrfPL00hj4jkMbWwwbpFeI8apyLTEk7H9F0dcPCqMM5uisAhZXh9cSksj4ikMdNfy62zCr+UcDoK3iqAuDN+ldz7+sqb17MbnudRkTTWJuz8avT3ZYD3JcRgvccbgJR0WSY9x4opPLSAHc7yiEgWe2sEt9rKLyWcjhOpAdKYds2Gm1WChw+YO8uj3Z/GtsL7Eqij3N1SAVze7HaJwW1KclFQeH0ReNx5XhTJYm2h5XN40jahhKuBHVMD1DMEx/fGzvEqwkXF4Vu/m4W8IJLHth3YUAJrKHm9BWh6O3MbH/AUheOhwsFygydppdp42jAPlYNIriH4VbkOH0ucPuiQNcBvsM9m8xAK/5N/y+hxKpmeA1zsn3TluXO33Xb7d/YFXGEbWVSdhGQAAAAldEVYdGRhdGU6Y3JlYXRlADIwMTUtMDMtMjNUMjE6NTU6MjArMDg6MDBDRV8vAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE1LTAyLTE3VDIzOjQ2OjI1KzA4OjAweoyO5wAAABl0RVh0U29mdHdhcmUATWljcm9zb2Z0IE9mZmljZX/tNXEAAAAASUVORK5CYII=" style="vertical-align:middle;" />，∴CD⊥平面PAD，&nbsp; 11分<br />
+                    又<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG8AAAAVCAMAAAB/okD1AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAUVBMVEWOjo4NDQ1nQA0NDSpVe4yNaEBAaI0NQGcNDUBqjIyVlXNVKQ15UyqMjGpADQ0NKVVzlZWMe1UqDQ1AK1RAQGgqU3l7U0AqDSpTQFM/DSr///+KJ+pDAAAAGnRSTlMN/675PllZruomGcmAJurJGT75p4yAceaK156iVSEAAAABYktHRBp1Z+QyAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAB3RJTUUH3wIRFy4Zy9xz2QAAATpJREFUSMftlWGTgiAQhoEkLwMv7ezu/v8fPVhYeIHyqqnpSzvTqIjPswurCfGOl4XEqC79wJOsq5dXhpJy0+mtP7ro7/RpevpjJyoO0/M8d2fYbzohjJttx8/DZZcsJKV9mreO458GDtBZR2p7dHdVnwfOC8HX7J72tRkqMHGQHpMKddsv9xv9TTv2aSEoUm4yKUt7HCGLclVlDtJDmFxpSNAVT3OG/bK+f7WPLIaKShyki0CF3VJ0HuvTpa7tf34p2Ke5XTKnoMekenAvYYXpcKoy+7c+xezMQXrrm75JoSjHm312XBpO62P68HMQJjZwaE+9XOGD9YwWF8ABOicz+yH728UEFb8Nt/aL4lKQk+mwa2GbTWgEbJ/6fVjxTTM/WnKYfm+g77Ffa59xDFhYee70af8O71iNP7qHDKxZY1RMAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDE1LTAzLTI0VDAwOjU3OjQ5KzA4OjAw1UYmGwAAACV0RVh0ZGF0ZTptb2RpZnkAMjAxNS0wMi0xN1QyMzo0NjoyNSswODowMHqMjucAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAAAElFTkSuQmCC" style="vertical-align:middle;" />，∴平面PDC⊥平面PAD&nbsp; 14分<br />
+                    考点：空间中平行和垂直的证明</i></p>
+            </li><br/>
+        </ul>
+    </div>
+</div>
+
+<div style="float: left;">
+    <div class="fenye" >
+        <div class="pg">
+            <a href="../day-wrongqn/page=1.html">1</a>
+            <strong style="background: #0d957a">2</strong>
+            <a href="">3</a>
+            <a href="">4</a>
+            <!--https://tiku.21cnjy.com/tiku.php?mod=list&channel=3&xd=3-->
+            <!--https://tiku.21cnjy.com/tiku.php?mod=list&channel=3&xd=3&page=2-->
+            <a href="" class="last">... 10</a>
+            <label>
+                <input type="text" name="custompage" class="px" size="2" title="输入页码，按回车快速跳转" value="1" onkeydown="if(event.keyCode==13) {window.location='/tiku.php?mod=list&channel=3&xd=3&amp;page='+this.value;; doane(event);}" />
+                <span title="共 10 页"> / 10 页</span>
+            </label><a href="/tiku.php?mod=list&channel=3&xd=3&amp;page=2" class="nxt">下一页</a></div></div>
+</div>
+</div>
+
+
+<script type="text/javascript" src="../../js/testModelsJS/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="../../js/testModelsJS/html2canvas.js"></script>
+<script type="text/javascript" src="../../js/testModelsJS/jspdf.debug.js"></script>
+<script type="text/javascript">
+
+    var downPdf = document.getElementById("renderPdf");
+
+    downPdf.onclick = function() {
+        html2canvas($('.framequestions'), {  //将body元素转化为canvas对象，然后生成pdf
+            onrendered:function(canvas) {
+
+                var contentWidth = canvas.width;
+                var contentHeight = canvas.height;
+
+                //一页pdf显示html页面生成的canvas高度;
+                var pageHeight = contentWidth / 592.28 * 841.89;
+                //未生成pdf的html页面高度
+                var leftHeight = contentHeight;
+                //pdf页面偏移
+                var position = 0;
+                //a4纸的尺寸[595.28,841.89]，html页面生成的canvas在pdf中图片的宽高
+                // var imgWidth = 595.28;
+                // var imgHeight = 592.28/contentWidth * contentHeight;
+                var imgWidth = 555.28;
+                var imgHeight = 555.28/contentWidth * contentHeight;
+
+                //var pageData = canvas.toDataURL('image/jpeg', 1.0);
+                var pageData = canvas.toDataURL('image/png', 1.0);
+
+                var pdf = new jsPDF('', 'pt', 'a4');
+
+                //有两个高度需要区分，一个是html页面的实际高度，和生成pdf的页面高度(841.89)
+                //当内容未超过pdf一页显示的范围，无需分页
+                if (leftHeight < pageHeight) {
+                    // pdf.addImage(pageData, 'PNG', 0, 0, imgWidth, imgHeight );
+                    pdf.addImage(pageData, 'PNG', 20, 0, imgWidth, imgHeight );
+                } else {
+                    while(leftHeight > 0) {
+                        // pdf.addImage(pageData, 'PNG', 0, position, imgWidth, imgHeight)
+                        pdf.addImage(pageData, 'PNG', 20, position, imgWidth, imgHeight)
+                        leftHeight -= pageHeight;  //未生成pdf的html页面的长度
+                        position -= 841.89; //页面偏移
+                        //避免添加空白页
+                        if(leftHeight > 0) {
+                            pdf.addPage();
+                        }
+                    }
+                }
+
+                pdf.save('01-2content.pdf');
+            }
+        })
+    }
+</script>
+
+</body>
+</html>

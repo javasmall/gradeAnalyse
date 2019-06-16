@@ -1,0 +1,28 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace：必须与对应的接口全类名一致 id:必须与对应接口的某个对应的方法名一致 -->
+
+<mapper namespace="com.ssm.dao.teacherMapper">
+
+
+    <insert id="addtest" parameterType="com.ssm.bean.test_name">
+        insert into test_name (testname,school_name,test_year,test_month,test_type) values (#{testname},#{schoolName},#{testYear},#{testMonth},#{testType});
+    </insert>
+    <insert id="insearttestconfig">
+        insert into test_paper_information (test_name,paper_lesson,question_index,question_fullscore,question_kownledge,title_numbertype,school_name)
+        values (#{testname},#{lesson},#{index},#{fullscore},#{point},#{type},#{school})
+    </insert>
+
+    <select id="gettestpaperinfo" resultType="com.ssm.bean.testPaperinfo">
+        select * from test_paper_information where test_name=#{testname} and paper_lesson=#{lesson} order by question_index asc
+    </select>
+    <insert id="inserttestpaper" parameterType="com.ssm.bean.test_paper">
+        insert into test_paper_score (test_name,paper_lesson,student_id,question_number,question_fullscore,question_score,school_name)
+        values (#{testName},#{paperLesson},#{studentId},#{questionNumber},#{questionFullscore},#{questionScore},#{schoolName})
+    </insert>
+    <insert id="score" parameterType="com.ssm.bean.student_chengji">
+        insert into student_chengji (student_id,lesson_name,lesson_score,class_id,test_name,schoolname)
+        values (#{studnetId},#{lessonName},#{lessonScore},#{classId},#{testName},#{schoolName})
+    </insert>
+   
+</mapper>

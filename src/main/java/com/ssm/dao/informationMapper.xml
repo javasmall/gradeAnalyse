@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace：必须与对应的接口全类名一致 id:必须与对应接口的某个对应的方法名一致 -->
+<!-- 通过科目返回该学科的知识点 -->
+<mapper namespace="com.ssm.dao.informationMapper">
+    <select id="getkownpoint" resultType="Map">
+        select problem_course lesson,problem_type point
+        from kownledge_point where problem_course=#{lesson}
+    </select>
+
+    <select id="getclassid" resultType="Map">
+        select class_id FROM student
+        GROUP BY class_id
+    </select>
+
+    <select id="getstudentid" resultType="Map">
+        select * FROM student
+        WHERE class_id=#{classid}
+    </select>
+
+    <select id="getproblemstylebyid" resultType="Map">
+        select question_kownledge from test_paper_information
+        where paper_lesson=#{lesson}
+        and question_index=#{problemid}
+        and school_name='just'
+        and test_name='test1'
+
+    </select>
+    <select id="getstuinfo" resultType="Map">
+        select * from student where student_id=#{id}
+    </select>
+    <select id="getproblemtype" resultType="Map">
+        select title_numbertype from test_paper_information
+        where paper_lesson=#{lesson}
+        group by title_numbertype
+    </select>
+</mapper>

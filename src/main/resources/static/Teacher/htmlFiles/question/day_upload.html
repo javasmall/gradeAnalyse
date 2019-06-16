@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>上传到题库</title>
+    <link rel="stylesheet" type="text/css" href="../../../common/layui/css/layui.css" media="all">
+    <style>
+        .select{
+            text-align: center;
+        }
+        .selectPic{
+            /*float: right;*/
+            text-align: right;
+        }
+    </style>
+
+</head>
+<body>
+
+<form action="../../../addtiku" enctype="multipart/form-data" method="post"
+      class="layui-form day_upload"   style="margin-left: auto;margin-right: auto;"
+      id="uploadForm" onsubmit="return saveForm()";>
+    <div class="layui-card">
+        <div class="layui-card-header" ><p align="center">日常题目上传</p></div>
+            <!--1学号-->
+            <!--<input type="hidden" id="upload_studentid" name="studentid" value="">-->
+            <!--type="hidden"隐藏域-->
+
+            <!--2学科名称-->
+            <div class="layui-form-item select">
+                <div class="layui-inline">
+                    <label class="layui-form-label">学科选择</label>
+                    <div class="layui-input-block">
+                        <select class="test" id="subjectSelect"  lay-filter="subjectSelect" name="type">
+                            <option value="选择科目" selected="">--选择学科--</option>
+                            <option value="语文" >语文</option>
+                            <option value="数学" selected="selected">数学</option>
+                            <option value="英语">英语</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <input type="hidden"  id="upload_testSubject" name="lesson" value="数学"><br/>
+
+            <div class="layui-form-item select">
+                <div class="layui-inline">
+                <label class="layui-form-label">知识点选择</label>
+                <div class="layui-input-block">
+                    <select class="test" id="knopointSelect"  lay-filter="knowpoint" name="type">
+                        <option value="选择科目" selected="">--选择知识点--</option>
+                        <option value="集合" >集合</option>
+                        <option value="函数与导数">函数与导数</option>
+                        <option value="三角">三角</option>
+                        <option value="向量">向量</option>
+                        <option value="数列">数列</option>
+                        <option value="不等式">不等式</option>
+                        <option value="立体几何">立体几何</option>
+                        <option value="解析几何">解析几何</option>
+                        <option value="统计与概率">统计与概率</option>
+                        <option value="算法与框图">算法与框图</option>
+                        <option value="矩阵">矩阵</option>
+                        <option value="推理与证明">推理与证明</option>
+                        <option value="其他">其他</option>
+                    </select>
+                </div>
+                </div>
+            </div>
+            <!--3知识点,,,通过学科、题号进行ajax加载-->
+            <input type="hidden" id="upload_knowleagePoint" name="point" value="">
+
+
+            <!--4学校-->
+            <input type="hidden" id="upload_testSchool" name="school" value="just" >
+
+
+            <div class="layui-form-item selectPic" style="margin-left: auto;margin-right: auto;text-align: center;height: 50px">
+                <div class="layui-inline">
+                    <label class="layui-form-label">题目照片</label>
+                    <div class="layui-input-block">
+                        <input type="file"  name="file">
+                    </div>
+                </div>
+                <br/>
+
+                <div class="layui-inline">
+                    <label class="layui-form-label">答案照片</label>
+                    <div class="layui-input-block">
+                        <input type="file" name="file">
+                    </div>
+                </div>
+                <br/>
+
+                <div class="layui-inline">
+                    <div class="layui-input-block">
+                        <input   class="layui-btn layui-btn-normal" value="提交" type="submit"  />
+                    </div>
+                </div>
+            </div>
+            <br/>
+    </div>
+</form>
+
+
+<!--js Plungin-->
+<script src="../../../jsTools/jquery-2.2.1.min.js"></script>
+<script type="text/javascript" src="../../../common/layui/layui.js"></script>
+<script type="text/javascript" src="../../../jsTools/jquery-form.js"></script>
+<script src="../../js/question/day_upload.js"></script>
+<script>
+    function saveForm(){
+        // jquery 表单提交  
+        $("#uploadForm").ajaxSubmit(function(message) {
+            // 对于表单提交成功后处理，message为提交页面saveReport.htm的返回内容  
+             console.log(message);
+             layer.open({
+                title: '提示信息'
+                ,content: '您已成功上传文件到题库！目前等待审核！'
+            });
+        });
+        return false; // 必须返回false，否则表单会自己再做一次提交操作，并且页面跳转  
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>三总排名</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <!--https://hanlei525.github.io/layui-v2.4.3/layui-v2.4.5/css/layui.css-->
+    <link rel="stylesheet" type="text/css" href="../../../common/layui/css/layui.css" media="all">
+    <link rel="stylesheet" type="text/css" href="../../../common/layui/css/layui.mobile.css" media="all">
+    <link rel="stylesheet" type="text/css" href="../../../common/bootstrap/css/bootstrap.css" media="all">
+    <link rel="stylesheet" type="text/css" href="../../../common/global.css" media="all">
+    <link rel="stylesheet" type="text/css" href="../../../css/cssFile/personal.css" media="all">
+    <!--本地layui.css和layui.js文件有问题，，故在线引用-->
+</head>
+
+<body>
+<div style="padding: 20px; background-color: #F2F2F2;">
+    <div class="layui-row  threeRank" style="margin-left: auto;margin-right: auto;">
+        <div class="layui-card">
+            <div class="layui-card-header"><p align="center">历次考试三总成绩排名</p></div>
+            <div class="layui-card-body threeRank_chart" id="threeRank_chart" style="width: 700px;height: 400px;margin-left: auto;margin-right: auto;" >
+                <!--用于渲染echarts数据-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--加载js文件-->
+<script type="text/javascript" src="../../../jsTools/jquery-2.2.1.min.js"></script>
+<script type="text/javascript" src="../../../jsTools/jquery.cookie.js"></script>
+<script type="text/javascript" src="../../../jsTools/echarts.min.js"></script>
+<script type="text/javascript" src="../../js/gradeShowJs/threeRank.js"></script>
+</body>
+</html>

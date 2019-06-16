@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>上传记录</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <!--https://hanlei525.github.io/layui-v2.4.3/layui-v2.4.5/css/layui.css-->
+    <link rel="stylesheet" type="text/css" href="../../../common/layui/css/layui.css" media="all">
+    <link rel="stylesheet" type="text/css" href="../../../common/layui/css/layui.mobile.css" media="all">
+    <link rel="stylesheet" type="text/css" href="../../../common/bootstrap/css/bootstrap.css" media="all">
+    <link rel="stylesheet" type="text/css" href="../../../common/global.css" media="all">
+    <link rel="stylesheet" type="text/css" href="../../../css/cssFile/personal.css" media="all">
+    <link rel="stylesheet" type="text/css" href="../../../css/cssFile/contextMenu.css" media="all">
+</head>
+    <!--该页面允许学生查看自己之前上传的错题的所有记录,后期可以增加多种类型检索选项-->
+
+<body>
+
+<div style="padding: 20px; background-color: #F2F2F2;height: 80%">
+    <div class="layui-row  singleSub" style="margin-left: auto;margin-right: auto;">
+        <div class="layui-card">
+            <div class="layui-card-header"><p align="center">错题上传记录</p></div>
+            <!--之后可以通过再次添加form表单，来实现"上传记录"的筛选-->
+
+            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+                <legend>上传记录</legend>
+            </fieldset>
+
+            <table class="layui-table" id="allgrade_table" style="height: 112px" lay-filter="filing_info_table">
+                <colgroup>
+                    <col width="7%">
+                    <col width="15%">
+                    <col width="15%">
+                    <col width="15%">
+                    <col width="15%">
+                    <col width="15%">
+                    <col width="13%">
+                </colgroup>
+                <thead>
+                <tr>
+                    <th style="text-align: center">考试名称</th>
+                    <th style="text-align: center">学科</th>
+                    <th style="text-align: center">知识点</th>
+                    <th style="text-align: center">题号</th>
+                    <th style="text-align: center">上传时间</th>
+                    <th style="text-align: center" >功能选择</th>
+                    <th style="display: none" id="table_uploadimgUrl">图片网址</th>
+                    <!--使用表格的隐藏属性存储错题图片的url地址-->
+
+
+                    <!--<th style="text-align: center">-->
+                    <!--<button class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail" onclick="question_show_showDetails()">查看</button>-->
+                    <!--<button class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del" onclick="question_show_Delete()">删除</button>-->
+                    <!--</th>-->
+                    <!--编辑选项，保留"删除"按钮-->
+                </tr>
+                </thead>
+                <tbody>
+                <!--后台添加子项-->
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+</div>
+
+    <!--js Plungin-->
+    <script type="text/javascript" src="../../../common/layui/layui.js"></script>
+    <script type="text/javascript" src="../../../common/larry/larry.js"></script>
+    <script type="text/javascript" src="../../../jsTools/jquery-2.2.1.min.js"></script>
+    <script type="text/javascript" src="../../../jsTools/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../../../jsTools/echarts.min.js"></script>
+
+
+    <script src="../../js/question/question_uploadRecords.js"></script>
+    <!--引入该文件对应的后台js文件,,,其中包括动态加载表格-->
+
+    <!--为表格中的"行元素"添加点击事件-->
+    <script>
+
+        // $("#allgrade_table tr").click(function() {
+        $('#allgrade_table tbody').on( 'click', 'tr', function (e) {
+            //alert("你点击了表格中的元素");
+            //var test_click=$(this).attr("th").val();
+            //console.log(test_click);
+            var TaskTyp="";  //注意清除之前的数据
+            TaskType = $(this).find("td").eq(0).html()+" "+$(this).find("td").eq(1).html()+" "+$(this).find("td").eq(2).html()+" "+$(this).find("td").eq(3).html()+" "+
+                $(this).find("td").eq(4).html()+" "+$(this).find("td").eq(5).html()+" ";
+             //alert(TaskType);
+        });
+    </script>
+
+
+</body>
+</html>

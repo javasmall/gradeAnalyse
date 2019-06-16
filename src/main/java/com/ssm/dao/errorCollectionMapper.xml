@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace：必须与对应的接口全类名一致 id:必须与对应接口的某个对应的方法名一致 -->
+
+<mapper namespace="com.ssm.dao.errorCollectionMapper">
+    <sql id="errorcollection">
+        student_id,test_name,lesson_name,problem_id,school_name,kownledge_point,img_url,uploadtime
+    </sql>
+    <insert id="inserterrorproblem" parameterType="com.ssm.bean.error_collection">
+        insert into error_collection (<include refid="errorcollection"/>)
+        values
+        (#{student_id},#{test_name},#{lesson_name},#{problem_id},#{school_name},#{kownledge_point},#{img_url},#{uploadtime})
+    </insert>
+    <delete id="deleteWrongProblem">
+        delete from error_collection where img_url=#{url}
+    </delete>
+
+    <select id="selecterrorcollection" resultType="error_collection">
+        select
+        *
+        from error_collection
+        where student_id=#{studentid} and school_name=#{school}
+        <if test="lesson!=null">
+            and lesson_name=#{lesson}
+        </if>
+        <if test="point!=null">
+            and kownledge_point=#{point}
+        </if>
+
+    </select>
+
+</mapper>

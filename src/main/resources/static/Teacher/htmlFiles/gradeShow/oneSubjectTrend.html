@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>平均分走势</title>
+
+    <!--https://hanlei525.github.io/layui-v2.4.3/layui-v2.4.5/css/layui.css-->
+    <link rel="stylesheet" type="text/css" href="../../../common/layui/css/layui.css" media="all">
+    <!--本地layui.css和layui.js文件有问题，，故在线引用-->
+
+
+</head>
+<body>
+<div class="layui-row  allSubpt" style="margin-left: auto;margin-right: auto;">
+    <div class="layui-card">
+        <div class="layui-card-header"><p align="center">历次考试各科成绩以及排名信息</p></div>
+
+         <form class="layui-form" action="" style="margin-left: auto;margin-right: auto;text-align: center">
+            <div class="layui-form-item">
+                <div class="layui-inline" style="margin-left: auto;margin-right: auto;text-align: center">
+                    <label class="layui-form-label">选择科目</label>
+                    <div class="layui-input-block">
+                        <select class="test" id="subjectSelect"  lay-filter="subjectSelect">
+                            <option value="语文" selected="">语文</option>
+                            <option value="数学" >数学</option>
+                            <option value="英语">英语</option>
+                            <option value="物理">物理</option>
+                            <option value="化学">化学</option>
+                            <option value="政治">政治</option>
+                            <option value="历史">历史</option>
+                            <OPTION VALUE="地理">地理</option>
+                            <OPTION VALUE="生物">生物</option>
+                            <OPTION VALUE="附加题">附加题</option>
+                        </select>
+                    </div>
+                </div>
+              <div class="layui-inline">
+                <div class="layui-input-block">
+                    <a class="layui-btn layui-btn-normal" onclick="searchUrl()">查询</a>
+                </div>
+            </div>
+
+         <table class="layui-table" id="oneSubjectTrend_table">
+                <colgroup>
+                    <col width="25%">
+                    <col width="25%">
+                    <col width="25%">
+                    <col width="25%">
+                </colgroup>
+                <thead>
+                <tr>
+                    <th style="text-align: center">考试名称</th>
+                    <th style="text-align: center">平均分</th>
+                    <th style="text-align: center">年级排名</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+          </table>
+
+                <div class="layui-row  threeRank" style="margin-left: auto;margin-right: auto;">
+                    <div class="layui-card">
+                        <div class="layui-card-header"><p align="center">历次考试单科成绩走势</p></div>
+                        <div class="layui-card-body oneSubjectTrend_chart" id="oneSubjectTrend_chart" style="width:500px;height: 400px;margin-left: auto;margin-right: auto;" >
+                        <!--用于渲染echarts数据-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        </div>
+    </div>
+
+
+    <!--加载js文件-->
+    <script type="text/javascript" src="../../../jsTools/jquery-2.2.1.min.js"></script>
+    <script type="text/javascript" src="../../../common/layui/layui.js"></script>
+    <script type="text/javascript" src="../../../jsTools/echarts.min.js"></script>
+    <script type="text/javascript" src="../../js/gradeShowJs/oneSubjectTrend.js"></script>
+</body>
+</html>

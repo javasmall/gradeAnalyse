@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>拍照搜题</title>
+    <link rel="stylesheet" href="../../../common/layui/css/layui.css">
+    <style>
+        .content{
+            text-align: center;
+        }
+        .description{
+            text-align: center;
+        }
+
+    </style>
+</head>
+
+<body>
+<blockquote class="layui-elem-quote layui-quote-nm">本系统的"搜题"功能，提供两种实现方式呢！
+    "拍照搜题"与"关键字搜索"总有一种方式令您满意！
+</blockquote>
+
+
+    <div class="layui-card content" style="height:100%;">
+
+        <!--后台url不好处理-->
+        <!--&lt;!&ndash;方式一,"拖拽上传"要搜索的图片&ndash;&gt;-->
+        <!--<div class="layui-upload-drag" id="dragPic">-->
+            <!--<i class="layui-icon"></i>-->
+            <!--<p>点击上传，或将文件拖拽到此处</p>-->
+        <!--</div>-->
+        <!--<button type="button" class="layui-btn" id="upload">开始搜索</button>-->
+        <!--<br/>-->
+        <!--<script type="text/javascript" src="../../../common/layui/layui.js"></script>-->
+        <!--<script type="text/javascript" src="../../js/question/PhotoSearch.js"></script>-->
+
+
+        <!--http://localhost:8080/boot/ocrimg-->
+        <form action="../../../ocrimg" enctype="multipart/form-data" method="post"
+              id="saveReportForm" onsubmit="return saveReport();">
+            <input type="file" name="file"  value=""/>
+            <input type="submit"  class="layui-btn layui-btn-normal" value="开始搜索"/>
+        </form>
+
+
+
+        <br/><br/>
+
+        <form class="layui-form " action="../../../ocring2"  enctype="multipart/form-data" method="post"
+              id="saveReportForm2" onsubmit="return saveReport2();"
+              style="width: 50%;text-align: center;padding-left: 20%" >
+            <div class="layui-form-item ">
+                <div class="layui-inline">
+                <label class="layui-form-label">问题描述:</label>
+                    <div class="layui-input-block ">
+                        <input type="text"  name="text" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-inline">
+                    <div class="layui-input-block">
+                        <input class="layui-btn layui-btn-normal" value="开始搜索" type="submit"  />
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+题目搜索结果展示:
+<hr class="layui-bg-blue">
+<!--没有搜索到结果，填充P元素,"抱歉！题库中暂时没有此道题目,以为您推荐相同类型知识点题目"-->
+    <!--<p>题目描述</p>-->
+    <div class="Description">
+        <img id="describtion" src="">
+    </div>
+
+    <!--<p>答案</p>-->
+    <div class="Result">
+        <img id="result" src="">
+    </div>
+
+<script type="text/javascript" src="../../../jsTools/jquery-2.2.1.min.js"></script>
+<script type="text/javascript" src="../../../jsTools/jquery-form.js"></script>
+
+<script>
+
+    function saveReport() {
+        var descriUrl="";
+        var resultUrl="";
+        $("#describtion").attr("src","");
+        $("#result").attr("src","");
+        // jquery 表单提交  
+        $("#saveReportForm").ajaxSubmit(function(message) {
+            // 对于表单提交成功后处理，message为提交页面saveReport.htm的返回内容  
+            // console.log(message);
+            // console.log(message["hits"]["hits"][0]["sourceAsMap"]["answerurl"]);
+            descriUrl="../../../"+message["hits"]["hits"][0]["sourceAsMap"]["imgurl"];
+            resultUrl="../../../"+message["hits"]["hits"][0]["sourceAsMap"]["answerurl"];
+            $("#describtion").attr("src",descriUrl);  //置空操作
+            $("#result").attr("src",resultUrl);
+            //$('#result').src="http://localhost:8080/boot/"+resultUrl;
+
+        });
+
+        return false; // 必须返回false，否则表单会自己再做一次提交操作，并且页面跳转  
+    }
+
+    function saveReport2() {
+        var descriUrl="";
+        var resultUrl="";
+        $("#describtion").attr("src","");  //置空操作
+        $("#result").attr("src","");
+        // jquery 表单提交  
+        $("#saveReportForm2").ajaxSubmit(function(message) {
+            // 对于表单提交成功后处理，message为提交页面saveReport.htm的返回内容  
+            // console.log(message);
+            // console.log(message["hits"]["hits"][0]["sourceAsMap"]["answerurl"]);
+            descriUrl="../../../"+message["hits"]["hits"][0]["sourceAsMap"]["imgurl"];
+            resultUrl="../../../"+message["hits"]["hits"][0]["sourceAsMap"]["answerurl"];
+            $("#describtion").attr("src",descriUrl);
+            $("#result").attr("src",resultUrl);
+            //$('#result').src="http://localhost:8080/boot/"+resultUrl;
+
+        });
+
+        return false; // 必须返回false，否则表单会自己再做一次提交操作，并且页面跳转  
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>后台首页</title>
+	<link rel="stylesheet" type="text/css" href="../common/layui/css/layui.css" media="all">
+	<link rel="stylesheet" type="text/css" href="../common/bootstrap/css/bootstrap.css" media="all">
+	<link rel="stylesheet" type="text/css" href="../common/global.css">
+	<link rel="stylesheet" type="text/css" href="../css/cssFile/main.css" media="all">
+</head>
+
+<!--这是主界面，还没有整合到Layer框架中-->
+<!--该界面可以先放一个关于学生成绩的总览状况-->
+<body>
+<section class="larry-wrapper">
+    <!-- overview -->
+	<div class="row state-overview">
+		<div class="col-lg-3 col-sm-6 layui-anim layui-anim-up">
+            <!--通过section对该网页的内容及进行分块-->
+			<section class="panel">
+				<div class="symbol userblue layui-anim layui-anim-rotate"> <i class="iconpx-users"></i>
+				</div>
+				<div class="value">
+					<a href="#">
+						<h1 id="count1">10</h1>
+					</a>
+					<p>用户总量</p>
+				</div>
+			</section>
+		</div>
+
+        <!--采用网络栅格系统,,,layui中的该栅格系统更好地对各终端进行显示-->
+        <!--<div class="layui-col-xs6 layui-col-sm6 layui-col-md4">-->
+            <!--移动：6/12 | 平板：6/12 | 桌面：4/12-->
+		<div class="col-lg-3 col-sm-6 layui-anim layui-anim-up">
+			<section class="panel">
+				<div class="symbol commred layui-anim layui-anim-rotate"> <i class="iconpx-user-add"></i>
+				</div>
+				<div class="value">
+					<a href="#">
+						<h1 id="count2">1</h1>
+					</a>
+					<p>今日注册用户</p>
+				</div>
+			</section>
+		</div>
+		<div class="col-lg-3 col-sm-6 layui-anim layui-anim-up">
+			<section class="panel">
+				<div class="symbol articlegreen layui-anim layui-anim-rotate">
+					<i class="iconpx-file-word-o"></i>
+				</div>
+				<div class="value">
+					<a href="#">
+						<h1 id="count3">50</h1>
+					</a>
+					<p>文章总数</p>
+				</div>
+			</section>
+		</div>
+		<div class="col-lg-3 col-sm-6 layui-anim layui-anim-up">
+			<section class="panel">
+				<div class="symbol rsswet layui-anim layui-anim-rotate">
+					<i class="iconpx-check-circle"></i>
+				</div>
+				<div class="value">
+					<a href="#">
+						<h1 id="count4">0</h1>
+					</a>
+					<p>待审文章总数</p>
+				</div>
+			</section>
+		</div>
+	</div>
+	<!-- overview end 总览结束-->
+
+
+	<div class="row">
+		<div class="col-lg-6">
+
+            <!--面板类panel-->
+			<section class="panel">
+				<header class="panel-heading bm0">
+					<span class='span-title'>系统概览</span>
+					<span class="tools pull-right"><a href="javascript:;" class="iconpx-chevron-down"></a></span>
+				</header>
+				<div class="panel-body" >
+					<table class="table table-hover personal-task">
+                         <tbody>
+                         	<tr>
+                                <td>
+                                     版本名称：<a href="http://www.larrycms.com">Performance analysis system</a> 版本号: V01_CCC8_0.10
+
+                                </td>
+                                <td>
+
+                                </td>
+                            </tr>
+                         	<tr>
+                                <!--每一行有两列元素-->
+                         		<td>
+                                <strong>开发作者</strong>： Siege lion Team
+
+                                </td>
+                                <td></td>
+                         	</tr>
+                         	<tr>
+                         		<td>
+                                <strong>网站域名</strong>：未定义
+                                </td>
+                                <td></td>
+                         	</tr>
+                         	<tr>
+                         		<td>
+                                <strong>网站目录</strong>：未定义
+                                </td>
+                                <td></td>
+                         	</tr>
+                         	<tr>
+                         		<td>
+                                <strong>服务器IP</strong>：未定义
+                                </td>
+                                <td></td>
+                         	</tr>
+                         	<tr>
+                         		<td>
+                                <strong>服务器环境</strong>：未定义
+                                </td>
+                                <td></td>
+                         	</tr>
+                         	<tr>
+                         		<td>
+                                <strong>数据库版本</strong>： 未定义
+
+                                </td>
+                                <td></td>
+                         	</tr>
+                         	<tr>
+                         		<td>
+                                <strong>最大上传限制</strong>： 未定义
+
+                                </td>
+                                <td></td>
+                         	</tr>
+                         	<tr>
+                         		<td>
+                                <strong>当前登录用户</strong>： <span class="current_user">未定义</span>
+
+                                </td>
+                                <td></td>
+                         	</tr>
+                         </tbody>
+					</table>
+				</div>
+			</section>
+
+      <!-- 网站信息统计｛SEO数据统计｝ -->
+            <!--此处时后台使用echarts进行界面的加载-->
+      <section class="panel">
+                  <header class="panel-heading bm0">
+                       <span class='span-title'>网站信息统计｛SEO数据统计｝</span>
+                       <span class="tools pull-right"><a href="javascript:;" class="iconpx-chevron-down"></a></span>
+                  </header>
+                  <div class="panel-body laery-seo-box">
+                      <!--此处放置统计数据，-->
+                        <div class="larry-seo-stats" id="larry-seo-stats"></div>
+                  </div>
+      </section>
+
+
+		</div>
+		<div class="col-lg-6">
+		     <!-- 快捷操作 -->
+             <section class="panel">
+                  <header class="panel-heading bm0">
+                        <span class='span-title'>快捷操作</span>
+                        <span class="tools pull-right"><a href="javascript:;" class="iconpx-chevron-down"></a></span>
+                  </header>
+                  <div class="panel-body">
+                        <table class="table table-hover personal-task shortcut">
+                            <tr>
+                            	<td>
+                            		<div class="c1">1</div>
+                            		<div class="c2">2</div>
+                            		<br>
+                            	</td>
+                            </tr>
+                        </table>
+                  </div>
+             </section>
+          <!-- 系统公告 -->
+             <section class="panel">
+                 <header class="panel-heading bm0">
+                        <span class='span-title'>系统公告</span>
+                        <span class="tools pull-right"><a href="javascript:;" class="iconpx-chevron-down"></a></span>
+                  </header>
+                  <div class="panel-body">
+                        <table class="table table-hover personal-task shortcut">
+                            <tr>
+                              <td>
+                                <div class="c1">1</div>
+                                <div class="c2">2</div>
+                                <br>
+                              </td>
+                            </tr>
+                        </table>
+                  </div>
+             </section>
+
+              <!-- 最新文章 -->
+            <!--bange是徽章类-->
+             <section class="panel">
+                  <header class="panel-heading bm0">
+                        <span class='span-title'>最新文章</span>
+                        <span class="badge" style="background-color:#FF3333;"> new </span>
+                        <span class="tools pull-right"><a href="javascript:;" class="iconpx-chevron-down"></a></span>
+                  </header>
+                  <div class="panel-body">
+                       <table class="table table-hover personal-task">
+                           <!--类似该种数据的插入，可以使用js文件在后台动态插入-->
+                           <tbody>
+                           <tr>
+                               <td>转载</td>
+                               <td>
+                                   <a href="#" >高校“大班额”现象普遍 怎样保证教学质量？ 中国教育新闻网—中国教育报</a>
+                               </td>
+                               <td class="col-md-5">阅读量：4307 &nbsp;&nbsp;&nbsp;&nbsp; 2018-11-30</td>
+                           </tr>
+
+                           <tr>
+                               <td>转载</td>
+                               <td>
+                                   <a href="#" >当前语文教育中几个问题的思考 中国教育和科研计算机网</a>
+                               </td>
+                               <td class="col-md-5">阅读量：2950 &nbsp;&nbsp;&nbsp;&nbsp; 2018-11-30</td>
+                           </tr>
+                           <tr>
+                               <td>转载</td>
+                               <td>
+                                   <a href="#" >2017年普通高校招生工作将执行30条禁令 人民日报</a>
+                               </td>
+                               <td class="col-md-5">阅读量：6780 &nbsp;&nbsp;&nbsp;&nbsp; 2018-11-30</td>
+                           </tr>
+                           <tr>
+                               <td>转载</td>
+                               <td>
+                                   <a href="#" >面对沪浙高考改革：考生如何用好自主选择权 光明日报</a>
+                               </td>
+                               <td class="col-md-5">阅读量：3350 &nbsp;&nbsp;&nbsp;&nbsp; 2018-11-30</td>
+                           </tr>
+                           <tr>
+                               <td>转载</td>
+                               <td>
+                                   <a href="#" >高考改革后，如何帮考生科学填报志愿？ 中国教育新闻网</a>
+                               </td>
+                               <td class="col-md-5">阅读量：5350 &nbsp;&nbsp;&nbsp;&nbsp;  2018-11-30</td>
+                           </tr>
+                           </tbody>
+                       </table>
+                  </div>
+             </section>
+		</div>
+	</div>
+
+</section>
+
+<script type="text/javascript" src="../common/layui/layui.js"></script>
+<script type="text/javascript" src="../jsTools/echarts.min.js"></script>
+<!--使用了echarts文件-->
+<script type="text/javascript" src="../js/main.js"></script>
+<script type="text/javascript">
+	layui.use(['jquery','layer','element'],function(){
+		window.jQuery = window.$ = layui.jquery;
+		window.layer = layui.layer;
+        window.element = layui.element;
+
+       $('.panel .tools .iconpx-chevron-down').click(function(){
+       	   var el = $(this).parents(".panel").children(".panel-body");
+       	   if($(this).hasClass("iconpx-chevron-down")){   //在折叠与展开之间进行切换
+       	   	   $(this).removeClass("iconpx-chevron-down").addClass("iconpx-chevron-up");
+       	   	   el.slideUp(200);
+       	   }else{
+       	   	   $(this).removeClass("iconpx-chevron-up").addClass("iconpx-chevron-down");
+       	   	   el.slideDown(200);
+       	   }
+       })
+
+	});
+</script>
+
+</body>
+</html>

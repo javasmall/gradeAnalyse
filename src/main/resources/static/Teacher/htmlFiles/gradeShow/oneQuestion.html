@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>分析某道题目</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <!--https://hanlei525.github.io/layui-v2.4.3/layui-v2.4.5/css/layui.css-->
+    <link rel="stylesheet" type="text/css" href="../../../common/layui/css/layui.css" media="all">
+    <link rel="stylesheet" type="text/css" href="../../../common/layui/css/layui.mobile.css" media="all">
+    <link rel="stylesheet" type="text/css" href="../../../common/bootstrap/css/bootstrap.css" media="all">
+    <link rel="stylesheet" type="text/css" href="../../../common/global.css" media="all">
+    <link rel="stylesheet" type="text/css" href="../../../css/cssFile/personal.css" media="all">
+    <!--本地layui.css和layui.js文件有问题，，故在线引用-->
+
+    <script src="../../../jsTools/jquery-2.2.1.min.js"></script>
+    <script type="text/javascript" src="../../../common/layui/layui.js"></script>
+</head>
+
+<body>
+<div class="layui-row oneQuestion" style="margin-left: auto;margin-right: auto;">
+    <div class="layui-card">
+        <div class="layui-card-header"><p align="center">某一道题目的具体分析</p></div>
+
+        <form class="layui-form" action="" style="margin-left: auto;margin-right: auto;text-align: center">
+            <div class="layui-form-item">
+
+                <div class="layui-inline">
+                    <label class="layui-form-label">选择考试</label>
+                    <div class="layui-input-block">
+                        <select class="test" id="testSelect" lay-filter="testSelect" NAME="testSelection" >
+                            <option value="test1" selected="">test1</option>
+                            <option value="test2">test2</option>
+                            <option value="test3">test3</option>
+                            <option value="test4">test4</option>
+                            <option value="test5">test5</option>
+                            <option value="test6">test6</option>
+                            <option value="test7">test7</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="layui-inline" style="margin-left: auto;margin-right: auto;text-align: center">
+                    <label class="layui-form-label">选择科目</label>
+                    <div class="layui-input-block">
+                        <select class="test" id="subjectSelect"  lay-filter="subjectSelect">
+                            <option value="语文" selected="">语文</option>
+                            <option value="数学" >数学</option>
+                            <option value="英语">英语</option>
+                            <option value="物理">物理</option>
+                            <option value="化学">化学</option>
+                            <option value="政治">政治</option>
+                            <option value="历史">历史</option>
+                            <OPTION VALUE="地理">地理</option>
+                            <OPTION VALUE="生物">生物</option>
+                            <OPTION VALUE="附加题">附加题</option>
+                        </select>
+                    </div>
+                </div>
+                <!--选择题号-->
+                <div class="layui-inline">
+                    <label class="layui-form-label">题号选择</label>
+                    <div class="layui-input-block">
+                        <select class="test" id="qtnumberSelect"  lay-filter="qtnumberSelect" name="type">
+                            <option value="题号选择" selected="">--选择题号--</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="layui-inline">
+                    <div class="layui-input-block">
+                        <a class="layui-btn layui-btn-normal" onclick="searchUrl()">查询</a>
+                    </div>
+                </div>
+
+
+                <table class="layui-table" id="oneQuestion_table">
+                    <colgroup>
+                        <col width="16.7%">
+                        <col width="16.7%">
+                        <col width="16.7%">
+                        <col width="16.7%">
+                        <col width="16.7%">
+                        <col width="16.7%">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th style="text-align: center">得分在（0,1/3*总得分]区间中的人数</th>
+                        <th style="text-align: center">对应学生</th>
+                        <th style="text-align: center">得分在[1/3,2/3*总得分]区间中的人数</th>
+                        <th style="text-align: center">对应学生</th>
+                        <th style="text-align: center">得分在[2/3-满分]区间中的人数</th>
+                        <th style="text-align: center">对应学生</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+
+                <div class="layui-row  oneQuestion" style="margin-left: auto;margin-right: auto;">
+                    <div class="layui-card">
+                        <div class="layui-card-header"><p align="center">各得分区间人数统计</p></div>
+                        <div class="layui-card-body oneQuestion_chart" id="oneQuestion_chart" style="width: 500px;height: 400px;margin-left: auto;margin-right: auto;" >
+                            <!--用于渲染echarts数据-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!--加载js文件-->
+<script type="text/javascript" src="../../../jsTools/jquery-2.2.1.min.js"></script>
+<script type="text/javascript" src="../../../jsTools/echarts.min.js"></script>
+<!--暂时不使用js文件-->
+<script type="text/javascript" src="../../js/gradeShowJs/oneQuestion.js"></script>
+</body>
+</html>

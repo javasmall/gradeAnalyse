@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>各科成绩及排名</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" type="text/css" href="../../../common/layui/css/layui.css" media="all">
+    <link rel="stylesheet" type="text/css" href="../../../common/bootstrap/css/bootstrap.css" media="all">
+    <link rel="stylesheet" type="text/css" href="../../../common/global.css">
+    <link rel="stylesheet" type="text/css" href="../../../css/cssFile/main.css" media="all">
+    <!--//media="all"-->
+    <script src="../../../jsTools/jquery-2.2.1.min.js"></script>
+    <script type="text/javascript" src="../../../common/layui/layui.js"></script>
+</head>
+
+<body>
+
+<div class="layui-row  allSubpt" style="margin-left: auto;margin-right: auto;">
+    <div class="layui-card">
+        <div class="layui-card-header"><p align="center">历次考试各科成绩以及排名信息</p></div>
+
+        <form class="layui-form" action="" style="margin-left: auto;margin-right: auto;text-align: center">
+            <div class="layui-form-item">
+
+                <div class="layui-inline">
+                    <label class="layui-form-label">选择考试</label>
+                    <div class="layui-input-block">
+                        <select class="test" id="testSelect" lay-filter="testSelect" NAME="testSelection" >
+                            <option value="test1" selected="">test1</option>
+                            <option value="test2">test2</option>
+                            <option value="test3">test3</option>
+                            <option value="test4">test4</option>
+                            <option value="test5">test5</option>
+                            <option value="test6">test6</option>
+                            <option value="test7">test7</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="layui-inline" style="margin-left: auto;margin-right: auto;text-align: center">
+                    <label class="layui-form-label">选择科目</label>
+                    <div class="layui-input-block">
+                        <select class="test" id="subjectSelect"  lay-filter="subjectSelect">
+                            <option value="语文" selected="">语文</option>
+                            <option value="数学" >数学</option>
+                            <option value="英语">英语</option>
+                            <option value="物理">物理</option>
+                            <option value="化学">化学</option>
+                            <option value="政治">政治</option>
+                            <option value="历史">历史</option>
+                            <OPTION VALUE="地理">地理</option>
+                            <OPTION VALUE="生物">生物</option>
+                            <OPTION VALUE="附加题">附加题</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="layui-inline">
+                    <div class="layui-input-block">
+                        <a class="layui-btn layui-btn-normal" onclick="searchUrl()">搜索</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <table class="layui-table" id="allgrade_table">
+            <colgroup>
+                <col width="25%">
+                <col width="25%">
+                <col width="25%">
+                <col width="25%">
+            </colgroup>
+            <thead>
+            <tr>
+                <th style="text-align: center">学号</th>
+                <th style="text-align: center">姓名</th>
+                <th style="text-align: center">分数</th>
+                <th style="text-align: center">排名</th>
+            </tr>
+            </thead>
+            <tbody>
+
+
+            </tbody>
+        </table>
+
+        <div class="layui-card-body allsubpt_chart" id="allsubpt_chart" style="width: 500px;height: 400px;margin-left: auto;margin-right: auto;" >
+            <!--用于渲染echarts数据-->
+        </div>
+    </div>
+</div>
+
+
+<!--script plungin-->
+<script src="../../../jsTools/jquery-2.2.1.min.js"></script>
+<script type="text/javascript" src="../../../jsTools/echarts.min.js"></script>
+<!--后台js文件还没有写好-->
+<script src="../../js/gradeShowJs/allSubject.js"></script>
+</body>
+</html>

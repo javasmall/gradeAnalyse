@@ -1,0 +1,385 @@
+body{font:12px/1.8 "宋体","Microsoft YaHei",arial,sans-serif; background-color:#fff;color:#333;   background-attachment:fixed;}
+
+#mainbar {
+    width: 700px;
+    float: left;
+}
+
+h1 {
+    height: 34px;
+    line-height: 34px;
+    background-color: #f6f6f6;
+    border-top: 2px solid #0f9d58;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    text-align: right;
+    border-right: 1px solid #d8d8d8;
+    padding-right: 10px;
+}
+
+h1 b {
+    display: block;
+    height: 35px;
+    width: 122px;
+    padding-left: 40px;
+    line-height: 34px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    font-size: 16px;
+    font-weight: bold;
+    background: url(../../images/onlineQnBank/onlineQnBank_back.png) repeat;
+    color: #fff;
+    text-align: left;
+    font-family: "Microsoft YaHei";
+}
+
+.test_container {
+    border-left: 1px solid #d8d8d8;
+    border-right: 1px solid #d8d8d8;
+    border-bottom: 1px solid #d8d8d8;
+    padding: 8px 8px 16px;
+    *width: 682px;
+}
+
+
+.test p {
+    line-height: 46px;
+    font-size: 12px;
+    border-top: 1px solid #eee;
+    font-family: "宋体",songti;
+    color: #d8d8d8;
+}
+
+.test p a {
+    padding: 0px 20px;
+    font: 14px/46px "Microsoft YaHei",arial,sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+.test p {
+    line-height: 46px;
+    font-size: 12px;
+    border-top: 1px solid #eee;
+    font-family: "宋体",songti;
+    color: #d8d8d8;
+}
+
+.test {
+    margin-bottom: 18px;
+}
+
+#sidebar {
+    /*width: 268px;*/
+    width: 276px;
+    float: right;
+}
+
+.download {
+    width: 238px;
+    border: 1px solid #daf7e9;
+    background-color: #f9fffc;
+    padding: 0px 14px;
+}
+
+h2 {
+    height: 37px;
+    border-bottom: 2px solid #eee;
+    position: relative;
+    font-family: "Microsoft YaHei";
+}
+
+h2 b {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    line-height: 30px;
+    padding: 0px 12px;
+    border-bottom: 2px solid #0f9d58;
+    position: absolute;
+    left: 0px;
+    top: 7px;
+    font-family: "Microsoft YaHei";
+}
+
+.list_three {
+    padding: 10px 0px;
+}
+
+.list_three li {
+    height: 30px;
+    line-height: 30px;
+    padding-left: 18px;
+    ackground: url(../../images/onlineQnBank/dot.jpg) no-repeat 5px 13px;
+    width: 220px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+a:-webkit-any-link {
+    color: -webkit-link;
+    cursor: pointer;
+    /*text-decoration: underline;*/
+}
+
+
+.test h4 {
+    width: 90px;
+    height: 30px;
+    background-color: #fbfbfb;
+    border-left: 1px solid #eee;
+    border-right: 1px solid #eee;
+    border-top: 1px solid #eee;
+    text-align: center;
+    line-height: 30px;
+    color: #0f9d58;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 14px;
+    margin-left: 14px;
+}
+
+/*"数学试题详情页面"*/
+.cite {
+    margin: 8px 0px 18px;
+}
+
+.mb10 {
+    margin-bottom: 10px!important;
+}
+
+.content {
+    width: 980px;
+    margin: 0 auto;
+}
+
+.shiti_catagory {
+    width: 248px;
+    position: relative;
+    padding-top: 40px;
+    _padding-top: 55px;
+    overflow: hidden;
+    float: left;
+}
+
+.frame {
+    border: 1px solid #d8d8d8;
+}
+
+.shiti_catagory:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.mb10 {
+    margin-bottom: 10px!important;
+}
+
+.catagory_title {
+    overflow: hidden;
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: 251px;
+}
+
+.catagory_title li.hover {
+    color: #0f9d58;
+    border-top: 2px solid #0f9d58;
+    border-bottom: 0;
+}
+
+.catagory_title li {
+    float: left;
+    height: 36px;
+    width: 124px;
+    border-left: 1px solid #d8d8d8;
+    border-top: 1px solid #d8d8d8;
+    border-bottom: 1px solid #d8d8d8;
+    text-align: center;
+    line-height: 36px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+li {
+    list-style: none;
+}
+
+.treeview li a {
+    *vertical-align: top;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+.shiti_container {
+    /*float: right;*/
+    float: left;
+    width: 719px;
+    /*width: 730px;*/
+}
+
+.frame {
+    border: 1px solid #d8d8d8;
+}
+
+.shiti_top p {
+    width: 687px;
+    overflow: hidden;
+    padding-left: 15px;
+}
+
+.catagory b {
+    font-weight: bold;
+    color: #333;
+    line-height: 27px;
+    white-space: nowrap;
+    word-break: break-all;
+}
+
+.catagory b, .catagory a {
+    font-size: 12px;
+    float: left;
+}
+
+.catagory a {
+    padding: 2px 5px 3px;
+    _padding: 4px 5px 1px;
+    margin: 5px;
+    line-height: 12px;
+    color: #666;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+.questions {
+    padding: 0px 15px;
+    margin-bottom: 12px;
+}
+
+.frame {
+    border: 1px solid #d8d8d8;
+}
+h2 {
+    height: 37px;
+    border-bottom: 2px solid #eee;
+    position: relative;
+    font-family: "Microsoft YaHei";
+}
+
+h2 b {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    line-height: 30px;
+    padding: 0px 12px;
+    border-bottom: 2px solid #0f9d58;
+    position: absolute;
+    left: 0px;
+    top: 7px;
+    font-family: "Microsoft YaHei";
+}
+
+.questions_col li {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    line-height: 26px;
+    border-bottom: 1px dashed #0f9d58;
+    position: relative;
+    width: 687px;
+    overflow: hidden;
+}
+
+table {
+    font: 12px/1.8 "宋体","Microsoft YaHei",arial,sans-serif;
+    background-color: #fff;
+    color: #333;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+table {
+    font: 12px/1.8 "宋体","Microsoft YaHei",arial,sans-serif;
+    background-color: #fff;
+    color: #333;
+}
+
+.btns {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.questions_col li a.view_all {
+    background-position: 0px -89px;
+    margin-right: 10px;
+    float: right;
+    width: 103px;
+    height: 40px;
+    color: #fff;
+    text-align: center;
+    line-height: 40px;
+    font-size: 14px;
+    font-weight: bold;
+    /*font-family: "Microsoft YaHei";*/
+}
+
+.questions_col li a.view_all {
+    /*background: url(../images/csssprite.png) no-repeat;*/
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+.btns:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.questions_col li a.view_all {
+    text-decoration: none;
+}
+
+/*"数学题目详情页"中的"分页"样式显示*/
+.fenye {
+    overflow: hidden;
+    float: right;
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+
+.fenye .pg strong {
+    background-color: #62AF89;
+}
+
+.fenye .pg a, .fenye .pg strong, .fenye .pgb a, .fenye .pg label {
+    background-color: #FFFFFF;
+    background-repeat: no-repeat;
+    border: 1px solid #62AF89;
+    color: #333333;
+    display: inline;
+    float: left;
+    height: 26px;
+    margin-left: 4px;
+    overflow: hidden;
+    padding: 0 8px;
+    text-decoration: none;
+    line-height: 26px;
+}

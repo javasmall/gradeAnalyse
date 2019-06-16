@@ -1,0 +1,64 @@
+.treeview {
+    padding: 0;
+    /*margin: 10px;*/
+    margin: 8px;
+    list-style: none;
+}
+
+.treeview li.collapsable, .treeview li.expandable {
+    background-position: 0 -176px;
+}
+
+.treeview li {
+    /*background: url(../images/tree/treeview-default-line.gif) 0 0px no-repeat;*/
+}
+
+.treeview li {
+    margin: 0;
+    padding: 3px 0pt 3px 18px;
+    overflow: hidden;
+}
+
+.treeview {
+    padding: 0;
+    margin: 10px;
+    list-style: none;
+}
+
+.treeview .expandable-hitarea {
+    background-position: -80px -3px;
+}
+
+.treeview .hitarea {
+    /*background: url(../images/tree/treeview-default.gif) -64px -25px no-repeat;*/
+    height: 16px;
+    /*width: 16px;*/
+    width: 25px;
+    margin-left: -18px;
+    float: left;
+    cursor: pointer;
+}
+
+.treeview li a {
+    display: inline-block;
+    width: 180px;
+    /*height: 17px;*/
+    height: 25px;
+    overflow: hidden;
+    position: relative;
+    top: -2px;
+    white-space: nowrap;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+
+.treeview a {
+    color: #003399;
+}
+
+.treeview ul {
+}
+
+.treeview li {
+    /*background: url(../images/tree/treeview-default-line.gif) 0 0px no-repeat;*/
+}
