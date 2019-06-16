@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
 	<meta charset="UTF-8">
 	<title>学生端界面</title>
@@ -10,12 +10,14 @@
 
 	<style>
 		ul.layui-tab-title li:first-child i{
-			 display: none;
-		 }
-		</style>
+			display: none;
+		}
+
+	</style>
 </head>
 
 <body>
+
 <div class="layui-layout layui-layout-admin" id="layui_layout">
 	<!-- 顶部区域 -->
 	<div class="layui-header header header-demo">
@@ -28,7 +30,7 @@
 				</div>
 			</div>
 			<!-- 顶级菜单区域 -->
-            <!--已经删除-->
+			<!--已经删除-->
 
 			<!-- 右侧导航 -->
 			<ul class="layui-nav larry-header-item">
@@ -225,10 +227,10 @@
 
 						<dd >
 							<a href="javascript:;" data-url="gradeShow/singleSubanalysis.html" data-title="成绩分析"
-							data-id="gradeAnalysis" class="site-demo-active">
+							   data-id="gradeAnalysis" class="site-demo-active">
 								<i class="iconfont icon-tags1" data-icon='icon-tags1'></i>
 								<span>成绩分析</span>
-								</a>
+							</a>
 						</dd>
 
 						<dd>
@@ -240,11 +242,6 @@
 						</dd>
 					</dl>
 				</li>
-
-				<!--<li class="layui-nav-item">-->
-					<!--<a data-url="/news_list" data-id="3" data-title="新闻列表" class="site-demo-active"-->
-					   <!--href="javascript:;" data-type="tabAdd">新闻列表</a>-->
-				<!--</li>-->
 
 
 				<!-- 分析报告 -->
@@ -265,8 +262,7 @@
 					</dl>
 				</li>
 
-				<!-- 系统设置，，，，后期用户可在此页面中加入用户的个性化设置，，比如系统背景色等-->>
-				<!-- 分析报告 -->
+				<!-- 在线练习场 -->
 				<li class="layui-nav-item">
 					<a href="javascript:;">
 						<i class="iconfont icon-m-members" ></i>
@@ -304,10 +300,10 @@
 			</ul>
 
 
-			<div class="layui-tab-content" style="min-height: 420px; ">
-				<div class="layui-tab-item layui-show" style="width:100%;height: 420px">
+			<div class="layui-tab-content " id="iframe_parent" style="height:  420px">
+				<div class="layui-tab-item layui-show" style="height: 100%">
 					<!--通过iframe加载内联框架-->
-					<iframe class="larry-iframe" data-id='0' src="../../PublicPages/main.html"></iframe>
+					<iframe class="larry-iframe" frameborder="0" data-id='0' src="../../PublicPages/main.html"></iframe>
 				</div>
 			</div>
 
@@ -324,6 +320,8 @@
 <script src="../../jsTools/jquery.cookie.js"></script>
 <!--界面的主要逻辑代码存放在index.html中-->
 <script type="text/javascript" src="../../js/index.js"></script>
+
+
 
 
 <!--禁止页面回退-->

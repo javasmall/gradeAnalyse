@@ -4,7 +4,7 @@ var myChart = echarts.init(document.getElementById('larry-seo-stats'));
 option = {
     title : {
         text: '用户访问来源',
-        subtext: '纯属虚构',
+        subtext: '',
         x:'center'
     },
     tooltip : {

@@ -12,7 +12,7 @@ layui.use(['layer', 'form'], function () {
         ,layer = layui.layer
         ,layedit = layui.layedit
         ,laydate = layui.laydate;
-
+    //console.log("form is: "+form);
     //监听表单中的考试名称
     form.on('select(testSelect)', function (data) {
         //alert(data.value);
@@ -26,7 +26,7 @@ $(function () {
     if($.cookie('studentId')!=null){   //进行判空操作
         studentId=$.cookie('studentId');
         classId=studentId.toString().substring(0,9);
-
+        //console.log("studentID is: "+$.cookie('studentId'));
     }else {
         studentId=10000000141;
         classId=100000001;
@@ -39,33 +39,33 @@ function allSubpt_getJson(){
     // var testName=['test1','test2','test3','test4','test5','test6','test7'];  //考试名称下拉框获取
     var subJectName=['语文','数学','英语','物理','化学'];
     var scoreList= new Array(5);  //每次考试5科成绩
-    var temp;
     function getJson() {
-        for(var i=0;i<5;i++) { //选定考试后循环获取5科的成绩
-            // http://www.overlove.xin/ssm/classlessonscore?id=100000001&lesson=语文&test=test3
-            var URL="classlessonscore?id=" +classId+ "&lesson="+subJectName[i]+"&test="+allSubpt_test;
+            var URL="http://www.biggsai.com/ssm/classlessonscore?test=" +allSubpt_test+ "&stuid="+studentId;
+
             $.ajax({
-                url: "classlessonscore?id=" +classId+ "&lesson="+subJectName[i]+"&test="+allSubpt_test,	//请求url
+                url: "http://www.biggsai.com/ssm/classlessonscore?test=" +allSubpt_test+ "&stuid="+studentId,	//请求url
                 type: "GET",	//请求类型  post|get
-                // data : "key=value&key1=value2",	//后台用 request.getParameter("key");
                 dataType: 'json',//返回数据的 类型 text|json|html--
                 crossDomain: true,
                 async:false,
                 success: function (json) {	//回调函数 和 后台返回的 数据
 
                     $.each(json, function (i, n) {
-                        //获取对象中属性为optionsValue的值
-                        //testName.push(parseInt(n.test_name));
-                        //subjectName.push(n.lesson_ame);
-                        if(n.student_id==studentId) {
-                            temp=n.score;
-                            //   stuList.push(parseInt(n.student_id) - 10000000000); //学号三两位
+                        if(n.lesson=="语文") {
+                            scoreList[0]=n.score;
+                        }else if(n.lesson=="数学") {
+                            scoreList[1]=n.score;
+                        }else if(n.lesson=="英语") {
+                            scoreList[2]=n.score;
+                        }else if(n.lesson=="物理") {
+                            scoreList[3]=n.score;
+                        }else if(n.lesson=="化学") {
+                            scoreList[4]=n.score;
                         }
+
                     });
                 }
-            }).done(scoreList[i]=temp);   //ajax执行完成后的回调函数
-        }
-
+            })
     }
 
 

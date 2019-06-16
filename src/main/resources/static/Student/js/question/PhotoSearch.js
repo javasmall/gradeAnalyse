@@ -5,7 +5,7 @@ layui.use('upload', function() {
         , upload = layui.upload;
     upload.render({
         elem: '#dragPic'
-        , url: '/localhost:8080/boot/ocrimg'
+        , url: '../../../ocrimg'
         ,size:100   //单位kb
         , auto: false   //禁止自动上传
         //,multiple: true

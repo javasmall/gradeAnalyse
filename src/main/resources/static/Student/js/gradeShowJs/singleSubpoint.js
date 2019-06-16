@@ -8,6 +8,7 @@ var singleSubpoint_subject="语文";
 layui.use(['layer', 'form'], function () {
     var layer = layui.layer;
     var form = layui.form;
+    //console.log("form is: "+form);
     //监听表单中的考试科目
     form.on('select(subjectSelect)', function (data) {
         //alert(data.value);
@@ -21,6 +22,7 @@ $(function () {
     if($.cookie('studentId')!=null){   //进行判空操作
         studentId=$.cookie('studentId');
         classId=studentId.toString().substring(0,9);
+        //console.log("studentID is: "+$.cookie('studentId'));
     }else {
         studentId=10000000141;
         classId=100000001;
@@ -34,30 +36,21 @@ function  singleSubpoint_getJson(){
     var scoreList= new Array(7);  //7次考试单科成绩排分数信息
     scoreList.splice(0,scoreList.length);
     var temp;
-    /*var URL="http://www.overlove.xin/ssm/classlessonscore?id=" + classId + "&lesson=" + echart3_subject + "&test=" + testName[1];	//请求url
-    console.log("URL: "+URL);*/
-    for(var j=0;j<7;j++) {  //循环7次使用ajax获取数据
-        // console.log("for start work");
+
         $.ajax({
-            //http://www.overlove.xin/ssm/classlessonscore?id=100000001&lesson=语文&test=test3
-            url: "classlessonscore?id=" + classId + "&lesson=" + singleSubpoint_subject + "&test=" + testName[j],	//请求url
-            //url:"http://www.overlove.xin/ssm/classlessonscore?id=100000001&lesson=语文&test=test3",
-            type: "GET",	//请求类型  post|get
-            // data : "key=value&key1=value2",	//后台用 request.getParameter("key");
-            dataType: 'json',//返回数据的 类型 text|json|html--
+            url: "http://www.biggsai.com/ssm/pastlessonrank?id=" + studentId + "&lesson=" + singleSubpoint_subject + "&type=classrank" ,	//请求url
+            type: "GET",
+            dataType: 'json',
             crossDomain: true,
             async:false,
-            success: function (json) {	//回调函数 和 后台返回的 数据
+            success: function (json) {
                 //var stus = JSON.parse(users);
                 $.each(json, function (i, n) {
-                    if(n.student_id==studentId)
-                    {
-                        temp = n.score;   //存储每次考试的成绩
-                    }
+                        scoreList[i] = n.lesson_score;//存储每次考试的成绩
                 });
             }
-        }).done(scoreList[j] = temp);   //ajax执行完成后的回调函数;
-    }
+        })   //ajax执行完成后的回调函数;
+
 
     var myChart = echarts.init(document.getElementById("singleSubpoint_chart"));
     option = {
@@ -69,7 +62,14 @@ function  singleSubpoint_getJson(){
                 type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
             }
         },
-       
+        /*legend:{
+            name:'test2考试中各个班级的语文平均分',  //详细的考试成绩信息，，未能显示！！
+        },*/
+
+        /*title: {
+            left: 'center',
+            text: '某次考试中该班级的某学科平均分',
+        },*/
         grid: {
             left: '3%',
             right: '4%',
@@ -86,7 +86,7 @@ function  singleSubpoint_getJson(){
                 axisLabel:{
                     textStyle:{
                         color:'black',
-                        fontSize: 20,
+                        fontSize: 18,
                         fontStyle:'normal',
                         fontWeight:'normal'
 
@@ -101,7 +101,7 @@ function  singleSubpoint_getJson(){
                 axisLabel:{
                     textStyle:{
                         color:'black',
-                        fontSize: 20,
+                        fontSize: 18,
                         fontStyle:'normal',
                         fontWeight:'normal'
 

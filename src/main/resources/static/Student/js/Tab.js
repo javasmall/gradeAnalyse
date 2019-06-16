@@ -1,4 +1,18 @@
 
+
+var brower_height=0;
+var real_height=0;
+var iframe_height="";
+$(function () {
+    brower_height=window.outerHeight;
+    real_height=brower_height-235;
+
+    $("#iframe_parent").height(real_height);
+    //console.log("height: "+real_height );
+
+    iframe_height="height:"+real_height+"px" ;
+})
+
 //JavaScript代码区域
 layui.use('element', function(){
     var element = layui.element;
@@ -11,7 +25,7 @@ layui.use('element', function(){
             //关于tabAdd的方法所传入的参数可看layui的开发文档中基础方法部分
             element.tabAdd('tabdemo', {
                 title: name,
-                content: '<iframe style="height: 440px" class="larry-iframe" data-frameid="'+id+'"  frameborder="0" src="'+url+'"></iframe>',
+                content: ' <iframe style="'+iframe_height+'" class="larry-iframe" data-frameid="'+id+'"  frameborder="0" src="'+url+'"></iframe> ',
                 id: id //规定好的id
             })
             element.render('tab');
@@ -32,6 +46,7 @@ layui.use('element', function(){
         }
     };
 
+    // console.log('<iframe style="'+iframe_height+'"  class="larry-iframe" data-frameid="'+4+'"  frameborder="0" src=""></iframe>');
 
     //当点击有site-demo-active属性的标签时，即左侧菜单栏中内容 ，触发点击事件
     $('.site-demo-active').on('click', function() {

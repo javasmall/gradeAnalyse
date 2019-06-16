@@ -1,19 +1,13 @@
 
-
-//var classId=100000001; //当点击index.html中的详细页面时，显示详细页面,通过index.html把值传过来
 var classId="";
-//var studentId=10000000141;
 var studentId="";
 /*成绩分析,某次考试某一科目的成绩分析*/
 var singleSub_test="test1";
 var singleSub_subject="语文";
 
-//监听下拉框值变化事件，注意layui中不能使用js中的onChange进行监听，使用form.on方法加过滤器
 layui.use(['layer', 'form'], function () {
     var layer = layui.layer;
     var form = layui.form;
-    
-    //监听表单中的考试名称
     form.on('select(testSelect)', function (data) {
         //alert(data.value);
         singleSub_test=data.value;
@@ -36,7 +30,7 @@ $(function () {
     if($.cookie('studentId')!=null){   //进行判空操作
         studentId=$.cookie('studentId');
         classId=studentId.toString().substring(0,9);
-
+        //console.log("studentID is: "+$.cookie('studentId'));
     }else {
         studentId=10000000141;
         classId=100000001;
@@ -59,42 +53,25 @@ function singleSub_getJson(){  //echart_5()
     }
     singleSub_jsons.splice(0,singleSub_jsons.length);
     function getJson() {
-        
-		for(var j=1;j<=singleSub_scoreList.length;j++) {
-            //http://www.overlove.xin/ssm/getproblemscore?lesson=英语&classid=100000009&index=26&test=test1
-            var URL="ssm/getproblemscore?lesson=" +singleSub_subject+ "&classid="+classId+"&index="+j+"&test="+singleSub_test;
-           
             $.ajax({
-                url: "../../../getproblemscore?lesson=" +singleSub_subject+ "&classid="+classId+"&index="+j+"&test="+singleSub_test,	//请求url
-                type: "GET",	
+            // /ssm/getproblemscorebystuid?lesson=语文&studentid=&testname=
+                url: "http://www.biggsai.com/ssm/getproblemscorebystuid?lesson=" +singleSub_subject+ "&studentid="+studentId+"&testname="+singleSub_test,	//请求url
+                type: "GET",
                 dataType: 'json',
                 crossDomain: true,
-                async:false,
+                async:false,  //必须是同步，因为处在for循环中
                 success: function (json) {	//回调函数 和 后台返回的 数据
-
                     $.each(json, function (i, n) {
-                        //获取对象中属性为optionsValue的值
-                        //testName.push(parseInt(n.test_name));
-                        //subjectName.push(n.lesson_ame);
-                        if(n.student_id==studentId) {
-                            var question="第"+j+"题";
+                            var question="第"+n.question_index+"题";
                             var temp={value:n.score, name:question};
                             singleSub_jsons.push(temp);
-							//return false;
-							
-                        }
-
                     });
-//}
                 }
             });
         }
-    }
     getJson();
 
     var myChart = echarts.init(document.getElementById('singleSub_chart'));
-    /*var list1={value:15, name:'rose3'};var list2={value:45, name:'rose4'};
-    var list={list1,list2};*/
     myChart.setOption({
         //标题
         title : {
@@ -106,12 +83,7 @@ function singleSub_getJson(){  //echart_5()
             trigger: 'item',
             //formatter: "{a} <br/>{b} : {c} ({d}%)"
         },
-        //图例的位置与名称
-        /*legend: {
-            x : 'center',
-            y : 'bottom',
-            data:['rose1','rose2','rose3','rose4','rose5','rose6','rose7','rose8']
-        },*/
+
         //右上角工具栏
         toolbox: {
             show : true,

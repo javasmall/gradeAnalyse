@@ -37,42 +37,23 @@ function singleSubrank_getJson(){
     var chart4_rankList= new Array(7);  //7次考试单科成绩排分数信息
     chart4_rankList.splice(0,chart4_rankList.length);
     var temp;
-    //console.log("----------------");
-    //console.log("开始获取单科排名信息！！！");
-    var URL="classlessonscore?id=" + classId + "&lesson=" + singleSubrank_subject + "&test=" + testName[1];	//请求url
-    //console.log("URL: "+URL);
-    for(var j=0;j<7;j++) {  //循环7次使用ajax获取数据
-        //console.log("for start work");
+
         $.ajax({
-            //http://www.overlove.xin/ssm/classlessonscore?id=100000001&lesson=语文&test=test3
-            url: "classlessonscore?id=" + classId + "&lesson=" + singleSubrank_subject + "&test=" + testName[j],	//请求url
-            //url:"http://www.overlove.xin/ssm/classlessonscore?id=100000001&lesson=语文&test=test3",
+            url: "http://www.biggsai.com/ssm/pastlessonrank?id=" + studentId + "&lesson=" + singleSubrank_subject + "&type=classrank" ,	//请求url
             type: "GET",	//请求类型  post|get
-            // data : "key=value&key1=value2",	//后台用 request.getParameter("key");
             dataType: 'json',//返回数据的 类型 text|json|html--
             crossDomain: true,
             async:false,
             success: function (json) {	//回调函数 和 后台返回的 数据
                 //var stus = JSON.parse(users);
                 $.each(json, function (i, n) {
-                    //testName.push(parseInt(n.test_name));
-                    //subjectName.push(n.lesson_ame);
-                    // stuList.push(parseInt(n.student_id) - 10000000000);
-                    //pointList.push(parseInt(n.score));
-                    if(n.student_id==studentId)   //j检索班级中的数据
-                    {
-                        temp = i+1;   //存储每次考试班级排名
-                        //console.log("chart4_rankList[j]: "+i );
-                        //console.log("URL: "+"http://www.overlove.xin/ssm/classlessonscore?id=" + classId + "&lesson=" +singleSubrank_subject + "&test=" + testName[j])
-                    }
+                    chart4_rankList[i]=n.rank1 ;   //存储每次考试班级排名
                 });
             }
-        }).done(chart4_rankList[j] = temp);   //ajax执行完成后的回调函数;
-    }
+        })   //ajax执行完成后的回调函数;
 
-    /*for(var i=0;i<chart4_rankList.length;i++){
-        console.log(chart4_rankList[i]+" ");
-    }*/
+
+
 
 
     var myChart = echarts.init(document.getElementById("singleSubrank_chart"));
@@ -90,7 +71,7 @@ function singleSubrank_getJson(){
             axisLabel:{
                 textStyle:{
                     color:'black',
-                    fontSize: 20,
+                    fontSize: 18,
                     fontStyle:'normal',
                     fontWeight:'normal'
 
@@ -104,7 +85,7 @@ function singleSubrank_getJson(){
             axisLabel:{
                 textStyle:{
                     color:'black',
-                    fontSize: 20,
+                    fontSize: 18,
                     fontStyle:'normal',
                     fontWeight:'normal'
 

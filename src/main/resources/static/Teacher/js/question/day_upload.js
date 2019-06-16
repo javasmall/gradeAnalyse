@@ -1,7 +1,4 @@
 
-//var classId=100000001;
-// var classId="";
-//var studentId=10000000141;
 var studentId="";   //1 学号
 // var upload_test="";  //之后用于拼接地址
 var upload_subject="";  //2 学科

@@ -25,10 +25,9 @@ function allSubpt_getJson(){
     var temp;
     function getJson() {
         for(var i=0;i<5;i++) { //选定考试后循环获取5科的成绩
-            // http://www.overlove.xin/ssm/classlessonscore?id=100000001&lesson=语文&test=test3
-            var URL="classlessonscore?id=" +classId+ "&lesson="+subJectName[i]+"&test="+allSubpt_test;
+            var URL="http://www.biggsai.com/ssm/classlessonscore?id=" +classId+ "&lesson="+subJectName[i]+"&test="+allSubpt_test;
             $.ajax({
-                url: "classlessonscore?id=" +classId+ "&lesson="+subJectName[i]+"&test="+allSubpt_test,	//请求url
+                url: "http://www.biggsai.com/ssm/classlessonscore?id=" +classId+ "&lesson="+subJectName[i]+"&test="+allSubpt_test,	//请求url
                 type: "GET",	//请求类型  post|get
                 // data : "key=value&key1=value2",	//后台用 request.getParameter("key");
                 dataType: 'json',//返回数据的 类型 text|json|html--

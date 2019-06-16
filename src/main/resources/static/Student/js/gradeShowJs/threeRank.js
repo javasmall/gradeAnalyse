@@ -10,6 +10,7 @@ $(function () {
     if($.cookie('studentId')!=null){   //进行判空操作
         studentId=$.cookie('studentId');
         classId=studentId.toString().substring(0,9);
+        //console.log("studentID is: "+$.cookie('studentId'));
     }else {
         studentId=10000000141;
         classId=100000001;
@@ -19,11 +20,10 @@ $(function () {
     var rankList= new Array(7);  //7次考试3总成绩排名信息
     var temp;
     function getJson() {
-        for(var j=0;j<7;j++) { //选定考试后循环获取5科的成绩
-            var URL="studentrank?test=test1&classid=100000001";
 
+            // console.log("testName: "+testName[j]);
             $.ajax({
-                url: "studentrank?test=" +testName[j]+ "&classid="+classId,	//请求url
+                url: "http://www.biggsai.com/ssm/pastrank?id=" +studentId+ "&type=classrank",	//请求url
                 type: "GET",	//请求类型  post|get
                 // data : "key=value&key1=value2",	//后台用 request.getParameter("key");
                 dataType: 'json',//返回数据的 类型 text|json|html--
@@ -35,17 +35,15 @@ $(function () {
                         //获取对象中属性为optionsValue的值
                         //testName.push(parseInt(n.test_name));
                         //subjectName.push(n.lesson_ame);
-                        if(n.student_id==studentId) {
-                            temp=i+1;
-                        }
-
+                             temp=n.rank1;
+                        rankList[i]=temp;
                     });
 
-//}
-                }
-            }).done(rankList[j]=temp);   //ajax执行完成后的回调函数
 
-        }
+                }
+            })
+                // .done(rankList[j]=temp);   //ajax执行完成后的回调函数
+
     }
 
 

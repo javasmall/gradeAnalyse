@@ -21,13 +21,13 @@ $(function () { //页面初始化加载
 })
 
 function threeSubject_getGrade() {
-    var URL="studentrank?test=test1&classid=100000001";
+    var URL="http://www.biggsai.com/ssm/studentrank?test=test1&classid=100000001";
     var temp_stunumber;var temp_stuname;var temp_stuscore;var temp_rank; //存储从服务器返回的学号、姓名、班级、排名
     
     $("#threegrade_table  tr:not(:first)").empty("");  //清除除首行外的所有行
 
     $.ajax({
-        url: "studentrank?test="+threeSubject_test+"&classid="+classId,//请求url
+        url: "http://www.biggsai.com/ssm/studentrank?test="+threeSubject_test+"&classid="+classId,//请求url
         type: "GET",	//请求类型  post|get
         // data : "key=value&key1=value2",	//后台用 request.getParameter("key");
         dataType: 'json',//返回数据的 类型 text|json|html--
