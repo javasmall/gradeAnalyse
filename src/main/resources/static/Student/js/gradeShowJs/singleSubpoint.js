@@ -38,7 +38,7 @@ function  singleSubpoint_getJson(){
     var temp;
 
         $.ajax({
-            url: "http://www.biggsai.com/ssm/pastlessonrank?id=" + studentId + "&lesson=" + singleSubpoint_subject + "&type=classrank" ,	//请求url
+            url: "../../../pastlessonrank?id=" + studentId + "&lesson=" + singleSubpoint_subject + "&type=classrank" ,	//请求url
             type: "GET",
             dataType: 'json',
             crossDomain: true,

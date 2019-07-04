@@ -55,7 +55,7 @@ function singleSub_getJson(){  //echart_5()
     function getJson() {
             $.ajax({
             // /ssm/getproblemscorebystuid?lesson=语文&studentid=&testname=
-                url: "http://www.biggsai.com/ssm/getproblemscorebystuid?lesson=" +singleSub_subject+ "&studentid="+studentId+"&testname="+singleSub_test,	//请求url
+                url: "../../../getproblemscorebystuid?lesson=" +singleSub_subject+ "&studentid="+studentId+"&testname="+singleSub_test,	//请求url
                 type: "GET",
                 dataType: 'json',
                 crossDomain: true,

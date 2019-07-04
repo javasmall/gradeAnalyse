@@ -1,6 +1,7 @@
 package com.ssm.controller;
 
 import com.ssm.dao.testMapper;
+import com.ssm.service.testService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,8 +13,10 @@ import java.util.Map;
 
 @Controller
 public class testcontroller {
-    @Autowired(required = true)
+    @Autowired(required = false)
     private testMapper testmapper;
+    @Autowired(required = false)
+    private com.ssm.service.testService testService;
 
     @RequestMapping(value = "/pastlessonavg", method = RequestMethod.GET)
     @ResponseBody
@@ -24,12 +27,14 @@ public class testcontroller {
     @RequestMapping(value = "/pastrank", method = RequestMethod.GET)
     @ResponseBody
     public List<Map<String, Object>> pastrank(long id, String type) {
-        return testmapper.getpastrank(id, type);
+        return testService.getpastrank(id,type);
+
     }
 
     @RequestMapping(value = "/pastlessonrank", method = RequestMethod.GET)
     @ResponseBody
     public List<Map<String, Object>> getpastlessonpastrank(long id, String lesson, String type) {
-        return testmapper.getpastlessonrank(id, lesson, type);
+        return  testService.getpastlessonrank(id,lesson,type);
+
     }
 }

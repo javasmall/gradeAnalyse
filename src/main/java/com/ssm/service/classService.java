@@ -10,7 +10,7 @@ import java.util.Map;
 
 @Service
 public class classService {
-    @Autowired
+    @Autowired(required = false)
     classMapper classMapper;
     List<Map<String, Object>> getclasslessongrade( String id,  String lesson,  String test,String stuid)
     {

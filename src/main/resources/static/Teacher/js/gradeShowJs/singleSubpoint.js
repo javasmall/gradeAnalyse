@@ -28,9 +28,9 @@ function  singleSubpoint_getJson(){
     for(var j=0;j<7;j++) {  //循环7次使用ajax获取数据
         
         $.ajax({
-            //http://www.biggsai.com/ssm/classlessonscore?id=100000001&lesson=语文&test=test3
-            url: "http://www.biggsai.com/ssm/classlessonscore?id=" + classId + "&lesson=" + singleSubpoint_subject + "&test=" + testName[j],	//请求url
-            //url:"http://www.biggsai.com/ssm/classlessonscore?id=100000001&lesson=语文&test=test3",
+            //../../../classlessonscore?id=100000001&lesson=语文&test=test3
+            url: "../../../classlessonscore?id=" + classId + "&lesson=" + singleSubpoint_subject + "&test=" + testName[j],	//请求url
+            //url:"../../../classlessonscore?id=100000001&lesson=语文&test=test3",
             type: "GET",	//请求类型  post|get
             // data : "key=value&key1=value2",	//后台用 request.getParameter("key");
             dataType: 'json',//返回数据的 类型 text|json|html--

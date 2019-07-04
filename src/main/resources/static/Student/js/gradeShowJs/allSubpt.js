@@ -40,10 +40,10 @@ function allSubpt_getJson(){
     var subJectName=['语文','数学','英语','物理','化学'];
     var scoreList= new Array(5);  //每次考试5科成绩
     function getJson() {
-            var URL="http://www.biggsai.com/ssm/classlessonscore?test=" +allSubpt_test+ "&stuid="+studentId;
+            var URL="../../../classlessonscore?test=" +allSubpt_test+ "&stuid="+studentId;
 
             $.ajax({
-                url: "http://www.biggsai.com/ssm/classlessonscore?test=" +allSubpt_test+ "&stuid="+studentId,	//请求url
+                url: "../../../classlessonscore?test=" +allSubpt_test+ "&stuid="+studentId,	//请求url
                 type: "GET",	//请求类型  post|get
                 dataType: 'json',//返回数据的 类型 text|json|html--
                 crossDomain: true,

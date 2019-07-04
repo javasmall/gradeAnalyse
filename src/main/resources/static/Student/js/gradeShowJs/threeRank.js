@@ -23,7 +23,7 @@ $(function () {
 
             // console.log("testName: "+testName[j]);
             $.ajax({
-                url: "http://www.biggsai.com/ssm/pastrank?id=" +studentId+ "&type=classrank",	//请求url
+                url: "../../../pastrank?id=" +studentId+ "&type=classrank",	//请求url
                 type: "GET",	//请求类型  post|get
                 // data : "key=value&key1=value2",	//后台用 request.getParameter("key");
                 dataType: 'json',//返回数据的 类型 text|json|html--

@@ -112,10 +112,10 @@ layui.use(['layer', 'form'], function () {
 });
 
 function upload_getJson() {   //根据学科题号,寻找知识点
-    //var URL="http://www.biggsai.com/ssm/getproblemstylebyid?problemid=" +upload_questionNumber+ "&lesson="+upload_subject+"&testname="+upload_test;
+    //var URL="/getproblemstylebyid?problemid=" +upload_questionNumber+ "&lesson="+upload_subject+"&testname="+upload_test;
     var temp;  //临时存储题目类型
     $.ajax({
-        url: "http://www.biggsai.com/ssm/getproblemstylebyid?problemid=" +upload_questionNumber+ "&lesson="+upload_subject+"&testname="+upload_test,	//请求url
+        url: "../../../getproblemstylebyid?problemid=" +upload_questionNumber+ "&lesson="+upload_subject+"&testname="+upload_test,	//请求url
         type: "GET",	//请求类型  post|get
         // data : "key=value&key1=value2",	//后台用 request.getParameter("key");
         dataType: 'json',//返回数据的 类型 text|json|html--

@@ -33,13 +33,13 @@ layui.use(['layer', 'form'], function () {
     })
 
         function allSubject_getGrade() {
-            var URL="http://www.biggsai.com/ssm/classlessonscore?id=100000001&lesson=语文&test=test3";
+            var URL="../../../classlessonscore?id=100000001&lesson=语文&test=test3";
             allSubject_Stugrade.splice(0,allSubject_Stugrade.length); //清空数组
             var temp_stunumber;var temp_stuname;var temp_stuscore;var temp_rank; //存储从服务器返回的学号、姓名、班级、排名
             $("#allgrade_table  tr:not(:first)").empty("");  //清除除首行外的所有行
 
             $.ajax({
-                url: "http://www.biggsai.com/ssm/classlessonscore?id="+classId+"&lesson="+allSubject_sub+"&test="+allSubject_test,//请求url
+                url: "../../../classlessonscore?id="+classId+"&lesson="+allSubject_sub+"&test="+allSubject_test,//请求url
                 type: "GET",	//请求类型  post|get
                 // data : "key=value&key1=value2",	//后台用 request.getParameter("key");
                 dataType: 'json',//返回数据的 类型 text|json|html--

@@ -39,7 +39,7 @@ function singleSubrank_getJson(){
     var temp;
 
         $.ajax({
-            url: "http://www.biggsai.com/ssm/pastlessonrank?id=" + studentId + "&lesson=" + singleSubrank_subject + "&type=classrank" ,	//请求url
+            url: "../../../pastlessonrank?id=" + studentId + "&lesson=" + singleSubrank_subject + "&type=classrank" ,	//请求url
             type: "GET",	//请求类型  post|get
             dataType: 'json',//返回数据的 类型 text|json|html--
             crossDomain: true,

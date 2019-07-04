@@ -2,6 +2,7 @@ package com.ssm.controller;
 
 import com.ssm.bean.score;
 import com.ssm.dao.scoreMapper;
+import com.ssm.service.scoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,9 +18,10 @@ import java.util.Map;
 @Controller
 public class scorecontroller {
 
-    @Autowired(required = true)
+    @Autowired(required = false)
     private scoreMapper scoremapper;
-
+    @Autowired(required = false)
+    private scoreService scoreservice;
     @RequestMapping(value = "/score", method = RequestMethod.GET)
     @ResponseBody
     public List<score> score() {
@@ -59,13 +61,14 @@ public class scorecontroller {
     @RequestMapping(value = "/getscorebypoint")
     @ResponseBody
     public List<Map<String, Object>> getscorebypoint(String testname, long stuid, String lessonname) {
-        return scoremapper.getscorebypoint(testname, stuid, lessonname);
+        return  scoreservice.getscorebypoint(testname, stuid, lessonname);
+
     }
 
     @RequestMapping(value = "/getscorebytype")
     @ResponseBody
     public List<Map<String, Object>> getscorebytype(String testname, long stuid, String lessonname) {
-        return scoremapper.getscorebytype(testname, stuid, lessonname);
+        return scoreservice.getscorebytype(testname, stuid, lessonname);
     }
 
     /*
@@ -87,7 +90,7 @@ public class scorecontroller {
             list.add("test" + (i + 1));
             System.out.println(list.get(i));
         }
-        return scoremapper.getmosterrorbypoint(list, lesson, Long.parseLong(stuid), list.size());
+        return scoreservice.getmosterrorbypoint(list, lesson, Long.parseLong(stuid), list.size());
     }
 
     @RequestMapping(value = "/getmosterrorbytype")
@@ -99,7 +102,8 @@ public class scorecontroller {
             list.add("test" + (i + 1));
             System.out.println(list.get(i));
         }
-        return scoremapper.getmosterrorbytype(list, lesson, Long.parseLong(stuid), list.size());
+        return scoreservice.getmosterrorbytype(list, lesson, Long.parseLong(stuid), list.size());
+
     }
 //	 @RequestMapping(value = "/score", method = RequestMethod.GET)
 //	   public  String score( ModelMap model) {

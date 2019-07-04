@@ -25,12 +25,12 @@ $(function (){ //页面初始化加载
 
     /*表格展示单科平均分的走势情况*/
     function oneSubjectTrend_getTrend_table() {
-        // var URL="http://www.biggsai.com/ssm/pastlessonavg?id=100000001&lesson=语文";
+        // var URL="../../../pastlessonavg?id=100000001&lesson=语文";
         var temp_table_testname;var temp_table_avgscore;var temp_table_rank; //存储从服务器返回的学号、姓名、班级、排名
         $("#oneSubjectTrend_table  tr:not(:first)").empty("");  //清除除首行外的所有行
 
         $.ajax({
-            url: "http://www.biggsai.com/ssm/pastlessonavg?id="+classId+"&lesson="+oneSubjectTrend_subject,//请求url
+            url: "../../../pastlessonavg?id="+classId+"&lesson="+oneSubjectTrend_subject,//请求url
             type: "GET",	//请求类型  post|get
             // data : "key=value&key1=value2",	//后台用 request.getParameter("key");
             dataType: 'json',//返回数据的 类型 text|json|html--
@@ -62,7 +62,7 @@ $(function (){ //页面初始化加载
 
         function getJson() {  //填充rankList
                 $.ajax({
-                    url: "http://www.biggsai.com/ssm/pastlessonavg?id="+classId+ "&lesson="+oneSubjectTrend_subject,	//请求url
+                    url: "../../../pastlessonavg?id="+classId+ "&lesson="+oneSubjectTrend_subject,	//请求url
                     type: "GET",
                     dataType: 'json',
                     crossDomain: true,

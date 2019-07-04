@@ -21,8 +21,8 @@ $(function () {
     //每次刷新echarts时首先清空数组
     sumscoreList.splice(0,sumscoreList.length);
     function getJson() {
-            // http://www.biggsai.com/ssm/pastrank?id=10000000442&type=classrank
-            $.ajax({url: "http://www.biggsai.com/ssm/pastrank?id=" +studentId+ "&type=classrank",	//请求url
+            // ../../../pastrank?id=10000000442&type=classrank
+            $.ajax({url: "../../../pastrank?id=" +studentId+ "&type=classrank",	//请求url
 
                 type: "GET",	//请求类型  post|get
                 dataType: 'json',
