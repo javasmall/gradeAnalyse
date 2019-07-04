@@ -17,7 +17,7 @@ import java.util.List;
 @RequestMapping("teacher")
 public class teacherController {
 
-    @Autowired
+    @Autowired(required = false)
     teacherMapper teacherMapper;
     @Autowired
     teacherService teacherService;
