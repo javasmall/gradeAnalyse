@@ -1,0 +1,20 @@
+
+{"code":0,"msg":"","count":17,"data":[
+  {"bigKind":"第一大题","pmId":1,"pmStyle":"单选题","point":0,"kgPoint":"暂无", "score":3},
+  {"bigKind":"第一大题","pmId":2,"pmStyle":"单选题","point":0,"kgPoint":"","score":3},
+  {"bigKind":"第一大题","pmId":3,"pmStyle":"单选题","point":0,"kgPoint":"","score":3},
+  {"bigKind":"第一大题","pmId":4,"pmStyle":"单选题","point":0,"kgPoint":"","score":3},
+  {"bigKind":"第一大题","pmId":5,"pmStyle":"单选题","point":0,"kgPoint":"","score":3},
+  {"bigKind":"第二大题","pmId":6,"pmStyle":"文言文阅读","point":0,"kgPoint":"","score":3},
+  {"bigKind":"第二大题","pmId":7,"pmStyle":"文言文阅读","point":0,"kgPoint":"","score":3},
+  {"bigKind":"第二大题","pmId":8,"pmStyle":"文言文阅读","point":0,"kgPoint":"","score":6},
+  {"bigKind":"第二大题","pmId":9,"pmStyle":"文言文阅读","point":0,"kgPoint":"","score":6},
+  {"bigKind":"第三大题","pmId":10,"pmStyle":"古诗词鉴赏","point":0,"kgPoint":"","score":5},
+  {"bigKind":"第三大题","pmId":11,"pmStyle":"古诗词鉴赏","point":0,"kgPoint":"","score":6},
+  {"bigKind":"第四大题","pmId":12,"pmStyle":"古诗词默写","point":0,"kgPoint":"","score":11},
+  {"bigKind":"第五大题","pmId":13,"pmStyle":"现代文阅读","point":0,"kgPoint":"","score":4},
+  {"bigKind":"第五大题","pmId":14,"pmStyle":"现代文阅读","point":0,"kgPoint":"","score":4},
+  {"bigKind":"第五大题","pmId":15,"pmStyle":"现代文阅读","point":0,"kgPoint":"","score":6},
+  {"bigKind":"第五大题","pmId":16,"pmStyle":"现代文阅读","point":0,"kgPoint":"","score":6},
+  {"bigKind":"第六大题","pmId":17,"pmStyle":"作文","point":0,"kgPoint":"","score":70}
+]}

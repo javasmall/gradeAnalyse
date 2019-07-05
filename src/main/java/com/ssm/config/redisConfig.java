@@ -15,6 +15,7 @@ import org.springframework.data.redis.serializer.RedisSerializationContext;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 import java.io.Serializable;
+import java.time.Duration;
 
 @Configuration
 @AutoConfigureAfter(RedisAutoConfiguration.class)
@@ -34,9 +35,9 @@ public class redisConfig {
     @Primary
     public CacheManager cacheManager(RedisConnectionFactory redisConnectionFactory) {
         RedisCacheConfiguration cacheConfiguration = RedisCacheConfiguration.defaultCacheConfig()
-                // .entryTtl(Duration.ofSeconds(50))设置过期时间
+                 .entryTtl(Duration.ofHours(5))//设置过期时间
                 .disableCachingNullValues()
-                .computePrefixWith(cacheName -> "ssm".concat(":").concat(cacheName).concat(":"))//rediscache可以改成你的项目名
+                .computePrefixWith(cacheName -> "ssm".concat(":").concat(cacheName).concat(":"))//ssm可以改成你的项目名
                 .serializeKeysWith(RedisSerializationContext.SerializationPair.fromSerializer(new StringRedisSerializer()))
                 .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(new GenericJackson2JsonRedisSerializer()));
 
