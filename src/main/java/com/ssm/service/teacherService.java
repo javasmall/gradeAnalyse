@@ -13,7 +13,7 @@ import java.util.List;
 @Service
 public class teacherService {
 
-    @Autowired
+    @Autowired(required = false)
     teacherMapper teacherMapper;
     @Transactional
     public  boolean insearttestconfig(String test_name, String lesson,int score[],  String point[], String type[], String school)

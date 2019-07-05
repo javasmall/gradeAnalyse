@@ -81,12 +81,11 @@
                     var name = testJson.testName;
                     var date = testJson.date;
                     var subject=SubjectSelect[testJson.SubjectSelect].text;
-                    var url = "structureUpload.html?name="+name+"&date="+date+"&subject="+subject;//此处拼接内容
+                    var url = "structureUpload.html?name="+name+"&date="+date+"&subject="+subject;//类似form表单的get方式提交
                     window.location.href = url;  //通过地址栏传值
                     return false;
             });
         });
-
     </script>
 
     <!--禁止页面回退代码-->

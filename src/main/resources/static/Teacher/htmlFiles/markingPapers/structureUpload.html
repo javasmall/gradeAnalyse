@@ -10,7 +10,6 @@
     <script type="text/javascript" src="../../../common/layui/layui.all.js"></script>
 
     <style type="text/css">
-        /*您可以将下列样式写入自己的样式表中*/
         .childBody{padding: 15px;}
 
         /*layui 元素样式改写*/
@@ -57,9 +56,27 @@
             <div class="grid-demo1">
                 <!--<img class="layui-col-md6" src="../../images/1.jpg" style="height: 100%;width: 100%">-->
                 <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-                    <legend>用于分析试卷结构的试卷图片上传</legend>
+                    <legend>试卷结构图片</legend>
                 </fieldset>
-                <blockquote class="layui-elem-quote layui-quote-nm">test9考试中的数学科目</blockquote>
+                <blockquote class="layui-elem-quote layui-quote-nm">
+                    <form class="layui-form">
+                        <div class="layui-form-item" style="width: 200px">
+                        <select id="examName">
+                            <option value="">考试选择</option>
+                            <option value="test1">test1</option>
+                            <option value="test2">test2</option>
+                            <option value="test3">test3</option>
+                            <option value="test4">test4</option>
+                        </select>
+                            <select id="examSub" style="position: relative">
+                                <option value="">科目选择</option>
+                                <option value="语文">语文</option>
+                                <option value="数学">数学</option>
+                                <option value="英语">英语</option>
+                            </select>
+                        </div>
+                    </form>
+                </blockquote>
 
                 <button type="button" class="layui-btn" id="test1">
                     <i class="layui-icon"></i>上传图片
@@ -80,8 +97,7 @@
                         var uploadInst = upload.render({
                             elem: '#test1' //绑定元素
                             //上传接口
-                            ,url:'/ssm/ocrimg'
-							 ,method:'get'
+                            ,url:'test.json'
                             ,before: function(obj){   //实现图片的预览
                                 //预读本地文件示例，不支持ie8
                                 obj.preview(function(index, file, result){
@@ -125,7 +141,7 @@
             <div class="grid-demo2">
                 <!--<img class="layui-col-md6" src="../../images/1.jpg" style="height: 100%;width: 100%">-->
                 <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-                    <legend>填写试卷结构信息</legend>
+                    <legend>试卷结构信息填写</legend>
                 </fieldset>
 
                 <!--action暂时没有填写，填写完毕后进行判空验证，如果都不为空则填写有效-->
@@ -140,17 +156,21 @@
                                     <button type="button" class="layui-btn layui-btn-sm" data-type="addRow" title="添加一行">
                                         <i class="layui-icon layui-icon-add-1"></i> 添加一行
                                     </button>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <button type="button" name="btnSave" class="layui-btn" data-type="save"><i class="layui-icon layui-icon-ok-circle"></i>保存</button>
+                                    <button type="reset" name="btnReset" class="layui-btn layui-btn-primary">取消</button>
                                 </div>
                             </div>
 
+                            <!--可编辑表格的主体-->
                             <div id="tableRes" class="table-overlay">
                                 <table id="dataTable" lay-filter="dataTable" class="layui-hide"></table>
                             </div>
 
-                            <div id="action" class="text-center">
-                                <button type="button" name="btnSave" class="layui-btn" data-type="save"><i class="layui-icon layui-icon-ok-circle"></i>保存</button>
-                                <button type="reset" name="btnReset" class="layui-btn layui-btn-primary">取消</button>
-                            </div>
+                            <!--<div id="action" class="text-center">-->
+                                <!--<button type="button" name="btnSave" class="layui-btn" data-type="save"><i class="layui-icon layui-icon-ok-circle"></i>保存</button>-->
+                                <!--<button type="reset" name="btnReset" class="layui-btn layui-btn-primary">取消</button>-->
+                            <!--</div>-->
                         </div>
                     </div>
                 </section>
@@ -163,28 +183,24 @@
                     window.viewObj = {
                         tbData: [{   //tbData是表格的初始化工具
                             tempId: new Date().valueOf(),
-                            pmId: 1,
+                            pmId: 1,   //题目 比如语文有20多道题目
                             point: 3,
                             pmStyle: '选择题',
                             kgPoint:'极限的定义',
                         }],
                         typeData: [
-                            {id: 1, name: '第一大题'},
-                            {id: 2, name: '第二大题'},
-                            {id: 3, name: '第三大题'},
-                            {id: 4, name: '第四大题'},
-                            {id: 5, name: '第五大题'},
-                            {id: 6, name: '第六大题'},
-                            {id: 7, name: '第七大题'},
-                            {id: 8, name: '第八大题'},
-                            {id: 9, name: '第九大题'},
-                            {id: 10, name: '第十大题'},
+                            {id: 1, name: '第一大题'}, {id: 2, name: '第二大题'},{id: 3, name: '第三大题'}, {id: 4, name: '第四大题'},
+                            {id: 5, name: '第五大题'}, {id: 6, name: '第六大题'},{id: 7, name: '第七大题'}, {id: 8, name: '第八大题'},
+                            {id: 9, name: '第九大题'},{id: 10, name: '第十大题'},{id: 11, name: '第十一题'},{id: 12, name: '第十二题'},
+                            {id:13, name: '第十三题'},{id: 14, name: '第十四题'},{id: 15, name: '第十五题'},{id: 16, name: '第十六题'},
+                            {id:17, name: '第十七题'}
                         ],
                         renderSelectOptions: function(data, settings){
                             settings =  settings || {};
                             var valueField = settings.valueField || 'value',
                                 textField = settings.textField || 'text',
-                                selectedValue = settings.selectedValue || "";
+                                //selectedValue = settings.selectedValue || "";
+                                selectedValue = settings.selectedValue || 'value';
                             var html = [];
                             for(var i=0, item; i < data.length; i++){
                                 item = data[i];
@@ -210,19 +226,21 @@
                         var tbWidth = $("#tableRes").width();
                         var layTableId = "layTable";
                         var tableIns = table.render({  //table渲染初始化
-                            elem: '#dataTable',  //绑定元素
+                            elem: '#dataTable',  //绑定元素  过滤器
                             id: layTableId,
-                            data: viewObj.tbData,
+                            data: viewObj.tbData,   //使用视图对象填充表格主体内容
                             width: tbWidth,
-                            height: 700,
-                            page: false, //关闭分页
+                            height: 1000,
+                            page: true, //关闭分页
+                            limit:20,
                             loading: true,
                             even: false, //不开启隔行背景
                             cols: [[
                                 {title: '题目', type: 'numbers'},
                                 {field: 'bigKind', title: '所属大题',width:180, templet: function(d){
-                                        var options = viewObj.renderSelectOptions(viewObj.typeData, {valueField: "id", textField: "name", selectedValue: d.type});
-                                        return '<a lay-event="type"></a><select name="type" lay-filter="type"><option value="">请选择分类</option>' + options + '</select>';
+                                        var options = viewObj.renderSelectOptions(viewObj.typeData, {valueField: "id", textField: "name", selectedValue: d.type});   //填充下拉框
+
+                                        return '<a lay-event="type"></a><select name="type" lay-filter="type"><option value="">请选择分类</option>' + options + '</select>';  //使用options进行渲染
                                     }},
                                 {field: 'pmId', title: '题号', edit: 'text'},
                                 {field: 'point', title: '分值', edit: 'text'},
@@ -241,10 +259,11 @@
                         var active = {
                             addRow: function(){	//添加一行
                                 var oldData = table.cache[layTableId];
+
                                 //console.log("layTableId: "+layTableId);
                                 // console.log("length of oddata: "+oldData.length);
-                                // console.log(oldData);
-                                var newRow = { tempId: new Date().valueOf(),bigKind: null, pmId: '', point: '3',pmStyle:'选择题',kgPoint:'极限的定义',};
+                                //console.log(oldData);  //可以获取数据表格中的数据
+                                var newRow = { tempId: new Date().valueOf(),bigKind: '第一题', pmId: '', point: '3',pmStyle:'选择题',kgPoint:'极限的定义',};
                                 oldData.push(newRow);
 
                                 tableIns.reload({  //更改table过后重新加载
@@ -261,10 +280,11 @@
                                         return;
                                     }
                                 }
-                                tableIns.reload({
+                                tableIns.reload({ //table重新加载，table重新渲染
                                     data : oldData
                                 });
                             },
+
                             removeEmptyTableCache: function(){
                                 var oldData = table.cache[layTableId];
                                 for(var i=0, row; i < oldData.length; i++){
@@ -278,30 +298,66 @@
                                     data : oldData
                                 });
                             },
-                            save: function(){  //可在此实现向服务器数据的提交
+
+                            //可在此实现向服务器数据的提交
+                            save: function(){
                                 var oldData = table.cache[layTableId];
-                                // console.log(oldData);
-                                for(var i=0, row; i < oldData.length; i++){
-                                    row = oldData[i];
-                                    if(!row.type){
-                                        layer.msg("检查每一行，请选择分类！", { icon: 5 }); //提示
-                                        return;
+                                // console.log("oldData: "+oldData);
+                                //console.log("data-----"+JSON.stringify(table.cache));
+
+                                var tableData = JSON.stringify(table.cache);
+                                var Data = eval("(" + tableData + ")");//json为接收的后台返回的数据；
+                                //var table= tableData["0"];
+                                //
+                                // console.log("data: "+data.layTable);
+                                // console.log("pmId: "+data.layTable[0].pmId);
+
+                                var examName =  $('#examName').val();  //考试名称
+                                var examSub = $("#examSub").val();  //考试科目
+                                // if(examName || examSub === ''){
+                                //     layer.msg("考试信息或试卷名称填写不完整！", { icon: 7}); //提示
+                                // }
+                                //
+                                // else{
+                                    var datas=[];
+                                    for(var i=0, row; i < oldData.length; i++){
+                                        row = oldData[i];
+                                        //console.log(row.type);
+                                        if(!row.type){
+                                            layer.msg("检查每一行，请选择分类！", { icon: 5 }); //提示
+                                            return;
+                                        }
+
+                                        //console.log("data: "+Data.layTable);
+                                        var data = {};
+                                        data["examName"]=examName;
+                                        data["examSub"]=examSub;
+                                        data["bigKind"] = "第"+row.type+"题";  //所属大题
+                                        data["pmId"] = Data.layTable[i].pmId;   //题号
+                                        data["point"] = Data.layTable[i].point;  //分值
+                                        data["pmStyle"] = Data.layTable[i].pmStyle;//题目类型
+                                        data["kgPoint"]=Data.layTable[i].kgPoint;//知识点
+                                        datas.push(data);   //往JSON数组中添加JSON对象
                                     }
+
+                                    var jsonString = JSON.stringify(datas);  //[{"id":1,"name":"test1","age":2}]
+                                    console.log("jsonString: "+jsonString);
+                                    // msg.innerHTML=jsonString;
+                                    // var epc=eval("("+jsonString+")");
+                                    // alert(epc[0].id);
+
+                                    //否则提示成功保存信息
+                                    layer.open({
+                                        title: '提示信息'
+                                        ,content: '您已经录入试卷结构信息！请您批改试卷上传学生成绩!'
+                                    });
+                                    // setTimeout(function(){//两秒后跳转
+                                    //     location.href="gradeUpload.html";
+                                    // },2000);
+                                    //document.getElementById("jsonResult").innerHTML = JSON.stringify(table.cache[layTableId], null, 2);	//使用JSON.stringify() 格式化输出JSON字符串
                                 }
 
-                                //否则提示成功保存信息
-
-                                layer.open({
-                                    title: '提示信息'
-                                    ,content: '您已经成功保存数据！页面即将跳转!'
-                                });
-                                setTimeout(function(){//两秒后跳转
-                                    location.href="gradeUpload.html";
-                                },2000);
-
-
-                                //document.getElementById("jsonResult").innerHTML = JSON.stringify(table.cache[layTableId], null, 2);	//使用JSON.stringify() 格式化输出JSON字符串
-                            }
+                            // }
                         }
 
                         //激活事件

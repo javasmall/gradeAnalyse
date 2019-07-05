@@ -3,6 +3,7 @@ package com.ssm;
 import com.ssm.bean.problems;
 import com.ssm.bean.student_chengji;
 import com.ssm.bean.test_paper;
+import com.ssm.bean.wangyiwhite;
 import com.ssm.dao.problemMapper;
 import com.ssm.dao.teacherMapper;
 import com.ssm.es.Esteamplate;
@@ -53,11 +54,14 @@ public class BootApplicationTests {
 //        stringRedisTemplate.opsForSet().add("s","44");
 //        System.out.println(redisTemplate.opsForValue().get("66"));
     }
-//    @Test
-//    public  void test2()
-//    {
-//        teacherMapper.insearttestconfig("test8","语文2",6,16,"ss","s","just");
-//    }
+    @Autowired(required = false)
+    RedisTemplate redisTemplate;
+    @Test
+    public  void test2()
+    {
+        wangyiwhite wangyiwhite=new wangyiwhite("162222","555");
+        redisTemplate.opsForHash().put("wangyi","wang",wangyiwhite);
+    }
 //
 //    @Test
 //    public void test3()
